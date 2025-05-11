@@ -1,0 +1,128 @@
+//
+//  ResultView.swift
+//  MyMusic
+//
+//  Created by 市川涼 on 2025/05/06.
+//
+
+
+import SwiftUI
+import GoogleMobileAds
+
+struct ResultView: View {
+    
+    @State private var showScore = false
+    @State private var showCharacters = false
+    @State private var showButtons = false
+    
+    let score: Int
+    let characterCount: Int
+    let mode: QuizMode
+    
+    let onNext: () -> Void
+    let onRanking: () -> Void
+
+
+    var body: some View {
+        
+        ZStack{
+            Image(.result)
+                .resizable()
+                .ignoresSafeArea()
+            
+            VStack(spacing: 20) {
+                
+                Spacer().frame(height: 130)
+                
+                // スコアの表示
+                ZStack{
+                    Image(.makimono)
+                        .resizable()
+                        .frame(height: 140)
+                        .ignoresSafeArea()
+                    
+                    VStack{
+                        if showScore{
+                            Text(" \(score) 問クリア！")
+                                .font(.largeTitle)
+                                .foregroundStyle(Color.black)
+                                .opacity(showScore ? 1 : 0)
+                                .animation(.easeInOut, value: showScore)
+                        }
+                        
+                        if showCharacters{
+                            Text("合計 \(characterCount) 文字")
+                                .font(.title2)
+                                .foregroundStyle(Color.black)
+                                .opacity(showCharacters ? 1 : 0)
+                                .animation(.easeInOut, value: showCharacters)
+                        }
+                    }
+                }
+                
+                Spacer().frame(height: 50)
+                
+                CachedBannerView.shared
+                    .frame(width: GADAdSizeLargeBanner.size.width, height: GADAdSizeLargeBanner.size.height)
+
+                
+                Spacer().frame(height: 80)
+                
+                VStack (spacing: 20) {
+                    Button("ランキングへ") {
+                        onRanking()
+                    }
+                    .padding()
+                    .font(.title3)
+                    .bold()
+                    .frame(width: 160, height: 60)
+                    .foregroundColor(.white)
+                    .background(Color.startBtn)
+                    .cornerRadius(12)
+                    
+                    Button("退場") {
+                        onNext()
+                    }
+                    .padding()
+                    .font(.title)
+                    .bold()
+                    .frame(width: 160, height: 60)
+                    .foregroundColor(.white)
+                    .background(Color.startBtn)
+                    .cornerRadius(12)
+                }
+                .opacity(showButtons ? 1 : 0)
+                .animation(.easeInOut, value: showButtons)
+            }
+        }
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                withAnimation {
+                    showScore = true
+                }
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                withAnimation {
+                    showCharacters = true
+                }
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                withAnimation {
+                    showButtons = true
+                }
+            }
+        }
+
+        
+    }
+}
+
+#Preview {
+    ResultView(
+        score: 12,
+        characterCount: 56,
+        mode: .timeLimit,
+        onNext: {},
+        onRanking: {}
+    )
+}

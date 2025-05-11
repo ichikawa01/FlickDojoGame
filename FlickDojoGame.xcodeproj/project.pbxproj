@@ -1,0 +1,527 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5F1C21E92DCE9C45008DAAF9 /* FlickDojoGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C21E82DCE9C45008DAAF9 /* FlickDojoGameApp.swift */; };
+		5F1C21ED2DCE9C46008DAAF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C21EC2DCE9C46008DAAF9 /* Assets.xcassets */; };
+		5F1C21F02DCE9C46008DAAF9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C21EF2DCE9C46008DAAF9 /* Preview Assets.xcassets */; };
+		5F1C21F72DCE9D0F008DAAF9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C21F62DCE9D0F008DAAF9 /* GoogleService-Info.plist */; };
+		5F1C21FA2DCE9DA3008DAAF9 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 5F1C21F92DCE9DA3008DAAF9 /* FirebaseAnalytics */; };
+		5F1C21FC2DCE9DA3008DAAF9 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 5F1C21FB2DCE9DA3008DAAF9 /* FirebaseAuth */; };
+		5F1C21FE2DCE9DA3008DAAF9 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 5F1C21FD2DCE9DA3008DAAF9 /* FirebaseFirestore */; };
+		5F1C22012DCE9E19008DAAF9 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 5F1C22002DCE9E19008DAAF9 /* GoogleMobileAds */; };
+		5F1C22172DCE9EF6008DAAF9 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C22022DCE9EF5008DAAF9 /* MainView.swift */; };
+		5F1C22182DCE9EF6008DAAF9 /* QuizCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C22032DCE9EF5008DAAF9 /* QuizCategory.swift */; };
+		5F1C22192DCE9EF6008DAAF9 /* FuriganaText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C22042DCE9EF5008DAAF9 /* FuriganaText.swift */; };
+		5F1C221A2DCE9EF6008DAAF9 /* StatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C22052DCE9EF5008DAAF9 /* StatusView.swift */; };
+		5F1C221B2DCE9EF6008DAAF9 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C22062DCE9EF5008DAAF9 /* StartView.swift */; };
+		5F1C221C2DCE9EF6008DAAF9 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C22072DCE9EF5008DAAF9 /* UserManager.swift */; };
+		5F1C221D2DCE9EF6008DAAF9 /* NameEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C22082DCE9EF5008DAAF9 /* NameEditView.swift */; };
+		5F1C221E2DCE9EF6008DAAF9 /* ScoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C22092DCE9EF5008DAAF9 /* ScoreManager.swift */; };
+		5F1C221F2DCE9EF6008DAAF9 /* ModeSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C220A2DCE9EF5008DAAF9 /* ModeSelectView.swift */; };
+		5F1C22202DCE9EF6008DAAF9 /* NameInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C220B2DCE9EF5008DAAF9 /* NameInputView.swift */; };
+		5F1C22212DCE9EF6008DAAF9 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C220C2DCE9EF5008DAAF9 /* GameView.swift */; };
+		5F1C22222DCE9EF6008DAAF9 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C220D2DCE9EF6008DAAF9 /* ResultView.swift */; };
+		5F1C22242DCE9EF6008DAAF9 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C220F2DCE9EF6008DAAF9 /* AuthManager.swift */; };
+		5F1C22252DCE9EF6008DAAF9 /* RankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C22102DCE9EF6008DAAF9 /* RankingView.swift */; };
+		5F1C22262DCE9EF6008DAAF9 /* CategorySelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C22112DCE9EF6008DAAF9 /* CategorySelectView.swift */; };
+		5F1C22272DCE9EF6008DAAF9 /* QuizMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C22122DCE9EF6008DAAF9 /* QuizMode.swift */; };
+		5F1C22282DCE9EF6008DAAF9 /* RankingEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C22132DCE9EF6008DAAF9 /* RankingEntry.swift */; };
+		5F1C22292DCE9EF6008DAAF9 /* RankingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C22142DCE9EF6008DAAF9 /* RankingManager.swift */; };
+		5F1C222A2DCE9EF6008DAAF9 /* Shogou.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C22152DCE9EF6008DAAF9 /* Shogou.swift */; };
+		5F1C222B2DCE9EF6008DAAF9 /* WordLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C22162DCE9EF6008DAAF9 /* WordLoader.swift */; };
+		5F1C22302DCE9F24008DAAF9 /* level_1.json in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C222C2DCE9F24008DAAF9 /* level_1.json */; };
+		5F1C22312DCE9F24008DAAF9 /* level_2.json in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C222D2DCE9F24008DAAF9 /* level_2.json */; };
+		5F1C22322DCE9F24008DAAF9 /* level_3.json in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C222E2DCE9F24008DAAF9 /* level_3.json */; };
+		5F1C22342DCEA0CF008DAAF9 /* BannerAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C22332DCEA0CF008DAAF9 /* BannerAdView.swift */; };
+		5F1C223B2DCFEF73008DAAF9 /* AdMobManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C223A2DCFEF73008DAAF9 /* AdMobManager.swift */; };
+		5F1C223D2DCFF245008DAAF9 /* RankingRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C223C2DCFF245008DAAF9 /* RankingRowView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5F1C21E52DCE9C45008DAAF9 /* FlickDojoGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickDojoGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F1C21E82DCE9C45008DAAF9 /* FlickDojoGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickDojoGameApp.swift; sourceTree = "<group>"; };
+		5F1C21EC2DCE9C46008DAAF9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5F1C21EF2DCE9C46008DAAF9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5F1C21F62DCE9D0F008DAAF9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5F1C22022DCE9EF5008DAAF9 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		5F1C22032DCE9EF5008DAAF9 /* QuizCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizCategory.swift; sourceTree = "<group>"; };
+		5F1C22042DCE9EF5008DAAF9 /* FuriganaText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FuriganaText.swift; sourceTree = "<group>"; };
+		5F1C22052DCE9EF5008DAAF9 /* StatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusView.swift; sourceTree = "<group>"; };
+		5F1C22062DCE9EF5008DAAF9 /* StartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
+		5F1C22072DCE9EF5008DAAF9 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		5F1C22082DCE9EF5008DAAF9 /* NameEditView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameEditView.swift; sourceTree = "<group>"; };
+		5F1C22092DCE9EF5008DAAF9 /* ScoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreManager.swift; sourceTree = "<group>"; };
+		5F1C220A2DCE9EF5008DAAF9 /* ModeSelectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModeSelectView.swift; sourceTree = "<group>"; };
+		5F1C220B2DCE9EF5008DAAF9 /* NameInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameInputView.swift; sourceTree = "<group>"; };
+		5F1C220C2DCE9EF5008DAAF9 /* GameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		5F1C220D2DCE9EF6008DAAF9 /* ResultView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
+		5F1C220F2DCE9EF6008DAAF9 /* AuthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		5F1C22102DCE9EF6008DAAF9 /* RankingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingView.swift; sourceTree = "<group>"; };
+		5F1C22112DCE9EF6008DAAF9 /* CategorySelectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategorySelectView.swift; sourceTree = "<group>"; };
+		5F1C22122DCE9EF6008DAAF9 /* QuizMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizMode.swift; sourceTree = "<group>"; };
+		5F1C22132DCE9EF6008DAAF9 /* RankingEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingEntry.swift; sourceTree = "<group>"; };
+		5F1C22142DCE9EF6008DAAF9 /* RankingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingManager.swift; sourceTree = "<group>"; };
+		5F1C22152DCE9EF6008DAAF9 /* Shogou.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shogou.swift; sourceTree = "<group>"; };
+		5F1C22162DCE9EF6008DAAF9 /* WordLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordLoader.swift; sourceTree = "<group>"; };
+		5F1C222C2DCE9F24008DAAF9 /* level_1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = level_1.json; sourceTree = "<group>"; };
+		5F1C222D2DCE9F24008DAAF9 /* level_2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = level_2.json; sourceTree = "<group>"; };
+		5F1C222E2DCE9F24008DAAF9 /* level_3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = level_3.json; sourceTree = "<group>"; };
+		5F1C22332DCEA0CF008DAAF9 /* BannerAdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerAdView.swift; sourceTree = "<group>"; };
+		5F1C22392DCEAC32008DAAF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		5F1C223A2DCFEF73008DAAF9 /* AdMobManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMobManager.swift; sourceTree = "<group>"; };
+		5F1C223C2DCFF245008DAAF9 /* RankingRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingRowView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5F1C21E22DCE9C45008DAAF9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F1C22012DCE9E19008DAAF9 /* GoogleMobileAds in Frameworks */,
+				5F1C21FA2DCE9DA3008DAAF9 /* FirebaseAnalytics in Frameworks */,
+				5F1C21FC2DCE9DA3008DAAF9 /* FirebaseAuth in Frameworks */,
+				5F1C21FE2DCE9DA3008DAAF9 /* FirebaseFirestore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5F1C21DC2DCE9C45008DAAF9 = {
+			isa = PBXGroup;
+			children = (
+				5F1C21E72DCE9C45008DAAF9 /* FlickDojoGame */,
+				5F1C21E62DCE9C45008DAAF9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5F1C21E62DCE9C45008DAAF9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5F1C21E52DCE9C45008DAAF9 /* FlickDojoGame.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5F1C21E72DCE9C45008DAAF9 /* FlickDojoGame */ = {
+			isa = PBXGroup;
+			children = (
+				5F1C22392DCEAC32008DAAF9 /* Info.plist */,
+				5F1C21E82DCE9C45008DAAF9 /* FlickDojoGameApp.swift */,
+				5F1C223A2DCFEF73008DAAF9 /* AdMobManager.swift */,
+				5F1C22332DCEA0CF008DAAF9 /* BannerAdView.swift */,
+				5F1C22022DCE9EF5008DAAF9 /* MainView.swift */,
+				5F1C22062DCE9EF5008DAAF9 /* StartView.swift */,
+				5F1C220A2DCE9EF5008DAAF9 /* ModeSelectView.swift */,
+				5F1C22112DCE9EF6008DAAF9 /* CategorySelectView.swift */,
+				5F1C220F2DCE9EF6008DAAF9 /* AuthManager.swift */,
+				5F1C22042DCE9EF5008DAAF9 /* FuriganaText.swift */,
+				5F1C220C2DCE9EF5008DAAF9 /* GameView.swift */,
+				5F1C22082DCE9EF5008DAAF9 /* NameEditView.swift */,
+				5F1C220B2DCE9EF5008DAAF9 /* NameInputView.swift */,
+				5F1C22032DCE9EF5008DAAF9 /* QuizCategory.swift */,
+				5F1C22122DCE9EF6008DAAF9 /* QuizMode.swift */,
+				5F1C22152DCE9EF6008DAAF9 /* Shogou.swift */,
+				5F1C22132DCE9EF6008DAAF9 /* RankingEntry.swift */,
+				5F1C22142DCE9EF6008DAAF9 /* RankingManager.swift */,
+				5F1C22102DCE9EF6008DAAF9 /* RankingView.swift */,
+				5F1C223C2DCFF245008DAAF9 /* RankingRowView.swift */,
+				5F1C220D2DCE9EF6008DAAF9 /* ResultView.swift */,
+				5F1C22092DCE9EF5008DAAF9 /* ScoreManager.swift */,
+				5F1C22052DCE9EF5008DAAF9 /* StatusView.swift */,
+				5F1C22072DCE9EF5008DAAF9 /* UserManager.swift */,
+				5F1C22162DCE9EF6008DAAF9 /* WordLoader.swift */,
+				5F1C21EC2DCE9C46008DAAF9 /* Assets.xcassets */,
+				5F1C21F62DCE9D0F008DAAF9 /* GoogleService-Info.plist */,
+				5F1C222F2DCE9F24008DAAF9 /* Words */,
+				5F1C21EE2DCE9C46008DAAF9 /* Preview Content */,
+			);
+			path = FlickDojoGame;
+			sourceTree = "<group>";
+		};
+		5F1C21EE2DCE9C46008DAAF9 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				5F1C21EF2DCE9C46008DAAF9 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		5F1C222F2DCE9F24008DAAF9 /* Words */ = {
+			isa = PBXGroup;
+			children = (
+				5F1C222C2DCE9F24008DAAF9 /* level_1.json */,
+				5F1C222D2DCE9F24008DAAF9 /* level_2.json */,
+				5F1C222E2DCE9F24008DAAF9 /* level_3.json */,
+			);
+			path = Words;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5F1C21E42DCE9C45008DAAF9 /* FlickDojoGame */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5F1C21F32DCE9C46008DAAF9 /* Build configuration list for PBXNativeTarget "FlickDojoGame" */;
+			buildPhases = (
+				5F1C21E12DCE9C45008DAAF9 /* Sources */,
+				5F1C21E22DCE9C45008DAAF9 /* Frameworks */,
+				5F1C21E32DCE9C45008DAAF9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FlickDojoGame;
+			packageProductDependencies = (
+				5F1C21F92DCE9DA3008DAAF9 /* FirebaseAnalytics */,
+				5F1C21FB2DCE9DA3008DAAF9 /* FirebaseAuth */,
+				5F1C21FD2DCE9DA3008DAAF9 /* FirebaseFirestore */,
+				5F1C22002DCE9E19008DAAF9 /* GoogleMobileAds */,
+			);
+			productName = FlickDojoGame;
+			productReference = 5F1C21E52DCE9C45008DAAF9 /* FlickDojoGame.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5F1C21DD2DCE9C45008DAAF9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1530;
+				LastUpgradeCheck = 1530;
+				TargetAttributes = {
+					5F1C21E42DCE9C45008DAAF9 = {
+						CreatedOnToolsVersion = 15.3;
+					};
+				};
+			};
+			buildConfigurationList = 5F1C21E02DCE9C45008DAAF9 /* Build configuration list for PBXProject "FlickDojoGame" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5F1C21DC2DCE9C45008DAAF9;
+			packageReferences = (
+				5F1C21F82DCE9DA3008DAAF9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				5F1C21FF2DCE9E19008DAAF9 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
+			);
+			productRefGroup = 5F1C21E62DCE9C45008DAAF9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5F1C21E42DCE9C45008DAAF9 /* FlickDojoGame */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5F1C21E32DCE9C45008DAAF9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F1C22302DCE9F24008DAAF9 /* level_1.json in Resources */,
+				5F1C21F02DCE9C46008DAAF9 /* Preview Assets.xcassets in Resources */,
+				5F1C22322DCE9F24008DAAF9 /* level_3.json in Resources */,
+				5F1C22312DCE9F24008DAAF9 /* level_2.json in Resources */,
+				5F1C21F72DCE9D0F008DAAF9 /* GoogleService-Info.plist in Resources */,
+				5F1C21ED2DCE9C46008DAAF9 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5F1C21E12DCE9C45008DAAF9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F1C22202DCE9EF6008DAAF9 /* NameInputView.swift in Sources */,
+				5F1C22252DCE9EF6008DAAF9 /* RankingView.swift in Sources */,
+				5F1C222B2DCE9EF6008DAAF9 /* WordLoader.swift in Sources */,
+				5F1C21E92DCE9C45008DAAF9 /* FlickDojoGameApp.swift in Sources */,
+				5F1C22272DCE9EF6008DAAF9 /* QuizMode.swift in Sources */,
+				5F1C22172DCE9EF6008DAAF9 /* MainView.swift in Sources */,
+				5F1C22242DCE9EF6008DAAF9 /* AuthManager.swift in Sources */,
+				5F1C221C2DCE9EF6008DAAF9 /* UserManager.swift in Sources */,
+				5F1C22282DCE9EF6008DAAF9 /* RankingEntry.swift in Sources */,
+				5F1C221E2DCE9EF6008DAAF9 /* ScoreManager.swift in Sources */,
+				5F1C22182DCE9EF6008DAAF9 /* QuizCategory.swift in Sources */,
+				5F1C221F2DCE9EF6008DAAF9 /* ModeSelectView.swift in Sources */,
+				5F1C223D2DCFF245008DAAF9 /* RankingRowView.swift in Sources */,
+				5F1C222A2DCE9EF6008DAAF9 /* Shogou.swift in Sources */,
+				5F1C22222DCE9EF6008DAAF9 /* ResultView.swift in Sources */,
+				5F1C221B2DCE9EF6008DAAF9 /* StartView.swift in Sources */,
+				5F1C22192DCE9EF6008DAAF9 /* FuriganaText.swift in Sources */,
+				5F1C221A2DCE9EF6008DAAF9 /* StatusView.swift in Sources */,
+				5F1C22342DCEA0CF008DAAF9 /* BannerAdView.swift in Sources */,
+				5F1C22292DCE9EF6008DAAF9 /* RankingManager.swift in Sources */,
+				5F1C22212DCE9EF6008DAAF9 /* GameView.swift in Sources */,
+				5F1C223B2DCFEF73008DAAF9 /* AdMobManager.swift in Sources */,
+				5F1C221D2DCE9EF6008DAAF9 /* NameEditView.swift in Sources */,
+				5F1C22262DCE9EF6008DAAF9 /* CategorySelectView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		5F1C21F12DCE9C46008DAAF9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5F1C21F22DCE9C46008DAAF9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5F1C21F42DCE9C46008DAAF9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"FlickDojoGame/Preview Content\"";
+				DEVELOPMENT_TEAM = H9Q9T368X8;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FlickDojoGame/Info.plist;
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "広告の最適化のためにトラッキングの許可をお願いします！";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ryoichikawa.FlickDojoGame;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5F1C21F52DCE9C46008DAAF9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"FlickDojoGame/Preview Content\"";
+				DEVELOPMENT_TEAM = H9Q9T368X8;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FlickDojoGame/Info.plist;
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "広告の最適化のためにトラッキングの許可をお願いします！";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ryoichikawa.FlickDojoGame;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5F1C21E02DCE9C45008DAAF9 /* Build configuration list for PBXProject "FlickDojoGame" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F1C21F12DCE9C46008DAAF9 /* Debug */,
+				5F1C21F22DCE9C46008DAAF9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5F1C21F32DCE9C46008DAAF9 /* Build configuration list for PBXNativeTarget "FlickDojoGame" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F1C21F42DCE9C46008DAAF9 /* Debug */,
+				5F1C21F52DCE9C46008DAAF9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5F1C21F82DCE9DA3008DAAF9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.24.0;
+			};
+		};
+		5F1C21FF2DCE9E19008DAAF9 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5F1C21F92DCE9DA3008DAAF9 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5F1C21F82DCE9DA3008DAAF9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		5F1C21FB2DCE9DA3008DAAF9 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5F1C21F82DCE9DA3008DAAF9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		5F1C21FD2DCE9DA3008DAAF9 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5F1C21F82DCE9DA3008DAAF9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		5F1C22002DCE9E19008DAAF9 /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5F1C21FF2DCE9E19008DAAF9 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 5F1C21DD2DCE9C45008DAAF9 /* Project object */;
+}

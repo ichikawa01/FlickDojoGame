@@ -1,0 +1,378 @@
+[
+  {
+    "kanji": "林檎",
+    "reading": "りんご"
+  },
+  {
+    "kanji": "猿",
+    "reading": "さる"
+  },
+  {
+    "kanji": "鯉",
+    "reading": "こい"
+  },
+  {
+    "kanji": "手紙",
+    "reading": "てがみ"
+  },
+  {
+    "kanji": "玉蜀黍",
+    "reading": "とうもろこし"
+  },
+  {
+    "kanji": "帆立",
+    "reading": "ほたて"
+  },
+  {
+    "kanji": "自転車",
+    "reading": "じてんしゃ"
+  },
+  {
+    "kanji": "豆腐",
+    "reading": "とうふ"
+  },
+  {
+    "kanji": "ライオン",
+    "reading": "らいおん"
+  },
+  {
+    "kanji": "塩",
+    "reading": "しお"
+  },
+  {
+    "kanji": "鰹節",
+    "reading": "かつおぶし"
+  },
+  {
+    "kanji": "学校",
+    "reading": "がっこう"
+  },
+  {
+    "kanji": "肉",
+    "reading": "にく"
+  },
+  {
+    "kanji": "海老",
+    "reading": "えび"
+  },
+  {
+    "kanji": "お茶",
+    "reading": "おちゃ"
+  },
+  {
+    "kanji": "野菜",
+    "reading": "やさい"
+  },
+  {
+    "kanji": "家族",
+    "reading": "かぞく"
+  },
+  {
+    "kanji": "白子",
+    "reading": "しらす"
+  },
+  {
+    "kanji": "山葵",
+    "reading": "わさび"
+  },
+  {
+    "kanji": "卵",
+    "reading": "たまご"
+  },
+  {
+    "kanji": "船",
+    "reading": "ふね"
+  },
+  {
+    "kanji": "西瓜",
+    "reading": "すいか"
+  },
+  {
+    "kanji": "川",
+    "reading": "かわ"
+  },
+  {
+    "kanji": "鉛筆",
+    "reading": "えんぴつ"
+  },
+  {
+    "kanji": "虎",
+    "reading": "とら"
+  },
+  {
+    "kanji": "煮干し",
+    "reading": "にぼし"
+  },
+  {
+    "kanji": "鯨",
+    "reading": "くじら"
+  },
+  {
+    "kanji": "鹿",
+    "reading": "しか"
+  },
+  {
+    "kanji": "バナナ",
+    "reading": "ばなな"
+  },
+  {
+    "kanji": "梨",
+    "reading": "なし"
+  },
+  {
+    "kanji": "葡萄",
+    "reading": "ぶどう"
+  },
+  {
+    "kanji": "鯵",
+    "reading": "あじ"
+  },
+  {
+    "kanji": "砂糖",
+    "reading": "さとう"
+  },
+  {
+    "kanji": "鯛",
+    "reading": "たい"
+  },
+  {
+    "kanji": "魚",
+    "reading": "さかな"
+  },
+  {
+    "kanji": "芥子",
+    "reading": "からし"
+  },
+  {
+    "kanji": "狸",
+    "reading": "たぬき"
+  },
+  {
+    "kanji": "象",
+    "reading": "ぞう"
+  },
+  {
+    "kanji": "胡麻",
+    "reading": "ごま"
+  },
+  {
+    "kanji": "鞄",
+    "reading": "かばん"
+  },
+  {
+    "kanji": "桃",
+    "reading": "もも"
+  },
+  {
+    "kanji": "桜",
+    "reading": "さくら"
+  },
+  {
+    "kanji": "昆布",
+    "reading": "こんぶ"
+  },
+  {
+    "kanji": "醤油",
+    "reading": "しょうゆ"
+  },
+  {
+    "kanji": "花",
+    "reading": "はな"
+  },
+  {
+    "kanji": "蟹",
+    "reading": "かに"
+  },
+  {
+    "kanji": "茄子",
+    "reading": "なす"
+  },
+  {
+    "kanji": "味噌",
+    "reading": "みそ"
+  },
+  {
+    "kanji": "蛙",
+    "reading": "かえる"
+  },
+  {
+    "kanji": "鮪",
+    "reading": "まぐろ"
+  },
+  {
+    "kanji": "馬鈴薯",
+    "reading": "じゃがいも"
+  },
+  {
+    "kanji": "先生",
+    "reading": "せんせい"
+  },
+  {
+    "kanji": "蓮根",
+    "reading": "れんこん"
+  },
+  {
+    "kanji": "鮭",
+    "reading": "さけ"
+  },
+  {
+    "kanji": "雲",
+    "reading": "くも"
+  },
+  {
+    "kanji": "お握り",
+    "reading": "おにぎり"
+  },
+  {
+    "kanji": "鰯",
+    "reading": "いわし"
+  },
+  {
+    "kanji": "牛蒡",
+    "reading": "ごぼう"
+  },
+  {
+    "kanji": "山",
+    "reading": "やま"
+  },
+  {
+    "kanji": "胡瓜",
+    "reading": "きゅうり"
+  },
+  {
+    "kanji": "蜜柑",
+    "reading": "みかん"
+  },
+  {
+    "kanji": "本",
+    "reading": "ほん"
+  },
+  {
+    "kanji": "馬",
+    "reading": "うま"
+  },
+  {
+    "kanji": "傘",
+    "reading": "かさ"
+  },
+  {
+    "kanji": "饂飩",
+    "reading": "うどん"
+  },
+  {
+    "kanji": "パンダ",
+    "reading": "ぱんだ"
+  },
+  {
+    "kanji": "イルカ",
+    "reading": "いるか"
+  },
+  {
+    "kanji": "蛸",
+    "reading": "たこ"
+  },
+  {
+    "kanji": "ペンギン",
+    "reading": "ぺんぎん"
+  },
+  {
+    "kanji": "苺",
+    "reading": "いちご"
+  },
+  {
+    "kanji": "烏賊",
+    "reading": "いか"
+  },
+  {
+    "kanji": "飴",
+    "reading": "あめ"
+  },
+  {
+    "kanji": "狐",
+    "reading": "きつね"
+  },
+  {
+    "kanji": "金魚",
+    "reading": "きんぎょ"
+  },
+  {
+    "kanji": "秋刀魚",
+    "reading": "さんま"
+  },
+  {
+    "kanji": "寿司",
+    "reading": "すし"
+  },
+  {
+    "kanji": "車",
+    "reading": "くるま"
+  },
+  {
+    "kanji": "海苔",
+    "reading": "のり"
+  },
+  {
+    "kanji": "大根",
+    "reading": "だいこん"
+  },
+  {
+    "kanji": "薩摩芋",
+    "reading": "さつまいも"
+  },
+  {
+    "kanji": "友達",
+    "reading": "ともだち"
+  },
+  {
+    "kanji": "青海苔",
+    "reading": "あおのり"
+  },
+  {
+    "kanji": "人参",
+    "reading": "にんじん"
+  },
+  {
+    "kanji": "筍",
+    "reading": "たけのこ"
+  },
+  {
+    "kanji": "トマト",
+    "reading": "とまと"
+  },
+  {
+    "kanji": "南瓜",
+    "reading": "かぼちゃ"
+  },
+  {
+    "kanji": "空豆",
+    "reading": "そらまめ"
+  },
+  {
+    "kanji": "ご飯",
+    "reading": "ごはん"
+  },
+  {
+    "kanji": "鱈",
+    "reading": "たら"
+  },
+  {
+    "kanji": "猫",
+    "reading": "ねこ"
+  },
+  {
+    "kanji": "菠薐草",
+    "reading": "ほうれんそう"
+  },
+  {
+    "kanji": "果物",
+    "reading": "くだもの"
+  },
+  {
+    "kanji": "犬",
+    "reading": "いぬ"
+  },
+  {
+    "kanji": "鳥",
+    "reading": "とり"
+  }
+]
