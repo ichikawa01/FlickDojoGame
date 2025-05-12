@@ -20,8 +20,24 @@ async function aggregateTopScores(mode, period) {
   console.log(`📈 ドキュメント数: ${snapshot.docs.length}`);
 
   const scores = snapshot.docs
-    .filter(doc => doc.id !== "top")
-    .map(doc => doc.data())
+  .filter(doc => doc.id !== "top")
+  .map(doc => {
+    const data = doc.data();
+    const ts = data.timestamp;
+    const tsMs = ts?.toMillis?.();
+    const startMs = start.getTime();
+
+    console.log(`📄 userId: ${data.userId}`);
+    console.log(`🔸 timestamp: ${ts?.toDate().toISOString?.()}`);
+    console.log(`🔸 toMillis(): ${tsMs}`);
+    console.log(`🔹 start JST: ${start.toISOString()} → getTime(): ${startMs}`);
+    console.log(`🔍 有効？ ${tsMs >= startMs}`);
+    return {
+      userId: data.userId,
+      score: data.score,
+      timestamp: ts
+    };
+})
     .filter(doc => {
         if (!doc.score || !doc.timestamp) return false;
         return doc.timestamp.toMillis() >= start.getTime(); // 正確に比較
