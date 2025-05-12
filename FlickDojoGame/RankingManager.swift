@@ -116,28 +116,29 @@ class RankingManager {
             dateKey = "total"
         }
 
-        db.collection("rankings")
+        let docRef = db.collection("rankings")
             .document(topDoc)
             .collection(dateKey)
-            .order(by: "score", descending: true)
-            .limit(to: 10)
-            .getDocuments { snapshot, error in
-                guard let docs = snapshot?.documents else {
-                    completion([])
-                    return
-                }
+            .document("top") // ← ここが変わる！
 
-                let entries = docs.compactMap { doc -> RankingEntry? in
-                    let data = doc.data()
-                    guard let name = data["userName"] as? String,
-                          let score = data["score"] as? Int,
-                          let userId = data["userId"] as? String else { return nil }
-                    return RankingEntry(userId: userId, userName: name, score: score)
-                }
-
-                completion(entries)
+        docRef.getDocument { snapshot, error in
+            guard let data = snapshot?.data(),
+                  let topArray = data["top"] as? [[String: Any]] else {
+                completion([])
+                return
             }
+
+            let entries = topArray.compactMap { dict -> RankingEntry? in
+                guard let name = dict["userName"] as? String,
+                      let score = dict["score"] as? Int,
+                      let userId = dict["userId"] as? String else { return nil }
+                return RankingEntry(userId: userId, userName: name, score: score)
+            }
+
+            completion(entries)
+        }
     }
+
 
     func formatDate(_ date: Date, format: String) -> String {
         let formatter = DateFormatter()
