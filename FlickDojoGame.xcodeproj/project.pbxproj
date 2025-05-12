@@ -41,6 +41,10 @@
 		5F1C22342DCEA0CF008DAAF9 /* BannerAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C22332DCEA0CF008DAAF9 /* BannerAdView.swift */; };
 		5F1C223B2DCFEF73008DAAF9 /* AdMobManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C223A2DCFEF73008DAAF9 /* AdMobManager.swift */; };
 		5F1C223D2DCFF245008DAAF9 /* RankingRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C223C2DCFF245008DAAF9 /* RankingRowView.swift */; };
+		5F1C223F2DD1F4AE008DAAF9 /* Stage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C223E2DD1F4AE008DAAF9 /* Stage.swift */; };
+		5F1C22412DD1F4F5008DAAF9 /* StageSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C22402DD1F4F5008DAAF9 /* StageSelectView.swift */; };
+		5F1C22432DD1F6B7008DAAF9 /* StageGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C22422DD1F6B7008DAAF9 /* StageGameView.swift */; };
+		5F1C22462DD2050F008DAAF9 /* stages_level_1.json in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C22452DD2050F008DAAF9 /* stages_level_1.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +80,10 @@
 		5F1C22392DCEAC32008DAAF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5F1C223A2DCFEF73008DAAF9 /* AdMobManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMobManager.swift; sourceTree = "<group>"; };
 		5F1C223C2DCFF245008DAAF9 /* RankingRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingRowView.swift; sourceTree = "<group>"; };
+		5F1C223E2DD1F4AE008DAAF9 /* Stage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stage.swift; sourceTree = "<group>"; };
+		5F1C22402DD1F4F5008DAAF9 /* StageSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageSelectView.swift; sourceTree = "<group>"; };
+		5F1C22422DD1F6B7008DAAF9 /* StageGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageGameView.swift; sourceTree = "<group>"; };
+		5F1C22452DD2050F008DAAF9 /* stages_level_1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = stages_level_1.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,9 +131,12 @@
 				5F1C220F2DCE9EF6008DAAF9 /* AuthManager.swift */,
 				5F1C22042DCE9EF5008DAAF9 /* FuriganaText.swift */,
 				5F1C220C2DCE9EF5008DAAF9 /* GameView.swift */,
+				5F1C22422DD1F6B7008DAAF9 /* StageGameView.swift */,
 				5F1C22082DCE9EF5008DAAF9 /* NameEditView.swift */,
 				5F1C220B2DCE9EF5008DAAF9 /* NameInputView.swift */,
 				5F1C22032DCE9EF5008DAAF9 /* QuizCategory.swift */,
+				5F1C223E2DD1F4AE008DAAF9 /* Stage.swift */,
+				5F1C22402DD1F4F5008DAAF9 /* StageSelectView.swift */,
 				5F1C22122DCE9EF6008DAAF9 /* QuizMode.swift */,
 				5F1C22152DCE9EF6008DAAF9 /* Shogou.swift */,
 				5F1C22132DCE9EF6008DAAF9 /* RankingEntry.swift */,
@@ -159,6 +170,7 @@
 				5F1C222C2DCE9F24008DAAF9 /* level_1.json */,
 				5F1C222D2DCE9F24008DAAF9 /* level_2.json */,
 				5F1C222E2DCE9F24008DAAF9 /* level_3.json */,
+				5F1C22452DD2050F008DAAF9 /* stages_level_1.json */,
 			);
 			path = Words;
 			sourceTree = "<group>";
@@ -232,6 +244,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F1C22302DCE9F24008DAAF9 /* level_1.json in Resources */,
+				5F1C22462DD2050F008DAAF9 /* stages_level_1.json in Resources */,
 				5F1C21F02DCE9C46008DAAF9 /* Preview Assets.xcassets in Resources */,
 				5F1C22322DCE9F24008DAAF9 /* level_3.json in Resources */,
 				5F1C22312DCE9F24008DAAF9 /* level_2.json in Resources */,
@@ -256,11 +269,13 @@
 				5F1C22242DCE9EF6008DAAF9 /* AuthManager.swift in Sources */,
 				5F1C221C2DCE9EF6008DAAF9 /* UserManager.swift in Sources */,
 				5F1C22282DCE9EF6008DAAF9 /* RankingEntry.swift in Sources */,
+				5F1C223F2DD1F4AE008DAAF9 /* Stage.swift in Sources */,
 				5F1C221E2DCE9EF6008DAAF9 /* ScoreManager.swift in Sources */,
 				5F1C22182DCE9EF6008DAAF9 /* QuizCategory.swift in Sources */,
 				5F1C221F2DCE9EF6008DAAF9 /* ModeSelectView.swift in Sources */,
 				5F1C223D2DCFF245008DAAF9 /* RankingRowView.swift in Sources */,
 				5F1C222A2DCE9EF6008DAAF9 /* Shogou.swift in Sources */,
+				5F1C22412DD1F4F5008DAAF9 /* StageSelectView.swift in Sources */,
 				5F1C22222DCE9EF6008DAAF9 /* ResultView.swift in Sources */,
 				5F1C221B2DCE9EF6008DAAF9 /* StartView.swift in Sources */,
 				5F1C22192DCE9EF6008DAAF9 /* FuriganaText.swift in Sources */,
@@ -269,6 +284,7 @@
 				5F1C22292DCE9EF6008DAAF9 /* RankingManager.swift in Sources */,
 				5F1C22212DCE9EF6008DAAF9 /* GameView.swift in Sources */,
 				5F1C223B2DCFEF73008DAAF9 /* AdMobManager.swift in Sources */,
+				5F1C22432DD1F6B7008DAAF9 /* StageGameView.swift in Sources */,
 				5F1C221D2DCE9EF6008DAAF9 /* NameEditView.swift in Sources */,
 				5F1C22262DCE9EF6008DAAF9 /* CategorySelectView.swift in Sources */,
 			);

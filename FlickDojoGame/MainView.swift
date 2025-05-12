@@ -14,7 +14,12 @@ enum AppScreen {
     case start
     case modeSelect
     case categorySelect
+    
     case game
+    
+    case stageSelect
+    case stageGame
+    
     case result
     
     case status
@@ -30,6 +35,8 @@ struct MainView: View {
     @State private var selectedCategory: QuizCategory = .level_1
     @State private var score: Int = 0
     @State private var characterCount: Int = 0
+    @State private var selectedStage: Stage? = nil // ← ステージモード用
+
 
 
     var body: some View {
@@ -63,7 +70,11 @@ struct MainView: View {
                     selectedMode: selectedMode,
                     onNext: { category in
                         selectedCategory = category
-                        transition(to: .game)
+                        if selectedMode == .timeLimit {
+                            transition(to: .game)
+                        } else if selectedMode == .stageMode {
+                            transition(to: .stageSelect)
+                        }
                     },
                     onBack: {
                         transition(to: .modeSelect)
@@ -73,6 +84,28 @@ struct MainView: View {
                     }
                 )
                 
+            case .stageSelect:
+                StageSelectView(
+                    category: selectedCategory,
+                    onSelectStage: { stage in
+                        selectedStage = stage
+                        transition(to: .stageGame)
+                    },
+                    onBack: {
+                        transition(to: .categorySelect)
+                    }
+                )
+                
+            case .stageGame:
+                if let stage = selectedStage {
+                    StageGameView(
+                        stage: stage,
+                        onFinish: {
+                            transition(to: .result)
+                        }
+                    )
+                }
+                
             case .game:
                 GameView (
                     mode: selectedMode,
@@ -81,9 +114,6 @@ struct MainView: View {
                         score = wordCount
                         characterCount = charCount
                         transition(to: .result)
-                    },
-                    onBack: {
-                        transition(to: .start)
                     }
                 )
                 

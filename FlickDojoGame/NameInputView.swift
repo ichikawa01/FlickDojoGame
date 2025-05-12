@@ -43,7 +43,7 @@ struct NameInputView: View {
             }
             
             VStack(spacing: 20) {
-                Text("名前を入力")
+                Text("ニックネームを入力")
                     .font(.largeTitle)
                     .bold()
                     .foregroundStyle(Color.black)

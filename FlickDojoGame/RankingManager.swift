@@ -120,7 +120,7 @@ class RankingManager {
             .document(topDoc)
             .collection(dateKey)
             .order(by: "score", descending: true)
-            .limit(to: 30)
+            .limit(to: 10)
             .getDocuments { snapshot, error in
                 guard let docs = snapshot?.documents else {
                     completion([])

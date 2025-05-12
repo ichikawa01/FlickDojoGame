@@ -1,23 +1,22 @@
 //
-//  GameView.swift
-//  MyMusic
+//  StageGameView.swift
+//  FlickDojoGame
 //
-//  Created by 市川涼 on 2025/05/06.
+//  Created by 市川涼 on 2025/05/12.
 //
 
-
-// GameView.swift
 import SwiftUI
-import FirebaseFirestore
-import FirebaseAuth
 
-struct GameView: View {
+struct StageGameView: View {
     
+    let stage: Stage
+    let onFinish: () -> Void
+
     @State private var currentWordIndex = 0
     @State private var currentCharIndex = 0
     @State private var totalCharNum = 0
     @State private var timeRemaining = 20
-
+    
     @State private var userInput = ""
     @State private var wrongInput = ""
     
@@ -29,35 +28,19 @@ struct GameView: View {
     @FocusState private var isInputFocused: Bool
     
     @State private var timer: Timer? = nil
-    
-    let mode: QuizMode
-    let category: QuizCategory
-    let onFinish: (Int, Int) -> Void
-    let wordList: [WordItem]
-    
-    // 時間の出力
-    var timerText: String {
-        if mode == .stageMode {
-            return "回答数: \(currentWordIndex) 問"
-        } else if mode == .timeLimit {
-            return "残り時間: \(timeRemaining) 秒"
-        } else {
-            return ""
-        }
-    }
-    
-    // wordList(json)をlordWords.swiftから取得
-    init(mode: QuizMode, category: QuizCategory, onFinish: @escaping (Int, Int) -> Void) {
-        self.mode = mode
-        self.category = category
+
+    init(stage: Stage, onFinish: @escaping () -> Void) {
+        self.stage = stage
         self.onFinish = onFinish
-        self.wordList = loadWords(from: category).shuffled()
     }
     
-    
+    var wordList: [WordItem] {
+        stage.words
+    }
+
+
     var body: some View {
         ZStack {
-            //背景
             Image(.gameback)
                 .resizable()
                 .ignoresSafeArea()
@@ -90,11 +73,9 @@ struct GameView: View {
             }
 
             VStack(spacing: 20) {
-                
                 Spacer().frame(height: 50)
-                
+
                 if !isFinished {
-                    
                     if !timerStarted {
                         Text("文字を入力したらスタート！")
                             .font(.title3)
@@ -102,23 +83,18 @@ struct GameView: View {
                             .foregroundColor(.white)
                             .frame(height: 1)
                     }
-                    
-                    Text(timerText)
+
+                    Text("残り時間: \(timeRemaining) 秒")
                         .font(.title2)
                         .bold()
                         .foregroundColor(.white)
-                    
                 }
-                
-                // 終了画面
+
                 if isFinished {
-                    
-                    Text(isAllClear ? "全問クリア！" : "そこまで！")
+                    Text(isAllClear ? "全問クリア！" : "時間切れ")
                         .font(.system(size: 60, weight: .bold))
                         .foregroundColor(.black)
-                    
                 } else {
-                    
                     ZStack{
                         Image(.makimono)
                             .resizable()
@@ -131,7 +107,7 @@ struct GameView: View {
                             correctCount: currentCharIndex
                         )
                     }
-
+                    
                     // 入力された文字の出力
                     HStack(spacing: 4) {
 
@@ -146,15 +122,10 @@ struct GameView: View {
                         }
                     }
 
-                    // キーボード関連
                     TextField("", text: $userInput)
                         .focused($isInputFocused)
-                        .onSubmit {
-                            isInputFocused = true
-                        }
-                        .onChange(of: userInput) {
-                            checkInput()
-                        }
+                        .onSubmit { isInputFocused = true }
+                        .onChange(of: userInput) { checkInput() }
                         .opacity(0.01)
                         .frame(width: 1, height: 1)
                         .onAppear {
@@ -162,7 +133,8 @@ struct GameView: View {
                                 isInputFocused = true
                             }
                         }
-
+                    
+                    
                 }
             }
             .padding()
@@ -203,112 +175,85 @@ struct GameView: View {
                     Spacer()
                 }
             }
-        }// Zstack end
-        
-        
-        
+            
+        }
+        .onDisappear {
+            timer?.invalidate()
+        }
     }
 
-    //
-    var correctPart: String {
-        String(wordList[currentWordIndex].reading.prefix(currentCharIndex))
-    }
-
-    // 入力された文字が正しいか判定
     func checkInput() {
-        guard !isFinished, currentWordIndex < wordList.count else { return }
-        let currentReading = wordList[currentWordIndex].reading
-        let expectedChar = currentReading[currentReading.index(currentReading.startIndex, offsetBy: currentCharIndex)]
+        guard !isFinished, currentWordIndex < stage.words.count else { return }
         
-        // 文字が打たれたらタイマー開始
+        let currentWord = wordList[currentWordIndex]
+        let currentReading = currentWord.reading
+        let expectedChar = currentReading[currentReading.index(currentReading.startIndex, offsetBy: currentCharIndex)]
+
         if !timerStarted {
             startTimer()
             timerStarted = true
         }
-        
-        // 正解が入力された時の処理
+
         if userInput.suffix(1) == String(expectedChar) {
             currentCharIndex += 1
             totalCharNum += 1
             userInput = ""
             wrongInput = ""
 
-            if currentCharIndex >= currentReading.count {
+            if currentCharIndex >= currentWord.reading.count {
                 currentWordIndex += 1
                 currentCharIndex = 0
-                
+
                 if currentWordIndex >= wordList.count {
                     isAllClear = true
                     endGame()
                 }
             }
         } else {
-            // 間違いが入力された時の処理
             wrongInput = userInput
         }
     }
-    
-    // タイマーの開始
+
     func startTimer() {
-        timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
-            if mode == .timeLimit {
-                if timeRemaining > 0 {
-                    timeRemaining -= 1
-                } else {
-                    endGame()
-                }
+            if timeRemaining > 0 {
+                timeRemaining -= 1
+            } else {
+                endGame()
             }
         }
     }
 
-    
-    // ゲーム終了（全問正解、時間切れ）
     func endGame() {
         isFinished = true
         isInputFocused = false
         timer?.invalidate()
-                
-        // 累計正解数の保存
+
+        if isAllClear {
+            saveClearState()
+        }
+
         let previousTotal = UserDefaults.standard.integer(forKey: "totalCorrect")
         let newTotal = previousTotal + totalCharNum
         UserDefaults.standard.set(newTotal, forKey: "totalCorrect")
-        
-        // スコアの送信
-        AuthManager.shared.signInIfNeeded { userId in
-            guard let userId = userId else { return }
-            UserManager.shared.getUserName(userId: userId) { name in
-                let quizRank: QuizModeRank = {
-                    switch category {
-                    case .level_1: return .level_1
-                    case .level_2: return .level_2
-                    case .level_3: return .level_3
-                    }
-                }()
-
-                RankingManager.shared.submitScore(
-                    userId: userId,
-                    userName: name,
-                    score: totalCharNum,
-                    mode: quizRank
-                )
-            }
-        }
-
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            onFinish(currentWordIndex, totalCharNum)
-
+            onFinish()
         }
-
     }
-    
+
+    func saveClearState() {
+        let key = "clearedStages_\(stage.category.rawValue)"
+        var cleared = Set(UserDefaults.standard.array(forKey: key) as? [Int] ?? [])
+        if !cleared.contains(stage.id) {
+            cleared.insert(stage.id)
+            UserDefaults.standard.set(Array(cleared), forKey: key)
+        }
+    }
 }
 
-#Preview {
-    GameView(
-        mode: .timeLimit,
-        category: .level_3,
-        onFinish: { _, _ in }
-    )
-}
+
+
+//#Preview {
+//    StageGameView()
+//}

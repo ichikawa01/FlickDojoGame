@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum QuizCategory: String, CaseIterable, Hashable {
+enum QuizCategory: String, CaseIterable, Hashable, Codable {
     case level_1
     case level_2
     case level_3

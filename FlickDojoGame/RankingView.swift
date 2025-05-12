@@ -13,21 +13,13 @@ struct RankingView: View {
     @State private var selectedPeriod: RankingPeriod = .daily
     @State private var rankings: [RankingEntry] = []
     @State private var isLoading = false
-    @State private var lastReads: [String: String] = [:] // [mode_period: 時間キー]
-    
     
     var currentUserId: String? {
         Auth.auth().currentUser?.uid
     }
     
-    // リワード広告でランキングを変更（Top10 or Top300）今は100にしておく
-    var visibleEntries: ArraySlice<RankingEntry> {
-        rankings.prefix(100)
-    }
-
     let onBack: () -> Void
     
-
     var body: some View {
         
         ZStack{
@@ -74,14 +66,11 @@ struct RankingView: View {
 
                 
                 // ランキング読み込み
-                Button(action: {
+                Button("ランキングを読み込む") {
                     loadRankings()
-                }) {
-                    Text("ランキングを読み込む")
-                        .foregroundColor(.white)
-                        .padding()
                 }
-
+                .foregroundColor(.white)
+                .padding()
                 
                 // ランキング一覧
                 if isLoading {
@@ -95,7 +84,7 @@ struct RankingView: View {
                         .padding()
                 } else {
                     List {
-                        ForEach(Array(visibleEntries.enumerated()), id: \.element.userId) { index, entry in
+                        ForEach(Array(rankings.prefix(10).enumerated()), id: \.element.userId) { index, entry in
                             RankingRowView(index: index, entry: entry, currentUserId: currentUserId)
                         }
                     }
@@ -106,7 +95,6 @@ struct RankingView: View {
             .navigationTitle("ランキング")
             .onAppear {
                 loadRankings()
-                AdMobManager.shared.loadAd() // リワード広告読み込み
             }
             .onChange(of: selectedMode) { loadRankings() }
             .onChange(of: selectedPeriod) { loadRankings() }
@@ -115,48 +103,13 @@ struct RankingView: View {
         
     }
         
-
     func loadRankings() {
-        let now = Date()
-        let jst = TimeZone(identifier: "Asia/Tokyo")!
-        let calendar = Calendar(identifier: .gregorian)
-        var jstCalendar = calendar
-        jstCalendar.timeZone = jst
-        
-        let components = jstCalendar.dateComponents([.year, .month, .day, .hour, .minute], from: now)
-        
-        let key: String
-        if selectedPeriod == .daily {
-            let fiveMinuteMark = (components.minute! / 5) * 5
-            key = String(format: "%04d%02d%02d_%02d%02d",
-                         components.year ?? 0,
-                         components.month ?? 0,
-                         components.day ?? 0,
-                         components.hour ?? 0,
-                         fiveMinuteMark)
-        } else {
-            key = String(format: "%04d%02d%02d",
-                         components.year ?? 0,
-                         components.month ?? 0,
-                         components.day ?? 0)
+            isLoading = true
+            RankingManager.shared.fetchTopRankings(mode: selectedMode, period: selectedPeriod) { result in
+                rankings = result
+                isLoading = false
+            }
         }
-        
-        let modePeriodKey = "\(selectedMode.rawValue)_\(selectedPeriod.rawValue)"
-        
-        if lastReads[modePeriodKey] == key {
-            print("同じキーのため、読み取りスキップ：\(key)")
-            return
-        }
-        
-        lastReads[modePeriodKey] = key
-        isLoading = true
-        
-        RankingManager.shared.fetchTopRankings(mode: selectedMode, period: selectedPeriod) { result in
-            rankings = result
-            isLoading = false
-        }
-    }
-
     
     
 }

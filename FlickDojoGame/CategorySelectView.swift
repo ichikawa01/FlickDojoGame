@@ -34,7 +34,6 @@ struct CategorySelectView: View {
             //背景
             Image(.flickMeijin)
                 .resizable()
-//                .scaledToFill()
                 .ignoresSafeArea()
             
             VStack{
@@ -86,17 +85,18 @@ struct CategorySelectView: View {
                             .foregroundColor(.white)
                             .font(.title3)
                     }
-                } else {
-                    Spacer().frame(height: 80)
                 }
                 
                 
                 ForEach(QuizCategory.allCases, id: \.self) { category in
+                    
                     Button(category.title) {
-                        if ticketCount > 0 {
+                        
+                        if selectedMode == .timeLimit && ticketCount > 0 {
                             ticketCount -= 1
                             onNext(category)
-                        } else {
+                            
+                        } else if selectedMode == .timeLimit {
                             print("チケットがありません")
                             withAnimation {
                                 flashNoTicket = true
@@ -106,7 +106,10 @@ struct CategorySelectView: View {
                                     flashNoTicket = false
                                 }
                             }
+                        } else {
+                            onNext(category)
                         }
+                        
                     }
                     .padding()
                     .font(.title3)
@@ -133,11 +136,11 @@ struct CategorySelectView: View {
     }
 }
 
-#Preview {
-    CategorySelectView(
-        selectedMode: .timeLimit,
-        onNext: { _ in },
-        onBack: {},
-        onStatus: {}
-    )
-}
+//#Preview {
+//    CategorySelectView(
+//        selectedMode: .timeLimit,
+//        onNext: { _ in },
+//        onBack: {},
+//        onStatus: {}
+//    )
+//}
