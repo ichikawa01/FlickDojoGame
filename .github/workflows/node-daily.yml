@@ -2,7 +2,7 @@ name: Aggregate Longterm Rankings
 
 on:
   schedule:
-    - cron: '0 1 * * *'  # 毎日午前1時（UTC）
+    - cron: '0 0 * * *'  # 毎日午前0時（UTC）
   workflow_dispatch:
 
 jobs:
