@@ -34,8 +34,8 @@ class RankingManager {
     func submitScore(userId: String, userName: String, score: Int, mode: QuizModeRank) {
         
         let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "ja_JP")
-        dateFormatter.timeZone = TimeZone(identifier: "Asia/Tokyo")
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0) // UTC
         
         let periods: [RankingPeriod] = [.daily, .weekly, .monthly, .total]
         
@@ -95,22 +95,32 @@ class RankingManager {
     func fetchTopRankings(mode: QuizModeRank, period: RankingPeriod, completion: @escaping ([RankingEntry]) -> Void) {
         let topDoc = "\(mode.rawValue)_\(period.rawValue)"
         let now = Date()
-        let calendar = Calendar(identifier: .gregorian)
         var dateKey = ""
+
+        let utcCalendar = Calendar(identifier: .gregorian)
+        var calendar = utcCalendar
+        calendar.timeZone = TimeZone(secondsFromGMT: 0)!  // ✅ UTCに固定
+
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone(secondsFromGMT: 0) // ✅ UTCでフォーマット
+        formatter.locale = Locale(identifier: "en_US_POSIX")
 
         switch period {
         case .daily:
-            dateKey = formatDate(now, format: "yyyyMMdd")
+            formatter.dateFormat = "yyyyMMdd"
+            dateKey = formatter.string(from: now)
 
         case .weekly:
             let weekday = calendar.component(.weekday, from: now)
             let offset = weekday == 1 ? -6 : 2 - weekday
             if let monday = calendar.date(byAdding: .day, value: offset, to: now) {
-                dateKey = formatDate(monday, format: "yyyyMMdd")
+                formatter.dateFormat = "yyyyMMdd"
+                dateKey = formatter.string(from: monday)
             }
 
         case .monthly:
-            dateKey = formatDate(now, format: "yyyyMM")
+            formatter.dateFormat = "yyyyMM"
+            dateKey = formatter.string(from: now)
 
         case .total:
             dateKey = "total"
@@ -119,7 +129,7 @@ class RankingManager {
         let docRef = db.collection("rankings")
             .document(topDoc)
             .collection(dateKey)
-            .document("top") // ← ここが変わる！
+            .document("top")
 
         docRef.getDocument { snapshot, error in
             guard let data = snapshot?.data(),
@@ -138,6 +148,7 @@ class RankingManager {
             completion(entries)
         }
     }
+
 
 
     func formatDate(_ date: Date, format: String) -> String {

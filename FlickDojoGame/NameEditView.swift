@@ -172,11 +172,11 @@ struct NameEditView: View {
     }
     
     func formatDate(_ date: Date, format: String) -> String {
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "ja_JP")
-        formatter.timeZone = TimeZone(identifier: "Asia/Tokyo")
-        formatter.dateFormat = format
-        return formatter.string(from: date)
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0) // UTC
+        dateFormatter.dateFormat = format
+        return dateFormatter.string(from: date)
     }
 
 }
