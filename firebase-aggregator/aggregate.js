@@ -22,27 +22,21 @@ async function aggregateTopScores(mode, period) {
     .sort((a, b) => b.score - a.score)
     .slice(0, 100);
 
-  const batch = db.batch();
   const colRef = db
     .collection('rankings')
     .doc(`${mode}_${period}`)
-    .collection(dateKey);
+    .collection(dateKey)
+    .doc('top');
 
-  top100.forEach(entry => {
-    const docRef = colRef.doc(entry.userId);
-    batch.set(docRef, {
-      score: entry.score,
-      timestamp: entry.timestamp,
-      userId: entry.userId,
-      userName: entry.userName,
-    });
+  await colRef.set({
+    updatedAt: admin.firestore.FieldValue.serverTimestamp(),
+    top: top100
   });
 
-  await batch.commit();
-  console.log(`✔ ${mode}_${period} 集計完了 (${top100.length} 件)`);
+  console.log(`✅ ${mode}_${period} の集計完了：${top100.length}件`);
 }
 
-// 実行
+// 実行部
 (async () => {
   const modes = ['level_1', 'level_2', 'level_3'];
   const periods = process.env.PERIODS.split(',');
