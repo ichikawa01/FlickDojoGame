@@ -15,7 +15,10 @@ async function aggregateTopScores(mode, period) {
   const colRef = db.collection('rankings').doc(path).collection(dateKey);
 
   const snapshot = await colRef.get();
-  
+
+  console.log(`📂 Firestoreパス: rankings/${path}/${dateKey}`);
+  console.log(`📈 ドキュメント数: ${snapshot.docs.length}`);
+
   const scores = snapshot.docs
     .filter(doc => doc.id !== "top")
     .map(doc => doc.data())
@@ -24,6 +27,7 @@ async function aggregateTopScores(mode, period) {
         return doc.timestamp.toMillis() >= start.getTime(); // 正確に比較
   });
 
+  console.log(`🎯 有効スコア件数（>= ${start.toISOString()}）: ${scores.length}`);
 
   const top100 = scores
     .sort((a, b) => b.score - a.score)
