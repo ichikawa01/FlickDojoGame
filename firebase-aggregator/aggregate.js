@@ -11,29 +11,31 @@ async function aggregateTopScores(mode, period) {
   const dateKey = getDateKey(period, now);
   const start = getStartDate(period, now);
 
-  const snapshot = await db.collection('scores')
-    .where('mode', '==', mode)
-    .where('timestamp', '>=', start)
-    .get();
+  const path = `${mode}_${period}`;
+  const colRef = db.collection('rankings').doc(path).collection(dateKey);
 
-  const scores = snapshot.docs.map(doc => doc.data());
+  const snapshot = await colRef.get();
+
+  const scores = snapshot.docs
+    .map(doc => doc.data())
+    .filter(doc => doc.score !== undefined && doc.timestamp?.toDate() >= start);
 
   const top100 = scores
     .sort((a, b) => b.score - a.score)
     .slice(0, 100);
 
-  const colRef = db
+  const topDocRef = db
     .collection('rankings')
-    .doc(`${mode}_${period}`)
+    .doc(path)
     .collection(dateKey)
     .doc('top');
 
-  await colRef.set({
+  await topDocRef.set({
     updatedAt: admin.firestore.FieldValue.serverTimestamp(),
     top: top100
   });
 
-  console.log(`✅ ${mode}_${period} の集計完了：${top100.length}件`);
+  console.log(`${path} の集計完了：${top100.length}件`);
 }
 
 // 実行部
