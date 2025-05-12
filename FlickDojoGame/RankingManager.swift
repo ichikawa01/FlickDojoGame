@@ -132,21 +132,45 @@ class RankingManager {
             .document("top")
 
         docRef.getDocument { snapshot, error in
-            guard let data = snapshot?.data(),
-                  let topArray = data["top"] as? [[String: Any]] else {
+            if let error = error {
+                print("❌ Firestore error: \(error.localizedDescription)")
                 completion([])
                 return
             }
-
+            
+            guard let data = snapshot?.data() else {
+                print("📭 No data in snapshot")
+                completion([])
+                return
+            }
+            
+            print("🧾 Raw Firestore data: \(data)")
+            
+            guard let topArray = data["top"] as? [[String: Any]] else {
+                print("⚠️ Failed to cast 'top' as [[String: Any]]")
+                completion([])
+                return
+            }
+            
             let entries = topArray.compactMap { dict -> RankingEntry? in
+                print("🔍 Entry: \(dict)")
                 guard let name = dict["userName"] as? String,
                       let score = dict["score"] as? Int,
-                      let userId = dict["userId"] as? String else { return nil }
+                      let userId = dict["userId"] as? String else {
+                    print("⚠️ Skipped invalid entry: \(dict)")
+                    return nil
+                }
                 return RankingEntry(userId: userId, userName: name, score: score)
             }
-
+            
+            print("✅ Parsed entries: \(entries.count)")
+            
             completion(entries)
         }
+
+        
+        
+        
     }
 
 

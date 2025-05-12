@@ -16,7 +16,6 @@ async function aggregateTopScores(mode, period) {
 
   const snapshot = await colRef.get();
 
-  console.log(`📂 Firestoreパス: rankings/${path}/${dateKey}`);
   console.log(`📈 ドキュメント数: ${snapshot.docs.length}`);
 
   const scores = snapshot.docs
@@ -27,13 +26,9 @@ async function aggregateTopScores(mode, period) {
     const tsMs = ts?.toMillis?.();
     const startMs = start.getTime();
 
-    console.log(`📄 userId: ${data.userId}`);
-    console.log(`🔸 timestamp: ${ts?.toDate().toISOString?.()}`);
-    console.log(`🔸 toMillis(): ${tsMs}`);
-    console.log(`🔹 start JST: ${start.toISOString()} → getTime(): ${startMs}`);
-    console.log(`🔍 有効？ ${tsMs >= startMs}`);
     return {
       userId: data.userId,
+      userName: data.userName,
       score: data.score,
       timestamp: ts
     };
