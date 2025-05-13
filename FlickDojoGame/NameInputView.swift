@@ -78,19 +78,21 @@ struct NameInputView: View {
                         }
                 }
                 
-                Button("決定") {
+                Button(action: {
                     isInputFocused = false
                     saveUserName(userId: userId, name: name)
                     onComplete()
+                }) {
+                    Text("決定")
+                        .disabled(name.trimmingCharacters(in: .whitespaces).isEmpty)
+                        .font(.largeTitle)
+                        .foregroundColor(.white)
+                        .bold()
+                        .padding()
+                        .frame(width: 200, height: 60)
+                        .background(Color.startBtn)
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
                 }
-                .disabled(name.trimmingCharacters(in: .whitespaces).isEmpty)
-                .font(.largeTitle)
-                .foregroundColor(.white)
-                .bold()
-                .padding()
-                .frame(width: 200, height: 60)
-                .background(Color.startBtn)
-                .clipShape(RoundedRectangle(cornerRadius: 12))
             }
             .padding()
             }

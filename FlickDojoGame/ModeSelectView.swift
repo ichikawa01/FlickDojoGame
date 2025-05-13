@@ -83,16 +83,18 @@ struct ModeSelectView: View {
                 
                 
                 ForEach(QuizMode.allCases, id: \.self) { mode in
-                    Button(mode.description) {
+                    Button(action: {
                         onNext(mode)
+                    }) {
+                        Text(mode.description)
+                            .font(.title3)
+                            .bold()
+                            .frame(width: 160, height: 60)
+                            .background(Color.startBtn)
+                            .foregroundColor(.white)
+                            .cornerRadius(12)
                     }
-                    .padding()
-                    .font(.title3)
-                    .bold()
-                    .frame(width: 160, height: 60)
-                    .background(Color.startBtn)
-                    .foregroundColor(.white)
-                    .cornerRadius(12)
+
                 }
                 
                 Spacer()

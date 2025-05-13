@@ -13,6 +13,16 @@ struct CategorySelectView: View {
     @State private var flashNoTicket: Bool = false
     @State private var ticketCount: Int = 5
     
+
+    let selectedMode: QuizMode
+    
+    let onNext: (QuizCategory) -> Void
+    let onBack: () -> Void
+    let onStatus: () -> Void
+    
+    let ticketKey = "ticketCount"
+    let lastResetKey = "lastResetDate"
+
     func showRewardAd() {
         guard let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
               let rootVC = scene.windows.first?.rootViewController else {
@@ -20,15 +30,10 @@ struct CategorySelectView: View {
         }
         AdMobManager.shared.showAd(from: rootVC) {
             ticketCount = 5
+            UserDefaults.standard.set(ticketCount, forKey: ticketKey)
         }
     }
-
-    let selectedMode: QuizMode
     
-    let onNext: (QuizCategory) -> Void
-    let onBack: () -> Void
-    let onStatus: () -> Void
-
     var body: some View {
         ZStack{
             
@@ -77,14 +82,15 @@ struct CategorySelectView: View {
                 // チケット関連
                 Spacer().frame(height: 300)
                 if selectedMode == .timeLimit {
-                    Button("チケット全回復") {
+                    Button(action: {
                         showRewardAd()
+                    }) {
+                        Text("チケット全回復")
+                            .foregroundColor(.white)
+                            .frame(width: 140, height: 40)
+                            .background(Color.blue)
+                            .cornerRadius(8)
                     }
-                    .foregroundColor(.white)
-                    .frame(width: 140, height: 40)
-                    .foregroundColor(.white)
-                    .background(Color.blue)
-                    .cornerRadius(4)
                     
                     if flashNoTicket {
                         Text("チケット: \(ticketCount)/5")
@@ -102,10 +108,11 @@ struct CategorySelectView: View {
                 
                 ForEach(QuizCategory.allCases, id: \.self) { category in
                     
-                    Button(category.title) {
+                    Button(action: {
                         
                         if selectedMode == .timeLimit && ticketCount > 0 {
                             ticketCount -= 1
+                            UserDefaults.standard.set(ticketCount, forKey: ticketKey)
                             onNext(category)
                             
                         } else if selectedMode == .timeLimit {
@@ -122,14 +129,17 @@ struct CategorySelectView: View {
                             onNext(category)
                         }
                         
+                    }) {
+                        Text(category.title)
+                            .padding()
+                            .font(.title3)
+                            .bold()
+                            .frame(width: 160, height: 60)
+                            .foregroundColor(.white)
+                            .background(Color.startBtn)
+                            .cornerRadius(12)
+                            .contentShape(Rectangle())
                     }
-                    .padding()
-                    .font(.title3)
-                    .bold()
-                    .frame(width: 160, height: 60)
-                    .foregroundColor(.white)
-                    .background(Color.startBtn)
-                    .cornerRadius(12)
                 }
                 
                 Spacer()
@@ -141,11 +151,27 @@ struct CategorySelectView: View {
         }
         .onAppear {
             AdMobManager.shared.loadAd()
+            restoreTicketIfNeeded()
         }
-
-
-        
     }
+    
+    // チケット初期化・復元
+    func restoreTicketIfNeeded() {
+        let today = Calendar.current.startOfDay(for: Date())
+        let lastReset = UserDefaults.standard.object(forKey: lastResetKey) as? Date
+        
+        if lastReset == nil || lastReset! < today {
+            ticketCount = 5
+            UserDefaults.standard.set(today, forKey: lastResetKey)
+            UserDefaults.standard.set(ticketCount, forKey: ticketKey)
+        } else {
+            let saved = UserDefaults.standard.integer(forKey: ticketKey)
+            ticketCount = saved
+        }
+    }
+    
+    
+    
 }
 
 #Preview {

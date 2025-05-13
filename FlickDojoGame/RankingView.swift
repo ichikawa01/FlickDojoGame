@@ -74,11 +74,13 @@ struct RankingView: View {
 
                 
                 // ランキング読み込み
-                Button("ランキングを読み込む") {
+                Button(action: {
                     loadRankings()
+                }) {
+                    Text("ランキングを読み込む")
+                        .foregroundColor(.white)
+                        .padding()
                 }
-                .foregroundColor(.white)
-                .padding()
                 
                 // ランキング一覧
                 if isLoading {

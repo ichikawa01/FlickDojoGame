@@ -12,5 +12,3 @@ struct Stage: Identifiable, Codable {
     let words: [WordItem]
     let category: QuizCategory
 }
-
-

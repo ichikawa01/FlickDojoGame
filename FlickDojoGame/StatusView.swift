@@ -54,36 +54,42 @@ struct StatusView: View {
                         .foregroundStyle(Color.black)
                 }
                 
-                Button("名前を変更") {
+                Button(action: {
                     onEditName()
+                }) {
+                    Text("名前を変更")
+                        .font(.title)
+                        .bold()
+                        .foregroundColor(.white)
+                        .frame(width: 260, height: 60)
+                        .background(Color.startBtn)
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
                 }
-                .font(.title)
-                .foregroundColor(.white)
-                .bold()
-                .frame(width: 260, height: 60)
-                .background(Color.startBtn)
-                .clipShape(RoundedRectangle(cornerRadius: 12))
-
-                Button("ランキング") {
-                    onRanking()
-                }
-                .font(.title)
-                .foregroundColor(.white)
-                .bold()
-                .frame(width: 260, height: 60)
-                .background(Color.startBtn)
-                .clipShape(RoundedRectangle(cornerRadius: 12))
-
-                Button("称号") {
-                    // 今後実装
-                }
-                .font(.title)
-                .foregroundColor(.white)
-                .bold()
-                .frame(width: 260, height: 60)
-                .background(Color.startBtn)
-                .clipShape(RoundedRectangle(cornerRadius: 12))
                 
+                Button(action: {
+                    onRanking()
+                }) {
+                    Text("ランキング")
+                        .font(.title)
+                        .bold()
+                        .foregroundColor(.white)
+                        .frame(width: 260, height: 60)
+                        .background(Color.startBtn)
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                }
+                
+                Button(action: {
+                    // 今後実装
+                }) {
+                    Text("称号")
+                        .font(.title)
+                        .bold()
+                        .foregroundColor(.white)
+                        .frame(width: 260, height: 60)
+                        .background(Color.startBtn)
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                }
+
                 Spacer()
                 
                 CachedBannerView.shared

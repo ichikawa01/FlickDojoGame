@@ -69,27 +69,34 @@ struct ResultView: View {
                 Spacer().frame(height: 80)
                 
                 VStack (spacing: 20) {
-                    Button("ランキングへ") {
-                        onRanking()
-                    }
-                    .padding()
-                    .font(.title3)
-                    .bold()
-                    .frame(width: 160, height: 60)
-                    .foregroundColor(.white)
-                    .background(Color.startBtn)
-                    .cornerRadius(12)
                     
-                    Button("退場") {
-                        onNext()
+                    if mode == .timeLimit{
+                        Button(action: {
+                            onRanking()
+                        }) {
+                            Text("ランキングへ")
+                                .padding()
+                                .font(.title3)
+                                .bold()
+                                .frame(width: 160, height: 60)
+                                .foregroundColor(.white)
+                                .background(Color.startBtn)
+                                .cornerRadius(12)
+                        }
                     }
-                    .padding()
-                    .font(.title)
-                    .bold()
-                    .frame(width: 160, height: 60)
-                    .foregroundColor(.white)
-                    .background(Color.startBtn)
-                    .cornerRadius(12)
+                    
+                    Button(action: {
+                        onNext()
+                    }) {
+                        Text("退場")
+                        .padding()
+                        .font(.title)
+                        .bold()
+                        .frame(width: 160, height: 60)
+                        .foregroundColor(.white)
+                        .background(Color.startBtn)
+                        .cornerRadius(12)
+                    }
                 }
                 .opacity(showButtons ? 1 : 0)
                 .animation(.easeInOut, value: showButtons)

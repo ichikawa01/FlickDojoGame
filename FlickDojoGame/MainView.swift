@@ -123,7 +123,7 @@ struct MainView: View {
                     characterCount: characterCount,
                     mode: selectedMode,
                     onNext: {
-                        transition(to: .start)
+                        transition(to: .modeSelect)
                     },
                     onRanking: {
                         transition(to: .ranking)
@@ -135,7 +135,7 @@ struct MainView: View {
                     StatusView(
                         userId: userId,
                         onBack: {
-                            transition(to: .start)
+                            transition(to: .modeSelect)
                         },
                         onEditName: {
                             transition(to: .nameEdit)
@@ -154,7 +154,7 @@ struct MainView: View {
                             transition(to: .status)
                         },
                         onBack: {
-                            transition(to: .start)
+                            transition(to: .modeSelect)
                         }
                     )
                 }
@@ -162,7 +162,7 @@ struct MainView: View {
             case .ranking:
                 RankingView(
                     onBack: {
-                        transition(to: .start)
+                        transition(to: .modeSelect)
                     }
                 )
                 

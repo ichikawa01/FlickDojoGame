@@ -82,32 +82,35 @@ struct NameEditView: View {
                         
                     }
                     HStack{
-                        Button("キャンセル") {
+                        Button(action: {
                             isInputFocused = false
                             onClose()
+                        }) {
+                            Text("キャンセル")
+                                .font(.title2)
+                                .foregroundColor(.white)
+                                .bold()
+                                .padding()
+                                .frame(width: 140, height: 60)
+                                .background(Color.gray)
+                                .clipShape(RoundedRectangle(cornerRadius: 12))
                         }
-                            .font(.title2)
-                            .foregroundColor(.white)
-                            .bold()
-                            .padding()
-                            .frame(width: 140, height: 60)
-                            .background(Color.gray)
-                            .clipShape(RoundedRectangle(cornerRadius: 12))
                         
-                        Button("保存") {
+                        Button(action: {
                             isInputFocused = false
                             save()
                             onClose()
+                        }){
+                            Text("保存")
+                                .disabled(name.trimmingCharacters(in: .whitespaces).isEmpty)
+                                .font(.title)
+                                .foregroundColor(.white)
+                                .bold()
+                                .padding()
+                                .frame(width: 140, height: 60)
+                                .background(Color.startBtn)
+                                .clipShape(RoundedRectangle(cornerRadius: 12))
                         }
-                        .disabled(name.trimmingCharacters(in: .whitespaces).isEmpty)
-                        .font(.title)
-                        .foregroundColor(.white)
-                        .bold()
-                        .padding()
-                        .frame(width: 140, height: 60)
-                        .background(Color.startBtn)
-                        .clipShape(RoundedRectangle(cornerRadius: 12))
-                        
                     }
                 }
             }

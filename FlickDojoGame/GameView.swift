@@ -176,29 +176,33 @@ struct GameView: View {
                     Spacer().frame(height: 160)
                     
                     HStack(spacing: 20) {
-                        Button("再開") {
+                        Button(action: {
                             isInputFocused = true
                             isPaused = false
                             startTimer()
                             
+                        }) {
+                            Text("再開")
+                                .font(.title)
+                                .padding()
+                                .frame(width: 150)
+                                .background(Color.white)
+                                .foregroundColor(.black)
+                                .cornerRadius(12)
                         }
-                        .font(.title)
-                        .padding()
-                        .frame(width: 150)
-                        .background(Color.white)
-                        .foregroundColor(.black)
-                        .cornerRadius(12)
                         
-                        Button("終了") {
+                        Button(action: {
                             isPaused = false
                             endGame()
+                        }) {
+                            Text("終了")
+                                .font(.title)
+                                .padding()
+                                .frame(width: 150)
+                                .background(Color.red)
+                                .foregroundColor(.white)
+                                .cornerRadius(12)
                         }
-                        .font(.title)
-                        .padding()
-                        .frame(width: 150)
-                        .background(Color.red)
-                        .foregroundColor(.white)
-                        .cornerRadius(12)
                     }
                     Spacer()
                 }
