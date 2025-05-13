@@ -1,26 +1,1302 @@
 [
-  {
-    "id": 1,
-    "words": [
-        { "kanji": "猫", "reading": "ねこ" },
-        { "kanji": "犬", "reading": "いぬ" }
-    ],
-    "category": "level_1"
-  },
-  {
-    "id": 2,
-    "words": [
-        { "kanji": "牛", "reading": "うし" },
-        { "kanji": "猿", "reading": "さる" }
-    ],
-    "category": "level_1"
-  },
-  {
-    "id": 3,
-    "words": [
-        { "kanji": "川", "reading": "かわ" },
-        { "kanji": "山", "reading": "やま" }
-    ],
-    "category": "level_1"
-  }
+    {
+        "id": 1,
+        "words": [
+            {
+                "kanji": "悲劇",
+                "reading": "ひげき"
+            },
+            {
+                "kanji": "火山",
+                "reading": "かざん"
+            },
+            {
+                "kanji": "意味",
+                "reading": "いみ"
+            },
+            {
+                "kanji": "落下",
+                "reading": "らっか"
+            },
+            {
+                "kanji": "夜間",
+                "reading": "やかん"
+            }
+        ],
+        "category": "level_1"
+    },
+    {
+        "id": 2,
+        "words": [
+            {
+                "kanji": "和風",
+                "reading": "わふう"
+            },
+            {
+                "kanji": "味方",
+                "reading": "みかた"
+            },
+            {
+                "kanji": "秘密",
+                "reading": "ひみつ"
+            },
+            {
+                "kanji": "野原",
+                "reading": "のはら"
+            },
+            {
+                "kanji": "理性",
+                "reading": "りせい"
+            }
+        ],
+        "category": "level_1"
+    },
+    {
+        "id": 3,
+        "words": [
+            {
+                "kanji": "野心",
+                "reading": "やしん"
+            },
+            {
+                "kanji": "下校",
+                "reading": "げこう"
+            },
+            {
+                "kanji": "苦労",
+                "reading": "くろう"
+            },
+            {
+                "kanji": "機能",
+                "reading": "きのう"
+            },
+            {
+                "kanji": "医者",
+                "reading": "いしゃ"
+            }
+        ],
+        "category": "level_1"
+    },
+    {
+        "id": 4,
+        "words": [
+            {
+                "kanji": "都会",
+                "reading": "とかい"
+            },
+            {
+                "kanji": "展示",
+                "reading": "てんじ"
+            },
+            {
+                "kanji": "笑顔",
+                "reading": "えがお"
+            },
+            {
+                "kanji": "王子",
+                "reading": "おうじ"
+            },
+            {
+                "kanji": "理科",
+                "reading": "りか"
+            }
+        ],
+        "category": "level_1"
+    },
+    {
+        "id": 5,
+        "words": [
+            {
+                "kanji": "輸送",
+                "reading": "ゆそう"
+            },
+            {
+                "kanji": "役目",
+                "reading": "やくめ"
+            },
+            {
+                "kanji": "話題",
+                "reading": "わだい"
+            },
+            {
+                "kanji": "野望",
+                "reading": "のぞみ"
+            },
+            {
+                "kanji": "駆除",
+                "reading": "くじょ"
+            }
+        ],
+        "category": "level_1"
+    },
+    {
+        "id": 6,
+        "words": [
+            {
+                "kanji": "開花",
+                "reading": "かいか"
+            },
+            {
+                "kanji": "浪費",
+                "reading": "ろうひ"
+            },
+            {
+                "kanji": "不正",
+                "reading": "ふせい"
+            },
+            {
+                "kanji": "奉仕",
+                "reading": "ほうし"
+            },
+            {
+                "kanji": "手紙",
+                "reading": "てがみ"
+            }
+        ],
+        "category": "level_1"
+    },
+    {
+        "id": 7,
+        "words": [
+            {
+                "kanji": "空気",
+                "reading": "くうき"
+            },
+            {
+                "kanji": "家族",
+                "reading": "かぞく"
+            },
+            {
+                "kanji": "参加",
+                "reading": "さんか"
+            },
+            {
+                "kanji": "見地",
+                "reading": "けんち"
+            },
+            {
+                "kanji": "温度",
+                "reading": "おんど"
+            }
+        ],
+        "category": "level_1"
+    },
+    {
+        "id": 8,
+        "words": [
+            {
+                "kanji": "延期",
+                "reading": "えんき"
+            },
+            {
+                "kanji": "地方",
+                "reading": "ちほう"
+            },
+            {
+                "kanji": "推理",
+                "reading": "すいり"
+            },
+            {
+                "kanji": "自然",
+                "reading": "しぜん"
+            },
+            {
+                "kanji": "素材",
+                "reading": "そざい"
+            }
+        ],
+        "category": "level_1"
+    },
+    {
+        "id": 9,
+        "words": [
+            {
+                "kanji": "記号",
+                "reading": "きごう"
+            },
+            {
+                "kanji": "地味",
+                "reading": "じみ"
+            },
+            {
+                "kanji": "人気",
+                "reading": "にんき"
+            },
+            {
+                "kanji": "恩師",
+                "reading": "おんし"
+            },
+            {
+                "kanji": "徒弟",
+                "reading": "とてい"
+            }
+        ],
+        "category": "level_1"
+    },
+    {
+        "id": 10,
+        "words": [
+            {
+                "kanji": "荷物",
+                "reading": "にもつ"
+            },
+            {
+                "kanji": "句読",
+                "reading": "くとう"
+            },
+            {
+                "kanji": "名前",
+                "reading": "なまえ"
+            },
+            {
+                "kanji": "内部",
+                "reading": "ないぶ"
+            },
+            {
+                "kanji": "地図",
+                "reading": "ちず"
+            }
+        ],
+        "category": "level_1"
+    },
+    {
+        "id": 11,
+        "words": [
+            {
+                "kanji": "夜景",
+                "reading": "やけい"
+            },
+            {
+                "kanji": "保温",
+                "reading": "ほおん"
+            },
+            {
+                "kanji": "容易",
+                "reading": "ようい"
+            },
+            {
+                "kanji": "類語",
+                "reading": "るいご"
+            },
+            {
+                "kanji": "目安",
+                "reading": "めやす"
+            }
+        ],
+        "category": "level_1"
+    },
+    {
+        "id": 12,
+        "words": [
+            {
+                "kanji": "市民",
+                "reading": "しみん"
+            },
+            {
+                "kanji": "数字",
+                "reading": "すうじ"
+            },
+            {
+                "kanji": "楽器",
+                "reading": "がっき"
+            },
+            {
+                "kanji": "遅刻",
+                "reading": "ちこく"
+            },
+            {
+                "kanji": "理想",
+                "reading": "りそう"
+            }
+        ],
+        "category": "level_1"
+    },
+    {
+        "id": 13,
+        "words": [
+            {
+                "kanji": "記念",
+                "reading": "きねん"
+            },
+            {
+                "kanji": "国語",
+                "reading": "こくご"
+            },
+            {
+                "kanji": "普通",
+                "reading": "ふつう"
+            },
+            {
+                "kanji": "意地",
+                "reading": "いじ"
+            },
+            {
+                "kanji": "奇跡",
+                "reading": "きせき"
+            }
+        ],
+        "category": "level_1"
+    },
+    {
+        "id": 14,
+        "words": [
+            {
+                "kanji": "野菜",
+                "reading": "やさい"
+            },
+            {
+                "kanji": "決意",
+                "reading": "けつい"
+            },
+            {
+                "kanji": "運気",
+                "reading": "うんき"
+            },
+            {
+                "kanji": "模範",
+                "reading": "もはん"
+            },
+            {
+                "kanji": "無事",
+                "reading": "ぶじ"
+            }
+        ],
+        "category": "level_1"
+    },
+    {
+        "id": 15,
+        "words": [
+            {
+                "kanji": "車庫",
+                "reading": "しゃこ"
+            },
+            {
+                "kanji": "文字",
+                "reading": "もじ"
+            },
+            {
+                "kanji": "暗記",
+                "reading": "あんき"
+            },
+            {
+                "kanji": "一部",
+                "reading": "いちぶ"
+            },
+            {
+                "kanji": "音頭",
+                "reading": "おんど"
+            }
+        ],
+        "category": "level_1"
+    },
+    {
+        "id": 16,
+        "words": [
+            {
+                "kanji": "登山",
+                "reading": "とざん"
+            },
+            {
+                "kanji": "録画",
+                "reading": "ろくが"
+            },
+            {
+                "kanji": "左右",
+                "reading": "さゆう"
+            },
+            {
+                "kanji": "世界",
+                "reading": "せかい"
+            },
+            {
+                "kanji": "科学",
+                "reading": "かがく"
+            }
+        ],
+        "category": "level_1"
+    },
+    {
+        "id": 17,
+        "words": [
+            {
+                "kanji": "希望",
+                "reading": "きぼう"
+            },
+            {
+                "kanji": "内科",
+                "reading": "ないか"
+            },
+            {
+                "kanji": "知恵",
+                "reading": "ちえ"
+            },
+            {
+                "kanji": "和解",
+                "reading": "わかい"
+            },
+            {
+                "kanji": "予測",
+                "reading": "よそく"
+            }
+        ],
+        "category": "level_1"
+    },
+    {
+        "id": 18,
+        "words": [
+            {
+                "kanji": "組織",
+                "reading": "そしき"
+            },
+            {
+                "kanji": "予備",
+                "reading": "よび"
+            },
+            {
+                "kanji": "細工",
+                "reading": "さいく"
+            },
+            {
+                "kanji": "抜歯",
+                "reading": "ばっし"
+            },
+            {
+                "kanji": "未来",
+                "reading": "みらい"
+            }
+        ],
+        "category": "level_1"
+    },
+    {
+        "id": 19,
+        "words": [
+            {
+                "kanji": "無地",
+                "reading": "むじ"
+            },
+            {
+                "kanji": "絵本",
+                "reading": "えほん"
+            },
+            {
+                "kanji": "塗装",
+                "reading": "とそう"
+            },
+            {
+                "kanji": "津波",
+                "reading": "つなみ"
+            },
+            {
+                "kanji": "無断",
+                "reading": "むだん"
+            }
+        ],
+        "category": "level_1"
+    },
+    {
+        "id": 20,
+        "words": [
+            {
+                "kanji": "悪意",
+                "reading": "あくい"
+            },
+            {
+                "kanji": "意見",
+                "reading": "いけん"
+            },
+            {
+                "kanji": "留守",
+                "reading": "るす"
+            },
+            {
+                "kanji": "指導",
+                "reading": "しどう"
+            },
+            {
+                "kanji": "程度",
+                "reading": "ていど"
+            }
+        ],
+        "category": "level_1"
+    },
+    {
+        "id": 21,
+        "words": [
+            {
+                "kanji": "予定",
+                "reading": "よてい"
+            },
+            {
+                "kanji": "熱意",
+                "reading": "ねつい"
+            },
+            {
+                "kanji": "理解",
+                "reading": "りかい"
+            },
+            {
+                "kanji": "和音",
+                "reading": "わおん"
+            },
+            {
+                "kanji": "素質",
+                "reading": "そしつ"
+            }
+        ],
+        "category": "level_1"
+    },
+    {
+        "id": 22,
+        "words": [
+            {
+                "kanji": "平和",
+                "reading": "へいわ"
+            },
+            {
+                "kanji": "倫理",
+                "reading": "りんり"
+            },
+            {
+                "kanji": "脱皮",
+                "reading": "だっぴ"
+            },
+            {
+                "kanji": "和語",
+                "reading": "わご"
+            },
+            {
+                "kanji": "苦痛",
+                "reading": "くつう"
+            }
+        ],
+        "category": "level_1"
+    },
+    {
+        "id": 23,
+        "words": [
+            {
+                "kanji": "多忙",
+                "reading": "たぼう"
+            },
+            {
+                "kanji": "飛行",
+                "reading": "ひこう"
+            },
+            {
+                "kanji": "返事",
+                "reading": "へんじ"
+            },
+            {
+                "kanji": "離婚",
+                "reading": "りこん"
+            },
+            {
+                "kanji": "区域",
+                "reading": "くいき"
+            }
+        ],
+        "category": "level_1"
+    },
+    {
+        "id": 24,
+        "words": [
+            {
+                "kanji": "批判",
+                "reading": "ひはん"
+            },
+            {
+                "kanji": "無罪",
+                "reading": "むざい"
+            },
+            {
+                "kanji": "平地",
+                "reading": "へいち"
+            },
+            {
+                "kanji": "結果",
+                "reading": "けっか"
+            },
+            {
+                "kanji": "追試",
+                "reading": "ついし"
+            }
+        ],
+        "category": "level_1"
+    },
+    {
+        "id": 25,
+        "words": [
+            {
+                "kanji": "仲間",
+                "reading": "なかま"
+            },
+            {
+                "kanji": "掃除",
+                "reading": "そうじ"
+            },
+            {
+                "kanji": "無口",
+                "reading": "むくち"
+            },
+            {
+                "kanji": "映画",
+                "reading": "えいが"
+            },
+            {
+                "kanji": "加工",
+                "reading": "かこう"
+            }
+        ],
+        "category": "level_1"
+    },
+    {
+        "id": 26,
+        "words": [
+            {
+                "kanji": "比較",
+                "reading": "ひかく"
+            },
+            {
+                "kanji": "多分",
+                "reading": "たぶん"
+            },
+            {
+                "kanji": "見本",
+                "reading": "みほん"
+            },
+            {
+                "kanji": "露店",
+                "reading": "ろてん"
+            },
+            {
+                "kanji": "会話",
+                "reading": "かいわ"
+            }
+        ],
+        "category": "level_1"
+    },
+    {
+        "id": 27,
+        "words": [
+            {
+                "kanji": "毛布",
+                "reading": "もうふ"
+            },
+            {
+                "kanji": "一家",
+                "reading": "いっか"
+            },
+            {
+                "kanji": "地区",
+                "reading": "ちく"
+            },
+            {
+                "kanji": "朝日",
+                "reading": "あさひ"
+            },
+            {
+                "kanji": "容器",
+                "reading": "ようき"
+            }
+        ],
+        "category": "level_1"
+    },
+    {
+        "id": 28,
+        "words": [
+            {
+                "kanji": "名札",
+                "reading": "なふだ"
+            },
+            {
+                "kanji": "数値",
+                "reading": "すうち"
+            },
+            {
+                "kanji": "時計",
+                "reading": "とけい"
+            },
+            {
+                "kanji": "個人",
+                "reading": "こじん"
+            },
+            {
+                "kanji": "油田",
+                "reading": "ゆでん"
+            }
+        ],
+        "category": "level_1"
+    },
+    {
+        "id": 29,
+        "words": [
+            {
+                "kanji": "散歩",
+                "reading": "さんぽ"
+            },
+            {
+                "kanji": "農家",
+                "reading": "のうか"
+            },
+            {
+                "kanji": "履歴",
+                "reading": "りれき"
+            },
+            {
+                "kanji": "真面",
+                "reading": "まじめ"
+            },
+            {
+                "kanji": "和文",
+                "reading": "わぶん"
+            }
+        ],
+        "category": "level_1"
+    },
+    {
+        "id": 30,
+        "words": [
+            {
+                "kanji": "演技",
+                "reading": "えんぎ"
+            },
+            {
+                "kanji": "天気",
+                "reading": "てんき"
+            },
+            {
+                "kanji": "模様",
+                "reading": "もよう"
+            },
+            {
+                "kanji": "理論",
+                "reading": "りろん"
+            },
+            {
+                "kanji": "無限",
+                "reading": "むげん"
+            }
+        ],
+        "category": "level_1"
+    },
+    {
+        "id": 31,
+        "words": [
+            {
+                "kanji": "予算",
+                "reading": "よさん"
+            },
+            {
+                "kanji": "雨具",
+                "reading": "あまぐ"
+            },
+            {
+                "kanji": "和服",
+                "reading": "わふく"
+            },
+            {
+                "kanji": "お菓子",
+                "reading": "おかし"
+            },
+            {
+                "kanji": "木綿",
+                "reading": "もめん"
+            }
+        ],
+        "category": "level_1"
+    },
+    {
+        "id": 32,
+        "words": [
+            {
+                "kanji": "模型",
+                "reading": "もけい"
+            },
+            {
+                "kanji": "府立",
+                "reading": "ふりつ"
+            },
+            {
+                "kanji": "日記",
+                "reading": "にっき"
+            },
+            {
+                "kanji": "余分",
+                "reading": "よぶん"
+            },
+            {
+                "kanji": "英語",
+                "reading": "えいご"
+            }
+        ],
+        "category": "level_1"
+    },
+    {
+        "id": 33,
+        "words": [
+            {
+                "kanji": "野生",
+                "reading": "やせい"
+            },
+            {
+                "kanji": "保育",
+                "reading": "ほいく"
+            },
+            {
+                "kanji": "悲観",
+                "reading": "ひかん"
+            },
+            {
+                "kanji": "納期",
+                "reading": "のうき"
+            },
+            {
+                "kanji": "名簿",
+                "reading": "めいぼ"
+            }
+        ],
+        "category": "level_1"
+    },
+    {
+        "id": 34,
+        "words": [
+            {
+                "kanji": "支援",
+                "reading": "しえん"
+            },
+            {
+                "kanji": "路線",
+                "reading": "ろせん"
+            },
+            {
+                "kanji": "未知",
+                "reading": "みち"
+            },
+            {
+                "kanji": "模写",
+                "reading": "もしゃ"
+            },
+            {
+                "kanji": "時間",
+                "reading": "じかん"
+            }
+        ],
+        "category": "level_1"
+    },
+    {
+        "id": 35,
+        "words": [
+            {
+                "kanji": "兵士",
+                "reading": "へいし"
+            },
+            {
+                "kanji": "和式",
+                "reading": "わしき"
+            },
+            {
+                "kanji": "気味",
+                "reading": "きみ"
+            },
+            {
+                "kanji": "予感",
+                "reading": "よかん"
+            },
+            {
+                "kanji": "酸素",
+                "reading": "さんそ"
+            }
+        ],
+        "category": "level_1"
+    },
+    {
+        "id": 36,
+        "words": [
+            {
+                "kanji": "図鑑",
+                "reading": "ずかん"
+            },
+            {
+                "kanji": "有無",
+                "reading": "うむ"
+            },
+            {
+                "kanji": "夫婦",
+                "reading": "ふうふ"
+            },
+            {
+                "kanji": "差別",
+                "reading": "さべつ"
+            },
+            {
+                "kanji": "景色",
+                "reading": "けしき"
+            }
+        ],
+        "category": "level_1"
+    },
+    {
+        "id": 37,
+        "words": [
+            {
+                "kanji": "疲労",
+                "reading": "ひろう"
+            },
+            {
+                "kanji": "地下",
+                "reading": "ちか"
+            },
+            {
+                "kanji": "密度",
+                "reading": "みつど"
+            },
+            {
+                "kanji": "論理",
+                "reading": "ろんり"
+            },
+            {
+                "kanji": "歴史",
+                "reading": "れきし"
+            }
+        ],
+        "category": "level_1"
+    },
+    {
+        "id": 38,
+        "words": [
+            {
+                "kanji": "羅列",
+                "reading": "られつ"
+            },
+            {
+                "kanji": "右手",
+                "reading": "みぎて"
+            },
+            {
+                "kanji": "花火",
+                "reading": "はなび"
+            },
+            {
+                "kanji": "羽毛",
+                "reading": "うもう"
+            },
+            {
+                "kanji": "課題",
+                "reading": "かだい"
+            }
+        ],
+        "category": "level_1"
+    },
+    {
+        "id": 39,
+        "words": [
+            {
+                "kanji": "避難",
+                "reading": "ひなん"
+            },
+            {
+                "kanji": "試験",
+                "reading": "しけん"
+            },
+            {
+                "kanji": "即位",
+                "reading": "そくい"
+            },
+            {
+                "kanji": "無理",
+                "reading": "むり"
+            },
+            {
+                "kanji": "通貨",
+                "reading": "つうか"
+            }
+        ],
+        "category": "level_1"
+    },
+    {
+        "id": 40,
+        "words": [
+            {
+                "kanji": "迷子",
+                "reading": "まいご"
+            },
+            {
+                "kanji": "知人",
+                "reading": "ちじん"
+            },
+            {
+                "kanji": "単語",
+                "reading": "たんご"
+            },
+            {
+                "kanji": "不明",
+                "reading": "ふめい"
+            },
+            {
+                "kanji": "言葉",
+                "reading": "ことば"
+            }
+        ],
+        "category": "level_1"
+    },
+    {
+        "id": 41,
+        "words": [
+            {
+                "kanji": "模造",
+                "reading": "もぞう"
+            },
+            {
+                "kanji": "湖水",
+                "reading": "こすい"
+            },
+            {
+                "kanji": "気配",
+                "reading": "けはい"
+            },
+            {
+                "kanji": "不満",
+                "reading": "ふまん"
+            },
+            {
+                "kanji": "停止",
+                "reading": "ていし"
+            }
+        ],
+        "category": "level_1"
+    },
+    {
+        "id": 42,
+        "words": [
+            {
+                "kanji": "保存",
+                "reading": "ほぞん"
+            },
+            {
+                "kanji": "無知",
+                "reading": "むち"
+            },
+            {
+                "kanji": "通知",
+                "reading": "つうち"
+            },
+            {
+                "kanji": "漫画",
+                "reading": "まんが"
+            },
+            {
+                "kanji": "使用",
+                "reading": "しよう"
+            }
+        ],
+        "category": "level_1"
+    },
+    {
+        "id": 43,
+        "words": [
+            {
+                "kanji": "思考",
+                "reading": "しこう"
+            },
+            {
+                "kanji": "保険",
+                "reading": "ほけん"
+            },
+            {
+                "kanji": "路面",
+                "reading": "ろめん"
+            },
+            {
+                "kanji": "楽譜",
+                "reading": "がくふ"
+            },
+            {
+                "kanji": "無用",
+                "reading": "むよう"
+            }
+        ],
+        "category": "level_1"
+    },
+    {
+        "id": 44,
+        "words": [
+            {
+                "kanji": "和式",
+                "reading": "わしき"
+            },
+            {
+                "kanji": "和風",
+                "reading": "わふう"
+            },
+            {
+                "kanji": "和音",
+                "reading": "わおん"
+            },
+            {
+                "kanji": "和語",
+                "reading": "わご"
+            },
+            {
+                "kanji": "和解",
+                "reading": "わかい"
+            }
+        ],
+        "category": "level_1"
+    },
+    {
+        "id": 45,
+        "words": [
+            {
+                "kanji": "和服",
+                "reading": "わふく"
+            },
+            {
+                "kanji": "和菓子",
+                "reading": "わがし"
+            },
+            {
+                "kanji": "和牛",
+                "reading": "わぎゅう"
+            },
+            {
+                "kanji": "自分",
+                "reading": "じぶん"
+            },
+            {
+                "kanji": "場合",
+                "reading": "ばあい"
+            }
+        ],
+        "category": "level_1"
+    },
+    {
+        "id": 46,
+        "words": [
+            {
+                "kanji": "時間",
+                "reading": "じかん"
+            },
+            {
+                "kanji": "今日",
+                "reading": "きょう"
+            },
+            {
+                "kanji": "会社",
+                "reading": "かいしゃ"
+            },
+            {
+                "kanji": "今回",
+                "reading": "こんかい"
+            },
+            {
+                "kanji": "生活",
+                "reading": "せいかつ"
+            }
+        ],
+        "category": "level_1"
+    },
+    {
+        "id": 47,
+        "words": [
+            {
+                "kanji": "電話",
+                "reading": "でんわ"
+            },
+            {
+                "kanji": "名前",
+                "reading": "なまえ"
+            },
+            {
+                "kanji": "一番",
+                "reading": "いちばん"
+            },
+            {
+                "kanji": "今年",
+                "reading": "ことし"
+            },
+            {
+                "kanji": "地図",
+                "reading": "ちず"
+            }
+        ],
+        "category": "level_1"
+    },
+    {
+        "id": 48,
+        "words": [
+            {
+                "kanji": "回答",
+                "reading": "かいとう"
+            },
+            {
+                "kanji": "科学",
+                "reading": "かがく"
+            },
+            {
+                "kanji": "教室",
+                "reading": "きょうしつ"
+            },
+            {
+                "kanji": "国内",
+                "reading": "こくない"
+            },
+            {
+                "kanji": "会場",
+                "reading": "かいじょう"
+            }
+        ],
+        "category": "level_1"
+    },
+    {
+        "id": 49,
+        "words": [
+            {
+                "kanji": "海外",
+                "reading": "かいがい"
+            },
+            {
+                "kanji": "新聞",
+                "reading": "しんぶん"
+            },
+            {
+                "kanji": "土地",
+                "reading": "とち"
+            },
+            {
+                "kanji": "十分",
+                "reading": "じゅうぶん"
+            },
+            {
+                "kanji": "交通",
+                "reading": "こうつう"
+            }
+        ],
+        "category": "level_1"
+    },
+    {
+        "id": 50,
+        "words": [
+            {
+                "kanji": "地方",
+                "reading": "ちほう"
+            },
+            {
+                "kanji": "当時",
+                "reading": "とうじ"
+            },
+            {
+                "kanji": "大切",
+                "reading": "たいせつ"
+            },
+            {
+                "kanji": "市場",
+                "reading": "いちば"
+            },
+            {
+                "kanji": "公園",
+                "reading": "こうえん"
+            }
+        ],
+        "category": "level_1"
+    }
 ]
