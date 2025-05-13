@@ -15,7 +15,7 @@ struct StageGameView: View {
     @State private var currentWordIndex = 0
     @State private var currentCharIndex = 0
     @State private var totalCharNum = 0
-    @State private var timeRemaining = 20
+    @State private var timeRemaining = 20.0
     
     @State private var userInput = ""
     @State private var wrongInput = ""
@@ -84,7 +84,8 @@ struct StageGameView: View {
                             .frame(height: 1)
                     }
 
-                    Text("残り時間: \(timeRemaining) 秒")
+                    // 少数表示
+                    Text(String(format: "残り時間: %.1f 秒", timeRemaining))
                         .font(.title2)
                         .bold()
                         .foregroundColor(.white)
@@ -219,14 +220,18 @@ struct StageGameView: View {
     }
 
     func startTimer() {
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
             if timeRemaining > 0 {
-                timeRemaining -= 1
-            } else {
-                endGame()
+                timeRemaining -= 0.1
+                if timeRemaining <= 0 {
+                    timeRemaining = 0
+                    endGame()
+                }
             }
         }
     }
+
 
     func endGame() {
         isFinished = true

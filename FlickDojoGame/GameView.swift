@@ -16,7 +16,7 @@ struct GameView: View {
     @State private var currentWordIndex = 0
     @State private var currentCharIndex = 0
     @State private var totalCharNum = 0
-    @State private var timeRemaining = 20
+    @State private var timeRemaining = 20.0
 
     @State private var userInput = ""
     @State private var wrongInput = ""
@@ -34,17 +34,6 @@ struct GameView: View {
     let category: QuizCategory
     let onFinish: (Int, Int) -> Void
     let wordList: [WordItem]
-    
-    // 時間の出力
-    var timerText: String {
-        if mode == .stageMode {
-            return "回答数: \(currentWordIndex) 問"
-        } else if mode == .timeLimit {
-            return "残り時間: \(timeRemaining) 秒"
-        } else {
-            return ""
-        }
-    }
     
     // wordList(json)をlordWords.swiftから取得
     init(mode: QuizMode, category: QuizCategory, onFinish: @escaping (Int, Int) -> Void) {
@@ -103,7 +92,8 @@ struct GameView: View {
                             .frame(height: 1)
                     }
                     
-                    Text(timerText)
+                    // 少数表示
+                    Text(String(format: "残り時間: %.1f 秒", timeRemaining))
                         .font(.title2)
                         .bold()
                         .foregroundColor(.white)
@@ -252,19 +242,19 @@ struct GameView: View {
         }
     }
     
-    // タイマーの開始
     func startTimer() {
         timer?.invalidate()
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
-            if mode == .timeLimit {
-                if timeRemaining > 0 {
-                    timeRemaining -= 1
-                } else {
+        timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
+            if timeRemaining > 0 {
+                timeRemaining -= 0.1
+                if timeRemaining <= 0 {
+                    timeRemaining = 0
                     endGame()
                 }
             }
         }
     }
+
 
     
     // ゲーム終了（全問正解、時間切れ）
