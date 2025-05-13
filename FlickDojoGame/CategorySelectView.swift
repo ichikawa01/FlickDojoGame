@@ -13,6 +13,7 @@ struct CategorySelectView: View {
     @State private var flashNoTicket: Bool = false
     @State private var ticketCount: Int = 5
     
+    @State private var isPaused = false
 
     let selectedMode: QuizMode
     
@@ -83,7 +84,7 @@ struct CategorySelectView: View {
                 Spacer().frame(height: 300)
                 if selectedMode == .timeLimit {
                     Button(action: {
-                        showRewardAd()
+                        isPaused = true
                     }) {
                         Text("チケット全回復")
                             .foregroundColor(.white)
@@ -116,7 +117,6 @@ struct CategorySelectView: View {
                             onNext(category)
                             
                         } else if selectedMode == .timeLimit {
-                            print("チケットがありません")
                             withAnimation {
                                 flashNoTicket = true
                             }
@@ -148,6 +148,53 @@ struct CategorySelectView: View {
                     .frame(width: GADAdSizeLargeBanner.size.width, height: GADAdSizeLargeBanner.size.height)
                 
             }
+            
+            // リワード広告確認
+            if isPaused {
+                Color.black.opacity(0.8)
+                    .frame(width: 350, height: 250)
+                VStack{
+                    
+                    Spacer()
+                    
+                    Text("動画を見てチケット全回復！！")
+                        .font(.title2)
+                        .foregroundStyle(Color.white)
+                        .padding(.bottom, 25)
+                        .bold()
+                    
+                    HStack(spacing: 20) {
+                        Button(action: {
+                            isPaused = false
+                        }) {
+                            Text("キャンセル")
+                                .font(.title3)
+                                .padding()
+                                .frame(width: 130)
+                                .background(Color.gray)
+                                .foregroundColor(.white)
+                                .cornerRadius(12)
+                        }
+                        Button(action: {
+                            showRewardAd()
+                            isPaused = false
+                        }) {
+                            Text("動画を見る")
+                                .font(.title3)
+                                .padding()
+                                .frame(width: 130)
+                                .background(Color.blue)
+                                .foregroundColor(.white)
+                                .cornerRadius(12)
+                                .bold()
+                        }
+                        
+                    }
+                    Spacer()
+                }
+            }
+            
+            
         }
         .onAppear {
             AdMobManager.shared.loadAd()

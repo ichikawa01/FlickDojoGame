@@ -100,7 +100,9 @@ struct MainView: View {
                 if let stage = selectedStage {
                     StageGameView(
                         stage: stage,
-                        onFinish: {
+                        onFinish: { wordCount, charCount in
+                            score = wordCount
+                            characterCount = charCount
                             transition(to: .result)
                         }
                     )

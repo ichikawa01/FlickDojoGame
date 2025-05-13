@@ -30,9 +30,9 @@ struct ResultView: View {
                 .resizable()
                 .ignoresSafeArea()
             
-            VStack(spacing: 20) {
+            VStack {
                 
-                Spacer().frame(height: 130)
+                Spacer().frame(height: 210)
                 
                 // スコアの表示
                 ZStack{
@@ -60,15 +60,9 @@ struct ResultView: View {
                     }
                 }
                 
-                Spacer().frame(height: 50)
-                
-                CachedBannerView.shared
-                    .frame(width: GADAdSizeLargeBanner.size.width, height: GADAdSizeLargeBanner.size.height)
-
-                
-                Spacer().frame(height: 80)
-                
-                VStack (spacing: 20) {
+                Spacer().frame(height: 60)
+                                
+                VStack (spacing: 30) {
                     
                     if mode == .timeLimit{
                         Button(action: {
@@ -100,6 +94,11 @@ struct ResultView: View {
                 }
                 .opacity(showButtons ? 1 : 0)
                 .animation(.easeInOut, value: showButtons)
+                
+                Spacer()
+
+                CachedBannerView.shared
+                    .frame(width: GADAdSizeLargeBanner.size.width, height: GADAdSizeLargeBanner.size.height)
             }
         }
         .onAppear {

@@ -23,7 +23,7 @@
               "reading": "えほんのよみきかせ"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 2,
@@ -49,7 +49,7 @@
               "reading": "りかいぶそく"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 3,
@@ -75,7 +75,7 @@
               "reading": "うけつけじかん"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 4,
@@ -101,7 +101,7 @@
               "reading": "さんかがたきかく"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 5,
@@ -127,7 +127,7 @@
               "reading": "まさつけいすう"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 6,
@@ -153,7 +153,7 @@
               "reading": "うみせんやません"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 7,
@@ -179,7 +179,7 @@
               "reading": "たいいくたいかい"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 8,
@@ -205,7 +205,7 @@
               "reading": "おうだんほどう"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 9,
@@ -231,7 +231,7 @@
               "reading": "まんせいしっかん"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 10,
@@ -257,7 +257,7 @@
               "reading": "こうじょう"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 11,
@@ -283,7 +283,7 @@
               "reading": "さいしゅう"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 12,
@@ -309,7 +309,7 @@
               "reading": "いちぼうせんり"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 13,
@@ -335,7 +335,7 @@
               "reading": "いちじつせんしゅう"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 14,
@@ -361,7 +361,7 @@
               "reading": "まんげつかんさつ"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 15,
@@ -387,7 +387,7 @@
               "reading": "かんいほうそう"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 16,
@@ -413,7 +413,7 @@
               "reading": "たんさきき"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 17,
@@ -439,7 +439,7 @@
               "reading": "のうりょくかいはつ"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 18,
@@ -465,7 +465,7 @@
               "reading": "わくぐみきょうてい"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 19,
@@ -491,7 +491,7 @@
               "reading": "まちじかん"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 20,
@@ -517,7 +517,7 @@
               "reading": "えいきゅうほぞん"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 21,
@@ -543,7 +543,7 @@
               "reading": "ゆうきのうぎょう"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 22,
@@ -569,7 +569,7 @@
               "reading": "あくせんくとう"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 23,
@@ -595,7 +595,7 @@
               "reading": "りんしょうじっけん"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 24,
@@ -621,7 +621,7 @@
               "reading": "ひつようしげん"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 25,
@@ -647,7 +647,7 @@
               "reading": "たんきけっせん"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 26,
@@ -673,7 +673,7 @@
               "reading": "とうじょう"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 27,
@@ -699,7 +699,7 @@
               "reading": "ひごうほうこうい"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 28,
@@ -725,7 +725,7 @@
               "reading": "えいぞうひょうげん"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 29,
@@ -751,7 +751,7 @@
               "reading": "ばくまついしん"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 30,
@@ -777,7 +777,7 @@
               "reading": "りょこうけいかく"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 31,
@@ -803,7 +803,7 @@
               "reading": "ひかくぶんか"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 32,
@@ -829,7 +829,7 @@
               "reading": "あっしゅくこうか"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 33,
@@ -855,7 +855,7 @@
               "reading": "のうじょう"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 34,
@@ -881,7 +881,7 @@
               "reading": "いっちはんかい"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 35,
@@ -907,7 +907,7 @@
               "reading": "さいがいたいさく"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 36,
@@ -933,7 +933,7 @@
               "reading": "えいぎょうりえき"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 37,
@@ -959,7 +959,7 @@
               "reading": "たいしんせっけい"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 38,
@@ -985,7 +985,7 @@
               "reading": "いっきいちゆう"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 39,
@@ -1011,7 +1011,7 @@
               "reading": "いっせいちだい"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 40,
@@ -1037,7 +1037,7 @@
               "reading": "あっこうぞうごん"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 41,
@@ -1063,7 +1063,7 @@
               "reading": "わおんこうせい"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 42,
@@ -1089,7 +1089,7 @@
               "reading": "りそうじつげん"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 43,
@@ -1115,7 +1115,7 @@
               "reading": "にゅうしゅ"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 44,
@@ -1141,7 +1141,7 @@
               "reading": "かそうげんじつ"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 45,
@@ -1167,7 +1167,7 @@
               "reading": "がいしきぎょう"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 46,
@@ -1193,7 +1193,7 @@
               "reading": "りんじきゅうぎょう"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 47,
@@ -1219,7 +1219,7 @@
               "reading": "さいしゅうかいしゅう"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 48,
@@ -1245,7 +1245,7 @@
               "reading": "うおうさおう"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 49,
@@ -1271,7 +1271,7 @@
               "reading": "りゅうつう"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 50,
@@ -1297,7 +1297,7 @@
               "reading": "まいにちしんぶん"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 51,
@@ -1323,7 +1323,7 @@
               "reading": "たいりょくそくてい"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 52,
@@ -1349,7 +1349,7 @@
               "reading": "ゆうどうじんもん"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 53,
@@ -1375,7 +1375,7 @@
               "reading": "ひかくぶんか"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 54,
@@ -1401,7 +1401,7 @@
               "reading": "あんちゅうもさく"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 55,
@@ -1427,7 +1427,7 @@
               "reading": "まんいんでんしゃ"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 56,
@@ -1453,7 +1453,7 @@
               "reading": "りょこうけいかく"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 57,
@@ -1479,7 +1479,7 @@
               "reading": "うもうぶとん"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 58,
@@ -1505,7 +1505,7 @@
               "reading": "はんのうそくど"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 59,
@@ -1531,7 +1531,7 @@
               "reading": "ひつようしげん"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 60,
@@ -1557,7 +1557,7 @@
               "reading": "さいしゅうかいしゅう"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 61,
@@ -1583,7 +1583,7 @@
               "reading": "あんこくせかい"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 62,
@@ -1609,7 +1609,7 @@
               "reading": "いりょうほけん"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 63,
@@ -1635,7 +1635,7 @@
               "reading": "いっしょけんめい"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 64,
@@ -1661,7 +1661,7 @@
               "reading": "わんがんちいき"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 65,
@@ -1687,7 +1687,7 @@
               "reading": "はんざいけいこう"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 66,
@@ -1713,7 +1713,7 @@
               "reading": "いきしょうちん"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 67,
@@ -1739,7 +1739,7 @@
               "reading": "いとてきこうどう"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 68,
@@ -1765,7 +1765,7 @@
               "reading": "たいいくたいかい"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 69,
@@ -1791,7 +1791,7 @@
               "reading": "うよきょくせつ"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 70,
@@ -1817,7 +1817,7 @@
               "reading": "いとてきこうどう"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 71,
@@ -1843,7 +1843,7 @@
               "reading": "おうえんえんぜつ"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 72,
@@ -1869,7 +1869,7 @@
               "reading": "まんせいしっかん"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 73,
@@ -1895,7 +1895,7 @@
               "reading": "いっしんふらん"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 74,
@@ -1921,7 +1921,7 @@
               "reading": "あんぜんうんてん"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   },
   {
       "id": 75,
@@ -1947,6 +1947,6 @@
               "reading": "ゆうがいぶっしつ"
           }
       ],
-      "category": "level_2"
+      "category": "level_3"
   }
 ]

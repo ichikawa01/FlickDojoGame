@@ -10,7 +10,7 @@ import SwiftUI
 struct StageGameView: View {
     
     let stage: Stage
-    let onFinish: () -> Void
+    let onFinish: (Int, Int) -> Void
 
     @State private var currentWordIndex = 0
     @State private var currentCharIndex = 0
@@ -29,7 +29,7 @@ struct StageGameView: View {
     
     @State private var timer: Timer? = nil
 
-    init(stage: Stage, onFinish: @escaping () -> Void) {
+    init(stage: Stage, onFinish: @escaping (Int, Int) -> Void) {
         self.stage = stage
         self.onFinish = onFinish
     }
@@ -242,7 +242,7 @@ struct StageGameView: View {
         UserDefaults.standard.set(newTotal, forKey: "totalCorrect")
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            onFinish()
+            onFinish(currentWordIndex, totalCharNum)
         }
     }
 
