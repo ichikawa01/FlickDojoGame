@@ -92,7 +92,7 @@ struct StageGameView: View {
                 }
 
                 if isFinished {
-                    Text(isAllClear ? "全問クリア！" : "時間切れ")
+                    Text(isAllClear ? "全問クリア！" : "そこまで！")
                         .font(.system(size: 60, weight: .bold))
                         .foregroundColor(.black)
                 } else {

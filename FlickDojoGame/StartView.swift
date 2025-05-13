@@ -71,14 +71,24 @@ struct StartView: View {
                         }
                     }
                 }) {
-                    Text("挑戦")
-                        .font(.largeTitle)
-                        .foregroundColor(.white)
-                        .bold()
-                        .padding()
-                        .frame(width: 200, height: 60)
-                        .background(Color.startBtn)
-                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                    ZStack{
+                        Text("")
+                            .frame(width: 180, height: 80)
+                            .background(Color.startBtn)
+                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                        
+                        Image(.chosen)
+                            .resizable()
+                            .frame(width: 150, height: 100)
+                    }
+//                    Text("挑戦")
+//                        .font(.largeTitle)
+//                        .foregroundColor(.white)
+//                        .bold()
+//                        .padding()
+//                        .frame(width: 200, height: 60)
+//                        .background(Color.startBtn)
+//                        .clipShape(RoundedRectangle(cornerRadius: 12))
                 }
                 
                 

@@ -22,6 +22,7 @@ struct GameView: View {
     @State private var wrongInput = ""
     
     @State private var isFinished = false
+    
     @State private var isAllClear = false
     @State private var timerStarted = false
     @State private var isPaused = false
@@ -103,9 +104,15 @@ struct GameView: View {
                 // 終了画面
                 if isFinished {
                     
-                    Text(isAllClear ? "全問クリア！" : "そこまで！")
-                        .font(.system(size: 60, weight: .bold))
-                        .foregroundColor(.black)
+                    if isAllClear {
+                        Image(.endGameOk)
+                            .resizable()
+                    } else {
+                        Image(.endGameNg)
+                            .resizable()
+                    }
+                    
+                    Spacer().frame(height: 50)
                     
                 } else {
                     
