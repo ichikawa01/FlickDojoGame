@@ -92,9 +92,17 @@ struct StageGameView: View {
                 }
 
                 if isFinished {
-                    Text(isAllClear ? "全問クリア！" : "そこまで！")
-                        .font(.system(size: 60, weight: .bold))
-                        .foregroundColor(.black)
+                    
+                    if isAllClear {
+                        Image(.endGameOk)
+                            .resizable()
+                    } else {
+                        Image(.endGameNg)
+                            .resizable()
+                    }
+                    
+                    Spacer().frame(height: 50)
+                    
                 } else {
                     ZStack{
                         Image(.makimono)
