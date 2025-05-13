@@ -2,7 +2,7 @@ name: Aggregate Daily Rankings
 
 on:
   schedule:
-    - cron: '*/10 * * * *'  # 10分おき
+    - cron: '*/30 * * * *'  # 30分おき
   workflow_dispatch:
 
 jobs:
