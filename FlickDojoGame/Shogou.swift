@@ -22,15 +22,15 @@ enum Kaikyu: String {
 
     static func getKaikyu(for totalCorrect: Int) -> Kaikyu {
         switch totalCorrect {
-        case 0..<30: return .minarai
-        case 30..<100: return .shugyochu
-        case 100..<500: return .shodan
+        case 0..<50: return .minarai
+        case 50..<200: return .shugyochu
+        case 200..<500: return .shodan
         case 500..<1000: return .nidan
-        case 1000..<1500: return .sandan
-        case 1500..<2000: return .yondan
-        case 2000..<3000: return .godan
-        case 3000..<5000: return .shihanDai
-        case 5000..<10000: return .menkyoKaiden
+        case 1000..<2000: return .sandan
+        case 2000..<5000: return .yondan
+        case 5000..<10000: return .godan
+        case 10000..<20000: return .shihanDai
+        case 20000..<50000: return .menkyoKaiden
         default: return .kami
         }
     }
@@ -38,15 +38,15 @@ enum Kaikyu: String {
     
     static func nextThreshold(for totalCorrect: Int) -> Int? {
         switch totalCorrect {
-        case 0..<30: return 30
-        case 30..<100: return 100
-        case 100..<500: return 500
+        case 0..<50: return 50
+        case 50..<200: return 200
+        case 200..<500: return 500
         case 500..<1000: return 1000
-        case 1000..<1500: return 1500
-        case 1500..<2000: return 2000
-        case 2000..<3000: return 3000
-        case 3000..<5000: return 5000
+        case 1000..<2000: return 2000
+        case 2000..<5000: return 5000
         case 5000..<10000: return 10000
+        case 10000..<20000: return 20000
+        case 20000..<50000: return 50000
         default: return nil // 「神」ランクには次がない
         }
     }
