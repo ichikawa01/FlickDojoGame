@@ -54,7 +54,7 @@ struct StatusView: View {
                         .foregroundStyle(Color.black)
                 }
                 
-                Button("名前を変更する") {
+                Button("名前を変更") {
                     onEditName()
                 }
                 .font(.title)
@@ -64,7 +64,7 @@ struct StatusView: View {
                 .background(Color.startBtn)
                 .clipShape(RoundedRectangle(cornerRadius: 12))
 
-                Button("ランキングを見る") {
+                Button("ランキング") {
                     onRanking()
                 }
                 .font(.title)
@@ -74,7 +74,7 @@ struct StatusView: View {
                 .background(Color.startBtn)
                 .clipShape(RoundedRectangle(cornerRadius: 12))
 
-                Button("記録を見る") {
+                Button("称号") {
                     // 今後実装
                 }
                 .font(.title)

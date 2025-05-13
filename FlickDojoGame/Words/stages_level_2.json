@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "words": [
+        { "kanji": "猫", "reading": "ねこ" },
+        { "kanji": "犬", "reading": "いぬ" }
+    ],
+    "category": "level_1"
+  },
+  {
+    "id": 2,
+    "words": [
+        { "kanji": "牛", "reading": "うし" },
+        { "kanji": "猿", "reading": "さる" }
+    ],
+    "category": "level_1"
+  },
+  {
+    "id": 3,
+    "words": [
+        { "kanji": "川", "reading": "かわ" },
+        { "kanji": "山", "reading": "やま" }
+    ],
+    "category": "level_1"
+  }
+]

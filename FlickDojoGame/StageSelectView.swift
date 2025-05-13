@@ -14,6 +14,11 @@ struct StageSelectView: View {
 
     @State private var clearedStages: Set<Int> = []
     @State private var stages: [Stage] = []
+    
+    var latestUnlockedStage: Int {
+        (clearedStages.max() ?? 0) + 1
+    }
+
 
     var body: some View {
         
@@ -43,17 +48,23 @@ struct StageSelectView: View {
             
             
             VStack (spacing: 20){
-                Text("\(category.title) ステージ選択")
-                    .font(.title)
+                Spacer().frame(height: 10)
+                Text("\(category.title)")
+                    .font(.largeTitle)
                     .foregroundStyle(Color.white)
                     .bold()
                     .padding()
-                Text("ステージ数: \(stages.count)") // ← 表示されるかチェック
                 
                 ScrollView {
                     LazyVGrid(columns: [GridItem(.adaptive(minimum: 60))], spacing: 20) {
                         ForEach(stages, id: \.id) { stage in
-                            StageButton(stage: stage, clearedStages: clearedStages, onSelectStage: onSelectStage)
+                            StageButton(
+                                stage: stage,
+                                category: category,
+                                clearedStages: clearedStages,
+                                latestUnlockedStage: latestUnlockedStage,
+                                onSelectStage: onSelectStage
+                            )
                         }
                     }
                 }
@@ -99,11 +110,15 @@ struct StageSelectView: View {
 // StageSelectView 本体の下に追加（ファイルはそのまま）
 private struct StageButton: View {
     let stage: Stage
+    let category: QuizCategory
     let clearedStages: Set<Int>
+    let latestUnlockedStage: Int
     let onSelectStage: (Stage) -> Void
 
     var body: some View {
-        let isUnlocked = clearedStages.contains(stage.id) || stage.id == (clearedStages.max() ?? 0) + 1
+        let isCleared = clearedStages.contains(stage.id)
+        let isUnlocked = stage.id <= latestUnlockedStage
+        let isLatest = stage.id == latestUnlockedStage && !isCleared
 
         Button(action: {
             if isUnlocked {
@@ -112,13 +127,32 @@ private struct StageButton: View {
         }) {
             Text("\(stage.id)")
                 .frame(width: 60, height: 60)
-                .background(isUnlocked ? Color.green : Color.secondary)
+                .background(backgroundColor(for: isCleared, isLatest, isUnlocked))
                 .foregroundColor(.white)
                 .cornerRadius(8)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(isUnlocked ? Color.clear : Color.gray, lineWidth: 1)
+                )
         }
         .disabled(!isUnlocked)
     }
+
+    func backgroundColor(for isCleared: Bool, _ isLatest: Bool, _ isUnlocked: Bool) -> Color {
+        if isCleared {
+            switch category {
+            case .level_1: return .green
+            case .level_2: return .yellow
+            case .level_3: return .red
+            }
+        } else if isLatest {
+            return .secondary
+        } else {
+            return .clear
+        }
+    }
 }
+
 
 
 #Preview {

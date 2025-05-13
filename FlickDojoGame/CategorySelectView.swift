@@ -150,7 +150,7 @@ struct CategorySelectView: View {
 
 #Preview {
     CategorySelectView(
-        selectedMode: .stageMode,
+        selectedMode: .timeLimit,
         onNext: { _ in },
         onBack: {},
         onStatus: {}

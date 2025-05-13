@@ -45,6 +45,8 @@
 		5F1C22412DD1F4F5008DAAF9 /* StageSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C22402DD1F4F5008DAAF9 /* StageSelectView.swift */; };
 		5F1C22432DD1F6B7008DAAF9 /* StageGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C22422DD1F6B7008DAAF9 /* StageGameView.swift */; };
 		5F1C22462DD2050F008DAAF9 /* stages_level_1.json in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C22452DD2050F008DAAF9 /* stages_level_1.json */; };
+		5F1C22502DD32D32008DAAF9 /* stages_level_2.json in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C224F2DD32D32008DAAF9 /* stages_level_2.json */; };
+		5F1C22522DD32D5C008DAAF9 /* stages_level_3.json in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C22512DD32D5C008DAAF9 /* stages_level_3.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +86,8 @@
 		5F1C22402DD1F4F5008DAAF9 /* StageSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageSelectView.swift; sourceTree = "<group>"; };
 		5F1C22422DD1F6B7008DAAF9 /* StageGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageGameView.swift; sourceTree = "<group>"; };
 		5F1C22452DD2050F008DAAF9 /* stages_level_1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = stages_level_1.json; sourceTree = "<group>"; };
+		5F1C224F2DD32D32008DAAF9 /* stages_level_2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = stages_level_2.json; sourceTree = "<group>"; };
+		5F1C22512DD32D5C008DAAF9 /* stages_level_3.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = stages_level_3.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +175,8 @@
 				5F1C222D2DCE9F24008DAAF9 /* level_2.json */,
 				5F1C222E2DCE9F24008DAAF9 /* level_3.json */,
 				5F1C22452DD2050F008DAAF9 /* stages_level_1.json */,
+				5F1C224F2DD32D32008DAAF9 /* stages_level_2.json */,
+				5F1C22512DD32D5C008DAAF9 /* stages_level_3.json */,
 			);
 			path = Words;
 			sourceTree = "<group>";
@@ -245,6 +251,8 @@
 			files = (
 				5F1C22302DCE9F24008DAAF9 /* level_1.json in Resources */,
 				5F1C22462DD2050F008DAAF9 /* stages_level_1.json in Resources */,
+				5F1C22502DD32D32008DAAF9 /* stages_level_2.json in Resources */,
+				5F1C22522DD32D5C008DAAF9 /* stages_level_3.json in Resources */,
 				5F1C21F02DCE9C46008DAAF9 /* Preview Assets.xcassets in Resources */,
 				5F1C22322DCE9F24008DAAF9 /* level_3.json in Resources */,
 				5F1C22312DCE9F24008DAAF9 /* level_2.json in Resources */,
