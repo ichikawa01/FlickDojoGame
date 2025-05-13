@@ -43,7 +43,7 @@ class RankingManager {
             var suffix = ""
             let calendar = Calendar(identifier: .gregorian)
             let now = Date()
-
+            
             switch period {
             case .daily:
                 suffix = formatDate(now, format: "yyyyMMdd")
@@ -55,23 +55,23 @@ class RankingManager {
                 if let monday = calendar.date(byAdding: .day, value: offset, to: now) {
                     suffix = formatDate(monday, format: "yyyyMMdd")
                 }
-
+                
             case .monthly:
                 suffix = formatDate(now, format: "yyyyMM")
                 
             case .total:
                 suffix = "total"
             }
-
+            
             let topDoc = "\(mode.rawValue)_\(period.rawValue)"
             let dateKey = suffix // 例: 20250508
-
+            
             let ref = db.collection("rankings")
                 .document(topDoc)
                 .collection(dateKey) // ← 日付ごとのサブコレクション
                 .document(userId)
-
-
+            
+            
             // 過去の記録を超えているなら更新
             ref.getDocument { doc, _ in
                 let previousScore = doc?.data()?["score"] as? Int ?? 0
@@ -89,27 +89,33 @@ class RankingManager {
             }
         }
     }
-
-
-        
+    
+    
+    
+    private struct CachedRanking {
+        let entries: [RankingEntry]
+        let expireAt: Date
+    }
+    
+    private var rankingCache: [String: CachedRanking] = [:]
+    
     func fetchTopRankings(mode: QuizModeRank, period: RankingPeriod, completion: @escaping ([RankingEntry]) -> Void) {
         let topDoc = "\(mode.rawValue)_\(period.rawValue)"
         let now = Date()
         var dateKey = ""
-
+        
         let utcCalendar = Calendar(identifier: .gregorian)
         var calendar = utcCalendar
-        calendar.timeZone = TimeZone(secondsFromGMT: 0)!  // ✅ UTCに固定
-
+        calendar.timeZone = TimeZone(secondsFromGMT: 0)!
+        
         let formatter = DateFormatter()
-        formatter.timeZone = TimeZone(secondsFromGMT: 0) // ✅ UTCでフォーマット
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
         formatter.locale = Locale(identifier: "en_US_POSIX")
-
+        
         switch period {
         case .daily:
             formatter.dateFormat = "yyyyMMdd"
             dateKey = formatter.string(from: now)
-
         case .weekly:
             let weekday = calendar.component(.weekday, from: now)
             let offset = weekday == 1 ? -6 : 2 - weekday
@@ -117,64 +123,70 @@ class RankingManager {
                 formatter.dateFormat = "yyyyMMdd"
                 dateKey = formatter.string(from: monday)
             }
-
         case .monthly:
             formatter.dateFormat = "yyyyMM"
             dateKey = formatter.string(from: now)
-
         case .total:
             dateKey = "total"
         }
-
+        
+        let cacheKey = "\(mode.rawValue)_\(period.rawValue)_\(dateKey)"
+        
+        // ✅ キャッシュチェック
+        if period != .daily, let cached = self.rankingCache[cacheKey], Date() < cached.expireAt {
+            completion(cached.entries)
+            return
+        }
+        
         let docRef = db.collection("rankings")
             .document(topDoc)
             .collection(dateKey)
             .document("top")
-
+        
         docRef.getDocument { snapshot, error in
             if let error = error {
-                print("❌ Firestore error: \(error.localizedDescription)")
                 completion([])
                 return
             }
             
-            guard let data = snapshot?.data() else {
-                print("📭 No data in snapshot")
-                completion([])
-                return
-            }
-            
-            print("🧾 Raw Firestore data: \(data)")
-            
-            guard let topArray = data["top"] as? [[String: Any]] else {
-                print("⚠️ Failed to cast 'top' as [[String: Any]]")
+            guard let data = snapshot?.data(),
+                  let topArray = data["top"] as? [[String: Any]] else {
                 completion([])
                 return
             }
             
             let entries = topArray.compactMap { dict -> RankingEntry? in
-                print("🔍 Entry: \(dict)")
                 guard let name = dict["userName"] as? String,
                       let score = dict["score"] as? Int,
                       let userId = dict["userId"] as? String else {
-                    print("⚠️ Skipped invalid entry: \(dict)")
                     return nil
                 }
                 return RankingEntry(userId: userId, userName: name, score: score)
             }
             
-            print("✅ Parsed entries: \(entries.count)")
+            // ✅ daily 以外のみキャッシュに保存
+            if period != .daily {
+                var expireDate: Date?
+                var components = calendar.dateComponents(in: TimeZone(secondsFromGMT: 0)!, from: now)
+                components.hour = 0
+                components.minute = 0
+                components.second = 0
+                components.nanosecond = 0
+                components.day! += 1
+                expireDate = calendar.date(from: components)
+                
+                if let expireAt = expireDate {
+                    self.rankingCache[cacheKey] = CachedRanking(entries: entries, expireAt: expireAt)
+                }
+            }
             
             completion(entries)
         }
-
-        
-        
-        
     }
-
-
-
+    
+    
+    
+    
     func formatDate(_ date: Date, format: String) -> String {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ja_JP")
@@ -182,6 +194,6 @@ class RankingManager {
         formatter.dateFormat = format
         return formatter.string(from: date)
     }
-
+    
 }
 

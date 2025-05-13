@@ -43,6 +43,14 @@ struct RankingView: View {
                             .padding(.leading, 20)
                     }
                     Spacer()
+                    if selectedPeriod == .daily {
+                        Text("10分毎に更新")
+                            .padding(.trailing, 15)
+                    } else {
+                        Text("翌日に更新")
+                            .padding(.trailing, 15)
+                    }
+
                 }
                 
                 // モード選択

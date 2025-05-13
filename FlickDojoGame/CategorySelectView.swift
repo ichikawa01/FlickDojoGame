@@ -31,12 +31,22 @@ struct CategorySelectView: View {
 
     var body: some View {
         ZStack{
-            //背景
-            Image(.flickMeijin)
-                .resizable()
-                .ignoresSafeArea()
+            
+            if selectedMode == .timeLimit{
+                //背景
+                Image(.flickMeijin)
+                    .resizable()
+                    .ignoresSafeArea()
+            } else if selectedMode == .stageMode{
+                //背景
+                Image(.flickDojo)
+                    .resizable()
+                    .ignoresSafeArea()
+            }
+            
             
             VStack{
+                Spacer().frame(height: 15)
                 HStack{
                     // 戻るボタン（左上）
                     Button(action: {
@@ -63,9 +73,9 @@ struct CategorySelectView: View {
             
             VStack(spacing: 20) {
                 
-                Spacer().frame(height: 300)
                 
                 // チケット関連
+                Spacer().frame(height: 300)
                 if selectedMode == .timeLimit {
                     Button("チケット全回復") {
                         showRewardAd()
@@ -85,6 +95,8 @@ struct CategorySelectView: View {
                             .foregroundColor(.white)
                             .font(.title3)
                     }
+                } else if selectedMode == .stageMode{
+                    Spacer().frame(height: 80)
                 }
                 
                 
@@ -136,11 +148,11 @@ struct CategorySelectView: View {
     }
 }
 
-//#Preview {
-//    CategorySelectView(
-//        selectedMode: .timeLimit,
-//        onNext: { _ in },
-//        onBack: {},
-//        onStatus: {}
-//    )
-//}
+#Preview {
+    CategorySelectView(
+        selectedMode: .stageMode,
+        onNext: { _ in },
+        onBack: {},
+        onStatus: {}
+    )
+}
