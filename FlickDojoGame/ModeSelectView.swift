@@ -86,13 +86,16 @@ struct ModeSelectView: View {
                     Button(action: {
                         onNext(mode)
                     }) {
-                        Text(mode.description)
-                            .font(.title3)
-                            .bold()
-                            .frame(width: 160, height: 60)
-                            .background(Color.startBtn)
-                            .foregroundColor(.white)
-                            .cornerRadius(12)
+                        switch mode {
+                        case .stageMode:
+                            Image(.woodSyugyo)
+                                .resizable()
+                                .frame(width: 150, height: 70)
+                        case .timeLimit:
+                            Image(.woodTime)
+                                .resizable()
+                                .frame(width: 150, height: 70)
+                        }
                     }
 
                 }

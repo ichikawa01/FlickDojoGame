@@ -77,7 +77,7 @@ struct CategorySelectView: View {
                 Spacer()
             }
             
-            VStack(spacing: 20) {
+            VStack(spacing: 10) {
                 
                 
                 // チケット関連
@@ -130,15 +130,20 @@ struct CategorySelectView: View {
                         }
                         
                     }) {
-                        Text(category.title)
-                            .padding()
-                            .font(.title3)
-                            .bold()
-                            .frame(width: 160, height: 60)
-                            .foregroundColor(.white)
-                            .background(Color.startBtn)
-                            .cornerRadius(12)
-                            .contentShape(Rectangle())
+                        switch category {
+                        case .level_1:
+                            Image(.woodLevel1)
+                                .resizable()
+                                .frame(width: 143, height: 65)
+                        case .level_2:
+                            Image(.woodLevel2)
+                                .resizable()
+                                .frame(width: 143, height: 65)
+                        case .level_3:
+                            Image(.woodLevel3)
+                                .resizable()
+                                .frame(width: 143, height: 65)
+                        }
                     }
                 }
                 

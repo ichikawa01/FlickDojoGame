@@ -50,7 +50,7 @@ struct StartView: View {
 
             VStack(spacing: 20) {
                 
-                Spacer().frame(height: 280)
+                Spacer().frame(height: 330)
 
                 // 初回は名前の入力、次回以降はonNext()
                 Button(action: {
@@ -71,16 +71,9 @@ struct StartView: View {
                         }
                     }
                 }) {
-                    ZStack{
-                        Text("")
-                            .frame(width: 180, height: 80)
-                            .background(Color.startBtn)
-                            .clipShape(RoundedRectangle(cornerRadius: 12))
-                        
-                        Image(.chosen)
-                            .resizable()
-                            .frame(width: 150, height: 100)
-                    }
+                    Image(.woodStart)
+                        .resizable()
+                        .frame(width: 210, height: 100)
 //                    Text("挑戦")
 //                        .font(.largeTitle)
 //                        .foregroundColor(.white)
