@@ -38,7 +38,7 @@ struct ResultView: View {
                 ZStack{
                     Image(.makimono)
                         .resizable()
-                        .frame(width:320, height: 120)
+                        .frame(width:330, height: 120)
                         .ignoresSafeArea()
                     
                     VStack{
@@ -136,7 +136,7 @@ struct ResultView: View {
     ResultView(
         score: 12,
         characterCount: 56,
-        mode: .timeLimit,
+        mode: .stageMode,
         onNext: {},
         onRanking: {}
     )

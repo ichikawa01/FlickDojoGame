@@ -67,7 +67,7 @@ struct StageGameView: View {
                                 .foregroundColor(.white)
                                 .clipShape(RoundedRectangle(cornerRadius: 10))
                         }
-                        .padding(.trailing,75)
+                        .padding(.trailing,30)
                     }
                 }
                 Spacer()
@@ -108,7 +108,7 @@ struct StageGameView: View {
                     ZStack{
                         Image(.makimono)
                             .resizable()
-                            .frame(width: 460, height: 190)
+                            .frame(width: 360, height: 120)
                             .ignoresSafeArea()
                         // 問題の出力
                         FuriganaText(
@@ -199,6 +199,9 @@ struct StageGameView: View {
             if isFinished {
                 playSE(fileName: "2tap")
             }
+        }
+        .onAppear(){
+            BGMManager.shared.stop()
         }
     }
 

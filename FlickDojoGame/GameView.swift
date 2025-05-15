@@ -74,7 +74,7 @@ struct GameView: View {
                                 .foregroundColor(.white)
                                 .clipShape(RoundedRectangle(cornerRadius: 10))
                         }
-                        .padding(.trailing,75)
+                        .padding(.trailing,30)
                     }
                 }
                 Spacer()
@@ -211,9 +211,10 @@ struct GameView: View {
             if isFinished {
                 playSE(fileName: "2tap")
             }
-            
         }
-        
+        .onAppear(){
+            BGMManager.shared.stop()
+        }
     }
 
     //

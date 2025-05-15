@@ -10,9 +10,7 @@ import GoogleMobileAds
 
 
 struct ModeSelectView: View {
-//    @AppStorage("totalCorrect") var totalCorrect: Int = 200
-    var totalCorrect: Int = 20000
-
+    @AppStorage("totalCorrect") var totalCorrect: Int = 200
     
     let onNext: (QuizMode) -> Void
     let onBack: () -> Void
