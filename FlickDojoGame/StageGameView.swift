@@ -53,6 +53,7 @@ struct StageGameView: View {
                     // 終了ボタン
                     if !isFinished{
                         Button(action: {
+                            playSE(fileName: "1tap")
                             isPaused = true
                             timer?.invalidate()
                             isInputFocused = false
@@ -158,6 +159,7 @@ struct StageGameView: View {
                     
                     HStack(spacing: 20) {
                         Button(action: {
+                            playSE(fileName: "Ticket")
                             isInputFocused = true
                             isPaused = false
                             startTimer()
@@ -192,6 +194,11 @@ struct StageGameView: View {
         }
         .onDisappear {
             timer?.invalidate()
+        }
+        .onChange(of: isFinished) {
+            if isFinished {
+                playSE(fileName: "2tap")
+            }
         }
     }
 
@@ -269,8 +276,3 @@ struct StageGameView: View {
     }
 }
 
-
-
-//#Preview {
-//    StageGameView()
-//}

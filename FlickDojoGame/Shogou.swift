@@ -15,8 +15,8 @@ enum Kaikyu: String {
     case sandan = "三段"
     case yondan = "四段"
     case godan = "五段"
-    case shihanDai = "師範代"
-    case menkyoKaiden = "免許皆伝"
+    case shisho = "師匠"
+    case pro = "達人"
     case kami = "神"
     
 
@@ -29,8 +29,8 @@ enum Kaikyu: String {
         case 1000..<2000: return .sandan
         case 2000..<5000: return .yondan
         case 5000..<10000: return .godan
-        case 10000..<20000: return .shihanDai
-        case 20000..<50000: return .menkyoKaiden
+        case 10000..<20000: return .shisho
+        case 20000..<50000: return .pro
         default: return .kami
         }
     }

@@ -60,6 +60,7 @@ struct GameView: View {
                     // 終了ボタン
                     if !isFinished{
                         Button(action: {
+                            playSE(fileName: "1tap")
                             isPaused = true
                             timer?.invalidate()
                             isInputFocused = false
@@ -119,7 +120,7 @@ struct GameView: View {
                     ZStack{
                         Image(.makimono)
                             .resizable()
-                            .frame(width: 460, height: 190)
+                            .frame(width: 360, height: 120)
                             .ignoresSafeArea()
                         // 問題の出力
                         FuriganaText(
@@ -174,6 +175,7 @@ struct GameView: View {
                     
                     HStack(spacing: 20) {
                         Button(action: {
+                            playSE(fileName: "Ticket")
                             isInputFocused = true
                             isPaused = false
                             startTimer()
@@ -205,8 +207,12 @@ struct GameView: View {
                 }
             }
         }// Zstack end
-        
-        
+        .onChange(of: isFinished) {
+            if isFinished {
+                playSE(fileName: "2tap")
+            }
+            
+        }
         
     }
 

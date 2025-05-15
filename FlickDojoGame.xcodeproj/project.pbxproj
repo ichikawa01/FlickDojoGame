@@ -47,6 +47,14 @@
 		5F1C22462DD2050F008DAAF9 /* stages_level_1.json in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C22452DD2050F008DAAF9 /* stages_level_1.json */; };
 		5F1C22502DD32D32008DAAF9 /* stages_level_2.json in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C224F2DD32D32008DAAF9 /* stages_level_2.json */; };
 		5F1C22522DD32D5C008DAAF9 /* stages_level_3.json in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C22512DD32D5C008DAAF9 /* stages_level_3.json */; };
+		5F1C22582DD5C724008DAAF9 /* ending.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C22542DD5C724008DAAF9 /* ending.mp3 */; };
+		5F1C22592DD5C724008DAAF9 /* 1tap.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C22552DD5C724008DAAF9 /* 1tap.mp3 */; };
+		5F1C225A2DD5C724008DAAF9 /* home.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C22562DD5C724008DAAF9 /* home.mp3 */; };
+		5F1C225B2DD5C724008DAAF9 /* 2tap.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C22572DD5C724008DAAF9 /* 2tap.mp3 */; };
+		5F1C225D2DD5C81E008DAAF9 /* BGMManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C225C2DD5C81E008DAAF9 /* BGMManager.swift */; };
+		5F1C225F2DD5C838008DAAF9 /* SEManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C225E2DD5C838008DAAF9 /* SEManager.swift */; };
+		5F1C22612DD5CB4E008DAAF9 /* Ticket.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C22602DD5CB4E008DAAF9 /* Ticket.mp3 */; };
+		5F1C22632DD5D275008DAAF9 /* loading.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C22622DD5D275008DAAF9 /* loading.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +96,14 @@
 		5F1C22452DD2050F008DAAF9 /* stages_level_1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = stages_level_1.json; sourceTree = "<group>"; };
 		5F1C224F2DD32D32008DAAF9 /* stages_level_2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = stages_level_2.json; sourceTree = "<group>"; };
 		5F1C22512DD32D5C008DAAF9 /* stages_level_3.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = stages_level_3.json; sourceTree = "<group>"; };
+		5F1C22542DD5C724008DAAF9 /* ending.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ending.mp3; sourceTree = "<group>"; };
+		5F1C22552DD5C724008DAAF9 /* 1tap.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 1tap.mp3; sourceTree = "<group>"; };
+		5F1C22562DD5C724008DAAF9 /* home.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = home.mp3; sourceTree = "<group>"; };
+		5F1C22572DD5C724008DAAF9 /* 2tap.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 2tap.mp3; sourceTree = "<group>"; };
+		5F1C225C2DD5C81E008DAAF9 /* BGMManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BGMManager.swift; sourceTree = "<group>"; };
+		5F1C225E2DD5C838008DAAF9 /* SEManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEManager.swift; sourceTree = "<group>"; };
+		5F1C22602DD5CB4E008DAAF9 /* Ticket.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Ticket.mp3; sourceTree = "<group>"; };
+		5F1C22622DD5D275008DAAF9 /* loading.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = loading.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,9 +140,12 @@
 		5F1C21E72DCE9C45008DAAF9 /* FlickDojoGame */ = {
 			isa = PBXGroup;
 			children = (
+				5F1C22532DD5C6B7008DAAF9 /* Audio */,
 				5F1C22392DCEAC32008DAAF9 /* Info.plist */,
 				5F1C21E82DCE9C45008DAAF9 /* FlickDojoGameApp.swift */,
+				5F1C225C2DD5C81E008DAAF9 /* BGMManager.swift */,
 				5F1C223A2DCFEF73008DAAF9 /* AdMobManager.swift */,
+				5F1C225E2DD5C838008DAAF9 /* SEManager.swift */,
 				5F1C22332DCEA0CF008DAAF9 /* BannerAdView.swift */,
 				5F1C22022DCE9EF5008DAAF9 /* MainView.swift */,
 				5F1C22062DCE9EF5008DAAF9 /* StartView.swift */,
@@ -179,6 +198,19 @@
 				5F1C22512DD32D5C008DAAF9 /* stages_level_3.json */,
 			);
 			path = Words;
+			sourceTree = "<group>";
+		};
+		5F1C22532DD5C6B7008DAAF9 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				5F1C22542DD5C724008DAAF9 /* ending.mp3 */,
+				5F1C22622DD5D275008DAAF9 /* loading.mp3 */,
+				5F1C22602DD5CB4E008DAAF9 /* Ticket.mp3 */,
+				5F1C22562DD5C724008DAAF9 /* home.mp3 */,
+				5F1C22572DD5C724008DAAF9 /* 2tap.mp3 */,
+				5F1C22552DD5C724008DAAF9 /* 1tap.mp3 */,
+			);
+			path = Audio;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,14 +281,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F1C225B2DD5C724008DAAF9 /* 2tap.mp3 in Resources */,
 				5F1C22302DCE9F24008DAAF9 /* level_1.json in Resources */,
+				5F1C22592DD5C724008DAAF9 /* 1tap.mp3 in Resources */,
 				5F1C22462DD2050F008DAAF9 /* stages_level_1.json in Resources */,
 				5F1C22502DD32D32008DAAF9 /* stages_level_2.json in Resources */,
+				5F1C22612DD5CB4E008DAAF9 /* Ticket.mp3 in Resources */,
 				5F1C22522DD32D5C008DAAF9 /* stages_level_3.json in Resources */,
+				5F1C225A2DD5C724008DAAF9 /* home.mp3 in Resources */,
+				5F1C22632DD5D275008DAAF9 /* loading.mp3 in Resources */,
 				5F1C21F02DCE9C46008DAAF9 /* Preview Assets.xcassets in Resources */,
 				5F1C22322DCE9F24008DAAF9 /* level_3.json in Resources */,
 				5F1C22312DCE9F24008DAAF9 /* level_2.json in Resources */,
 				5F1C21F72DCE9D0F008DAAF9 /* GoogleService-Info.plist in Resources */,
+				5F1C22582DD5C724008DAAF9 /* ending.mp3 in Resources */,
 				5F1C21ED2DCE9C46008DAAF9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,6 +308,7 @@
 			files = (
 				5F1C22202DCE9EF6008DAAF9 /* NameInputView.swift in Sources */,
 				5F1C22252DCE9EF6008DAAF9 /* RankingView.swift in Sources */,
+				5F1C225F2DD5C838008DAAF9 /* SEManager.swift in Sources */,
 				5F1C222B2DCE9EF6008DAAF9 /* WordLoader.swift in Sources */,
 				5F1C21E92DCE9C45008DAAF9 /* FlickDojoGameApp.swift in Sources */,
 				5F1C22272DCE9EF6008DAAF9 /* QuizMode.swift in Sources */,
@@ -292,6 +331,7 @@
 				5F1C22292DCE9EF6008DAAF9 /* RankingManager.swift in Sources */,
 				5F1C22212DCE9EF6008DAAF9 /* GameView.swift in Sources */,
 				5F1C223B2DCFEF73008DAAF9 /* AdMobManager.swift in Sources */,
+				5F1C225D2DD5C81E008DAAF9 /* BGMManager.swift in Sources */,
 				5F1C22432DD1F6B7008DAAF9 /* StageGameView.swift in Sources */,
 				5F1C221D2DCE9EF6008DAAF9 /* NameEditView.swift in Sources */,
 				5F1C22262DCE9EF6008DAAF9 /* CategorySelectView.swift in Sources */,

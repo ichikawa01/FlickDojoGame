@@ -24,6 +24,8 @@ struct StatusView: View {
                 HStack{
                     // 戻るボタン（左上）
                     Button(action: {
+                        playSE(fileName: "1tap")
+                        BGMManager.shared.play(fileName: "home")
                         onBack()
                     }) {
                         Image(.backIconWhite)
@@ -46,7 +48,7 @@ struct StatusView: View {
                     Image(.makimono)
                         .resizable()
                         .ignoresSafeArea()
-                        .frame(width:400, height: 130)
+                        .frame(width:320, height: 110)
                     
                     Text("道場の記録")
                         .font(.largeTitle)
@@ -54,7 +56,10 @@ struct StatusView: View {
                         .foregroundStyle(Color.black)
                 }
                 
+                Spacer().frame(height: 10)
+                
                 Button(action: {
+                    playSE(fileName: "1tap")
                     onEditName()
                 }) {
                     Text("名前を変更")
@@ -67,21 +72,10 @@ struct StatusView: View {
                 }
                 
                 Button(action: {
+                    playSE(fileName: "1tap")
                     onRanking()
                 }) {
                     Text("ランキング")
-                        .font(.title)
-                        .bold()
-                        .foregroundColor(.white)
-                        .frame(width: 260, height: 60)
-                        .background(Color.startBtn)
-                        .clipShape(RoundedRectangle(cornerRadius: 12))
-                }
-                
-                Button(action: {
-                    // 今後実装
-                }) {
-                    Text("称号")
                         .font(.title)
                         .bold()
                         .foregroundColor(.white)
@@ -96,6 +90,9 @@ struct StatusView: View {
                     .frame(width: GADAdSizeLargeBanner.size.width, height: GADAdSizeLargeBanner.size.height)
 
             }
+        }
+        .onAppear {
+            BGMManager.shared.play(fileName: "ending")
         }
     }
 }

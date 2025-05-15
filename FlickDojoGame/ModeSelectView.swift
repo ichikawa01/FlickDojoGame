@@ -10,7 +10,8 @@ import GoogleMobileAds
 
 
 struct ModeSelectView: View {
-    @AppStorage("totalCorrect") var totalCorrect: Int = 0
+//    @AppStorage("totalCorrect") var totalCorrect: Int = 200
+    var totalCorrect: Int = 20000
 
     
     let onNext: (QuizMode) -> Void
@@ -27,9 +28,11 @@ struct ModeSelectView: View {
                 .ignoresSafeArea()
             
             VStack{
+                Spacer().frame(height: 10)
                 HStack{
                     // 戻るボタン（左上）
                     Button(action: {
+                        playSE(fileName: "1tap")
                         onBack()
                     }) {
                         Image(.backIconWhite)
@@ -38,8 +41,9 @@ struct ModeSelectView: View {
                             .padding(.leading, 20)
                     }
                     Spacer()
-                    // 初回は名前の入力、次回以降はonStatus()
+                    
                     Button(action: {
+                        playSE(fileName: "1tap")
                         onStatus()
                     }) {
                         Image(.menu)
@@ -52,20 +56,59 @@ struct ModeSelectView: View {
             }
             
             
-            VStack(spacing: 20) {
+            VStack {
                 
                 Spacer().frame(height: 370)
                 
                 let rank = Kaikyu.getKaikyu(for: totalCorrect)
                 let nextThreshold = Kaikyu.nextThreshold(for: totalCorrect)
                 let remaining = nextThreshold.map { $0 - totalCorrect }
+                ZStack{
+                    switch rank {
+                    case .minarai:
+                        Image(.rank01)
+                            .resizable()
+                            .frame(width: 200, height: 34)
+                    case .shugyochu:
+                        Image(.rank02)
+                            .resizable()
+                            .frame(width: 200, height: 40)
+                    case .shodan:
+                        Image(.rank03)
+                            .resizable()
+                            .frame(width: 200, height: 35)
+                    case .nidan:
+                        Image(.rank04)
+                            .resizable()
+                            .frame(width: 200, height: 35)
+                    case .sandan:
+                        Image(.rank05)
+                            .resizable()
+                            .frame(width: 200, height: 35)
+                    case .yondan:
+                        Image(.rank06)
+                            .resizable()
+                            .frame(width: 200, height: 35)
+                    case .godan:
+                        Image(.rank07)
+                            .resizable()
+                            .frame(width: 200, height: 35)
+                    case .shisho:
+                        Image(.rank08)
+                            .resizable()
+                            .frame(width: 250, height: 50)
+                    case .pro:
+                        Image(.rank09)
+                            .resizable()
+                            .frame(width: 250, height: 50)
+                    case .kami:
+                        Image(.rank10)
+                            .resizable()
+                            .frame(width: 250, height: 60)
+                    }
+                    
+                }
                 
-                Text("現在の称号：\(rank.rawValue)：\(totalCorrect)")
-                    .font(.title2)
-                    .bold()
-                    .foregroundColor(.gray)
-                    .background(Color.black)
-                    .frame(height: 0)
                 
                 if let remaining = remaining {
                     Text("次の称号まで残り \(remaining) 文字")
@@ -84,6 +127,7 @@ struct ModeSelectView: View {
                 
                 ForEach(QuizMode.allCases, id: \.self) { mode in
                     Button(action: {
+                        playSE(fileName: "1tap")
                         onNext(mode)
                     }) {
                         switch mode {
@@ -91,6 +135,7 @@ struct ModeSelectView: View {
                             Image(.woodSyugyo)
                                 .resizable()
                                 .frame(width: 150, height: 70)
+                                .padding(.bottom, 10)
                         case .timeLimit:
                             Image(.woodTime)
                                 .resizable()
@@ -112,7 +157,6 @@ struct ModeSelectView: View {
 
 #Preview {
     ModeSelectView(
-//        totalCorrect: 1,
         onNext: { _ in },
         onBack: {},
         onStatus: {}

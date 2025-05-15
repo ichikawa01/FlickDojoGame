@@ -54,6 +54,7 @@ struct StartView: View {
 
                 // 初回は名前の入力、次回以降はonNext()
                 Button(action: {
+                    playSE(fileName: "2tap")
                     AuthManager.shared.signInIfNeeded { uid in
                         self.userId = uid
                         if let uid = userId {

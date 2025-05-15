@@ -35,6 +35,7 @@ struct RankingView: View {
                 HStack{
                     // 戻るボタン（左上）
                     Button(action: {
+                        playSE(fileName: "1tap")
                         onBack()
                     }) {
                         Image(.backIconWhite)
@@ -75,6 +76,7 @@ struct RankingView: View {
                 
                 // ランキング読み込み
                 Button(action: {
+                    playSE(fileName: "loading")
                     loadRankings()
                 }) {
                     Text("ランキングを読み込む")
@@ -94,7 +96,7 @@ struct RankingView: View {
                         .padding()
                 } else {
                     List {
-                        ForEach(Array(rankings.prefix(10).enumerated()), id: \.element.userId) { index, entry in
+                        ForEach(Array(rankings.prefix(100).enumerated()), id: \.element.userId) { index, entry in
                             RankingRowView(index: index, entry: entry, currentUserId: currentUserId)
                         }
                     }
@@ -105,6 +107,10 @@ struct RankingView: View {
             .navigationTitle("ランキング")
             .onAppear {
                 loadRankings()
+                BGMManager.shared.play(fileName: "ending")
+            }
+            .onDisappear {
+                BGMManager.shared.play(fileName: "home")
             }
             .onChange(of: selectedMode) { loadRankings() }
             .onChange(of: selectedPeriod) { loadRankings() }

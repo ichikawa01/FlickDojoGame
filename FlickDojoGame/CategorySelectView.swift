@@ -56,6 +56,7 @@ struct CategorySelectView: View {
                 HStack{
                     // 戻るボタン（左上）
                     Button(action: {
+                        playSE(fileName: "1tap")
                         onBack()
                     }) {
                         Image(.backIconWhite)
@@ -66,6 +67,7 @@ struct CategorySelectView: View {
                     Spacer()
                     // ステータスボタン
                     Button(action: {
+                        playSE(fileName: "1tap")
                         onStatus()
                     }) {
                         Image(.menu)
@@ -84,6 +86,7 @@ struct CategorySelectView: View {
                 Spacer().frame(height: 300)
                 if selectedMode == .timeLimit {
                     Button(action: {
+                        playSE(fileName: "1tap")
                         isPaused = true
                     }) {
                         Text("チケット全回復")
@@ -112,12 +115,14 @@ struct CategorySelectView: View {
                     Button(action: {
                         
                         if selectedMode == .timeLimit && ticketCount > 0 {
+                            playSE(fileName: "1tap")
                             ticketCount -= 1
                             UserDefaults.standard.set(ticketCount, forKey: ticketKey)
                             onNext(category)
                             
                         } else if selectedMode == .timeLimit {
                             withAnimation {
+                                playSE(fileName: "Ticket")
                                 flashNoTicket = true
                             }
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
@@ -126,6 +131,7 @@ struct CategorySelectView: View {
                                 }
                             }
                         } else {
+                            playSE(fileName: "1tap")
                             onNext(category)
                         }
                         
@@ -170,6 +176,7 @@ struct CategorySelectView: View {
                     
                     HStack(spacing: 20) {
                         Button(action: {
+                            playSE(fileName: "Ticket")
                             isPaused = false
                         }) {
                             Text("キャンセル")
@@ -181,6 +188,7 @@ struct CategorySelectView: View {
                                 .cornerRadius(12)
                         }
                         Button(action: {
+                            playSE(fileName: "2tap")
                             showRewardAd()
                             isPaused = false
                         }) {
@@ -228,7 +236,7 @@ struct CategorySelectView: View {
 
 #Preview {
     CategorySelectView(
-        selectedMode: .timeLimit,
+        selectedMode: .stageMode,
         onNext: { _ in },
         onBack: {},
         onStatus: {}

@@ -14,9 +14,7 @@ struct NameEditView: View {
     @State private var name = ""
     @State private var loading = true
     @FocusState private var isInputFocused: Bool
-    
-    let onBack: () -> Void
-    
+
     var skipLoad: Bool = false // ← プレビュー用フラグ
 
 
@@ -33,6 +31,7 @@ struct NameEditView: View {
                 HStack{
                     // 戻るボタン（左上）
                     Button(action: {
+                        playSE(fileName: "1tap")
                         isInputFocused = false
                         onClose()
                     }) {
@@ -59,7 +58,7 @@ struct NameEditView: View {
                         Image(.makimono)
                             .resizable()
                             .ignoresSafeArea()
-                            .frame(width: 400, height: 120)
+                            .frame(width: 320, height: 100)
                         
                         TextField("", text: $name)
                             .focused($isInputFocused)
@@ -83,6 +82,7 @@ struct NameEditView: View {
                     }
                     HStack{
                         Button(action: {
+                            playSE(fileName: "Ticket")
                             isInputFocused = false
                             onClose()
                         }) {
@@ -97,6 +97,7 @@ struct NameEditView: View {
                         }
                         
                         Button(action: {
+                            playSE(fileName: "2tap")
                             isInputFocused = false
                             save()
                             onClose()
@@ -124,6 +125,9 @@ struct NameEditView: View {
                 }
             }
             
+        }
+        .onAppear {
+            BGMManager.shared.play(fileName: "ending")
         }
         
     }
@@ -188,7 +192,6 @@ struct NameEditView: View {
     NameEditView(
         userId: "",
         onClose: {},
-        onBack: {},
         skipLoad: true // ← プレビューではロードしない
 
     )

@@ -31,9 +31,11 @@ struct StageSelectView: View {
                 .opacity(0.6)
             
             VStack{
+                Spacer().frame(height: 10)
                 HStack{
                     // 戻るボタン（左上）
                     Button(action: {
+                        playSE(fileName: "1tap")
                         onBack()
                     }) {
                         Image(.backIconWhite)
@@ -49,11 +51,20 @@ struct StageSelectView: View {
             
             VStack (spacing: 20){
                 Spacer().frame(height: 10)
-                Text("\(category.title)")
-                    .font(.largeTitle)
-                    .foregroundStyle(Color.white)
-                    .bold()
-                    .padding()
+                switch category {
+                case .level_1:
+                    Image(.woodLevel1)
+                        .resizable()
+                        .frame(width: 140, height: 60)
+                case .level_2:
+                    Image(.woodLevel2)
+                        .resizable()
+                        .frame(width: 140, height: 60)
+                case .level_3:
+                    Image(.woodLevel3)
+                        .resizable()
+                        .frame(width: 140, height: 60)
+                }
                 
                 ScrollView {
                     LazyVGrid(columns: [GridItem(.adaptive(minimum: 60))], spacing: 20) {
@@ -75,7 +86,6 @@ struct StageSelectView: View {
         .onAppear {
             loadClearedStages()
             stages = loadStages(from: category)
-
         }
     }
     
@@ -122,6 +132,7 @@ private struct StageButton: View {
 
         Button(action: {
             if isUnlocked {
+                playSE(fileName: "2tap")
                 onSelectStage(stage)
             }
         }) {

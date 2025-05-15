@@ -45,6 +45,9 @@ struct FlickDojoGameApp: App {
     var body: some Scene {
         WindowGroup {
             MainView()
+                .onAppear {
+                    BGMManager.shared.play(fileName: "home") // ←共通BGM
+                }
         }
     }
 }

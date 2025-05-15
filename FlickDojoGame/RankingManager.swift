@@ -144,10 +144,6 @@ class RankingManager {
             .document("top")
         
         docRef.getDocument { snapshot, error in
-            if let error = error {
-                completion([])
-                return
-            }
             
             guard let data = snapshot?.data(),
                   let topArray = data["top"] as? [[String: Any]] else {

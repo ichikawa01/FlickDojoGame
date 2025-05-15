@@ -11,12 +11,12 @@ import FirebaseFirestore
 struct NameInputView: View {
     @State private var name = ""
     @FocusState private var isInputFocused: Bool
-
+    
     var userId: String
     
     var onComplete: () -> Void
     let onBack: () -> Void
-
+    
     var body: some View {
         ZStack{
             
@@ -29,6 +29,7 @@ struct NameInputView: View {
                 HStack{
                     // 戻るボタン（左上）
                     Button(action: {
+                        playSE(fileName: "1tap")
                         isInputFocused = false
                         onBack()
                     }) {
@@ -56,7 +57,7 @@ struct NameInputView: View {
                     Image(.makimono)
                         .resizable()
                         .ignoresSafeArea()
-                        .frame(width: 400, height: 120)
+                        .frame(width: 320, height: 100)
                     
                     TextField("", text: $name)
                         .focused($isInputFocused)
@@ -79,6 +80,7 @@ struct NameInputView: View {
                 }
                 
                 Button(action: {
+                    playSE(fileName: "2tap")
                     isInputFocused = false
                     saveUserName(userId: userId, name: name)
                     onComplete()
@@ -95,19 +97,23 @@ struct NameInputView: View {
                 }
             }
             .padding()
-            }
+        }
+        .onAppear {
+            BGMManager.shared.play(fileName: "ending")
+        }
+        .onDisappear {
+            BGMManager.shared.play(fileName: "home")
         }
         
-        
-        
     }
-
+    
     func saveUserName(userId: String, name: String) {
         let db = Firestore.firestore()
         db.collection("users").document(userId).setData([
             "userName": name
         ], merge: true)
     }
+}
 
 
 #Preview {

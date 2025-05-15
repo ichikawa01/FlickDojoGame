@@ -154,9 +154,6 @@ struct MainView: View {
                         userId: userId,
                         onClose: {
                             transition(to: .status)
-                        },
-                        onBack: {
-                            transition(to: .modeSelect)
                         }
                     )
                 }

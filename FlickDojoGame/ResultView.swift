@@ -38,7 +38,7 @@ struct ResultView: View {
                 ZStack{
                     Image(.makimono)
                         .resizable()
-                        .frame(height: 140)
+                        .frame(width:320, height: 120)
                         .ignoresSafeArea()
                     
                     VStack{
@@ -66,6 +66,7 @@ struct ResultView: View {
                     
                     if mode == .timeLimit{
                         Button(action: {
+                            playSE(fileName: "1tap")
                             onRanking()
                         }) {
                             Text("ランキングへ")
@@ -80,6 +81,7 @@ struct ResultView: View {
                     }
                     
                     Button(action: {
+                        playSE(fileName: "1tap")
                         onNext()
                     }) {
                         Text("退場")
@@ -102,21 +104,28 @@ struct ResultView: View {
             }
         }
         .onAppear {
+            BGMManager.shared.play(fileName: "ending")
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                 withAnimation {
+                    playSE(fileName: "1tap")
                     showScore = true
                 }
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                 withAnimation {
+                    playSE(fileName: "1tap")
                     showCharacters = true
                 }
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                 withAnimation {
+                    playSE(fileName: "2tap")
                     showButtons = true
                 }
             }
+        }
+        .onDisappear {
+            BGMManager.shared.play(fileName: "home")
         }
 
         
