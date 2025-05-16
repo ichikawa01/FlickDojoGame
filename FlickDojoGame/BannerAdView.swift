@@ -13,10 +13,10 @@ struct CachedBannerView: UIViewRepresentable {
     static let shared = CachedBannerView()  // ← シングルトンとして保持OK
 
     private static var cachedBanner: GADBannerView?
+    private static var refreshTimer: Timer?
 
     func makeUIView(context: Context) -> GADBannerView {
         if let existingBanner = CachedBannerView.cachedBanner {
-            print("♻️ 再利用バナー")
             return existingBanner
         }
 
@@ -31,16 +31,20 @@ struct CachedBannerView: UIViewRepresentable {
 
             banner.rootViewController = rootVC
             banner.load(GADRequest())
-            print("✅ バナー初回読み込み")
 
+            // バナーをキャッシュ
             CachedBannerView.cachedBanner = banner
+
+            // 1分ごとに再読み込み
+            CachedBannerView.refreshTimer = Timer.scheduledTimer(withTimeInterval: 30, repeats: true) { _ in
+                banner.load(GADRequest())
+            }
+
             return banner
         } else {
-            print("⚠️ rootViewController 取得失敗")
-            return banner // 空でも返す
+            return banner // rootVC 取れなかった場合でも返す
         }
     }
 
     func updateUIView(_ uiView: GADBannerView, context: Context) {}
 }
-

@@ -20,15 +20,12 @@ class AdMobManager: NSObject, GADFullScreenContentDelegate, ObservableObject {
             if let ad = ad {
                 self.rewardAd = ad
                 self.rewardAd?.fullScreenContentDelegate = self
-            } else {
-                print("広告読み込み失敗: \(error?.localizedDescription ?? "不明")")
             }
         }
     }
     
     func showAd(from rootViewController: UIViewController, onReward: @escaping () -> Void) {
         guard let ad = rewardAd else {
-            print("広告が読み込まれていません")
             return
         }
         self.onReward = onReward
