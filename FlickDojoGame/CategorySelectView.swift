@@ -11,7 +11,16 @@ import GoogleMobileAds
 struct CategorySelectView: View {
     
     @State private var flashNoTicket: Bool = false
-    @State private var ticketCount: Int = 5
+    @State private var ticketCount: Int = {
+        let defaults = UserDefaults.standard
+        if defaults.object(forKey: "ticketCount") == nil {
+            return 5 // 初回
+        } else {
+            return defaults.integer(forKey: "ticketCount")
+        }
+    }()
+
+
     
     @State private var isPaused = false
 

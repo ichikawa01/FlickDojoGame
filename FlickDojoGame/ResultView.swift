@@ -1,6 +1,5 @@
 //
 //  ResultView.swift
-//  MyMusic
 //
 //  Created by 市川涼 on 2025/05/06.
 //
@@ -8,12 +7,37 @@
 
 import SwiftUI
 import GoogleMobileAds
+import StoreKit
 
 struct ResultView: View {
     
     @State private var showScore = false
     @State private var showCharacters = false
     @State private var showButtons = false
+    @State private var isSharing = false
+
+    func shareResult() {
+        isSharing = true
+    }
+    
+
+    func requestReview() {
+        if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+            SKStoreReviewController.requestReview(in: scene)
+        }
+    }
+    
+    func trackPlayCountAndMaybeRequestReview() {
+        var playCount = UserDefaults.standard.integer(forKey: "playCount")
+        playCount += 1
+        UserDefaults.standard.set(playCount, forKey: "playCount")
+
+        if playCount == 5 || playCount == 30 {
+            requestReview()
+        }
+    }
+
+
     
     let score: Int
     let characterCount: Int
@@ -24,6 +48,7 @@ struct ResultView: View {
 
 
     var body: some View {
+
         
         ZStack{
             Image(.result)
@@ -60,7 +85,7 @@ struct ResultView: View {
                     }
                 }
                 
-                Spacer().frame(height: 60)
+                Spacer().frame(height: 40)
                                 
                 VStack (spacing: 30) {
                     
@@ -93,6 +118,20 @@ struct ResultView: View {
                         .background(Color.startBtn)
                         .cornerRadius(12)
                     }
+                    Button(action: {
+                        playSE(fileName: "1tap")
+                        shareResult()
+                    }) {
+                        Text("結果を共有")
+                            .padding()
+                            .font(.title3)
+                            .bold()
+                            .frame(width: 160, height: 60)
+                            .foregroundColor(.white)
+                            .background(Color.blue)
+                            .cornerRadius(12)
+                    }
+
                 }
                 .opacity(showButtons ? 1 : 0)
                 .animation(.easeInOut, value: showButtons)
@@ -105,6 +144,7 @@ struct ResultView: View {
         }
         .onAppear {
             BGMManager.shared.play(fileName: "ending")
+            trackPlayCountAndMaybeRequestReview()
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                 withAnimation {
                     playSE(fileName: "1tap")
@@ -127,16 +167,32 @@ struct ResultView: View {
         .onDisappear {
             BGMManager.shared.play(fileName: "home")
         }
-
+        .sheet(isPresented: $isSharing) {
+            let message = "\(score)問クリア！⭐️合計\(characterCount)文字！🔥\nあなたはこの記録超えられる？\nフリックの達人👇\nhttps://apps.apple.com/app/id00000000" // AppStoreURL
+            ShareSheet(activityItems: [message])
+        }
         
     }
+
 }
+
+struct ShareSheet: UIViewControllerRepresentable {
+    let activityItems: [Any]
+    let applicationActivities: [UIActivity]? = nil
+
+    func makeUIViewController(context: Context) -> UIActivityViewController {
+        return UIActivityViewController(activityItems: activityItems, applicationActivities: applicationActivities)
+    }
+
+    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}
+}
+
 
 #Preview {
     ResultView(
         score: 12,
         characterCount: 56,
-        mode: .stageMode,
+        mode: .timeLimit,
         onNext: {},
         onRanking: {}
     )
