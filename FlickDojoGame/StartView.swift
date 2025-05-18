@@ -82,6 +82,13 @@ struct StartView: View {
                 }
             }
         }
+        .onAppear {
+            if soundSettings.isBgmOn {
+                BGMManager.shared.play(fileName: "home")
+            } else {
+                BGMManager.shared.stop()
+            }
+        }
     }
     
     

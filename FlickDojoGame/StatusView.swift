@@ -14,6 +14,7 @@ struct StatusView: View {
     let onRanking:() -> Void
     
     @EnvironmentObject var soundSettings: SoundSettingsManager
+    @ObservedObject var purchaseManager = PurchaseManager.shared
     
     @AppStorage("isBgmOn") private var isBgmOn: Bool = true
     @AppStorage("isSeOn") private var isSeOn: Bool = true
@@ -64,8 +65,36 @@ struct StatusView: View {
                         .bold()
                         .foregroundStyle(Color.black)
                 }
+                                
+                // 課金ボタン
+                HStack {
+                    Button(action: {
+                        Task {
+                            await PurchaseManager.shared.purchaseRemoveAds()
+                        }
+                    }) {
+                        Text("広告を削除（￥160）")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .frame(width: 200, height: 40)
+                            .background(Color.red)
+                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                    }
+                    Button(action: {
+                        Task {
+                            await PurchaseManager.shared.restorePurchases()
+                        }
+                    }) {
+                        Text("購入を復元")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .frame(width: 130, height: 40)
+                            .background(Color.red)
+                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                    }
+                }
                 
-                Spacer().frame(height: 10)
+
                 
                 // ⚙️ ここにBGM・SEスイッチを横並びで追加
                 HStack(spacing: 40) {
@@ -113,8 +142,11 @@ struct StatusView: View {
                 
                 Spacer()
                 
-                CachedBannerView.shared
-                    .frame(width: GADAdSizeLargeBanner.size.width, height: GADAdSizeLargeBanner.size.height)
+                
+                if !purchaseManager.isAdRemoved {
+                    CachedBannerView.shared
+                        .frame(width: GADAdSizeLargeBanner.size.width, height: GADAdSizeLargeBanner.size.height)
+                }
                 
             }
         }

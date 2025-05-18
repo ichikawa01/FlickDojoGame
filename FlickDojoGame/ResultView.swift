@@ -17,6 +17,8 @@ struct ResultView: View {
     @State private var isSharing = false
     
     @EnvironmentObject var soundSettings: SoundSettingsManager
+    @ObservedObject var purchaseManager = PurchaseManager.shared
+
 
     func shareResult() {
         isSharing = true
@@ -140,8 +142,11 @@ struct ResultView: View {
                 
                 Spacer()
                 
-                CachedBannerView.shared
-                    .frame(width: GADAdSizeLargeBanner.size.width, height: GADAdSizeLargeBanner.size.height)
+                
+                if !purchaseManager.isAdRemoved {
+                    CachedBannerView.shared
+                        .frame(width: GADAdSizeLargeBanner.size.width, height: GADAdSizeLargeBanner.size.height)
+                }
             }
         }
         .onAppear {
@@ -213,4 +218,5 @@ struct ShareSheet: UIViewControllerRepresentable {
         onNext: {},
         onRanking: {}
     )
+    
 }

@@ -12,6 +12,8 @@ import GoogleMobileAds
 struct ModeSelectView: View {
     @AppStorage("totalCorrect") var totalCorrect: Int = 0
     @EnvironmentObject var soundSettings: SoundSettingsManager
+    @ObservedObject var purchaseManager = PurchaseManager.shared
+
     
     let onNext: (QuizMode) -> Void
     let onBack: () -> Void
@@ -147,10 +149,20 @@ struct ModeSelectView: View {
                 
                 Spacer()
                 
-                CachedBannerView.shared
-                    .frame(width: GADAdSizeLargeBanner.size.width, height: GADAdSizeLargeBanner.size.height)
+                if !purchaseManager.isAdRemoved {
+                    CachedBannerView.shared
+                        .frame(width: GADAdSizeLargeBanner.size.width, height: GADAdSizeLargeBanner.size.height)
+                }
             }
         }
+        .onAppear {
+            if soundSettings.isBgmOn {
+                BGMManager.shared.play(fileName: "home")
+            } else {
+                BGMManager.shared.stop()
+            }
+        }
+
         
     }
 }

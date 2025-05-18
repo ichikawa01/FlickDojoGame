@@ -56,6 +56,7 @@
 		5F1C22612DD5CB4E008DAAF9 /* Ticket.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C22602DD5CB4E008DAAF9 /* Ticket.mp3 */; };
 		5F1C22632DD5D275008DAAF9 /* loading.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C22622DD5D275008DAAF9 /* loading.mp3 */; };
 		5F1C22652DD99D18008DAAF9 /* SoundSettings Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C22642DD99D18008DAAF9 /* SoundSettings Manager.swift */; };
+		5F1C22672DD9C394008DAAF9 /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C22662DD9C394008DAAF9 /* PurchaseManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,6 +107,7 @@
 		5F1C22602DD5CB4E008DAAF9 /* Ticket.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Ticket.mp3; sourceTree = "<group>"; };
 		5F1C22622DD5D275008DAAF9 /* loading.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = loading.mp3; sourceTree = "<group>"; };
 		5F1C22642DD99D18008DAAF9 /* SoundSettings Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SoundSettings Manager.swift"; sourceTree = "<group>"; };
+		5F1C22662DD9C394008DAAF9 /* PurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +165,7 @@
 				5F1C223E2DD1F4AE008DAAF9 /* Stage.swift */,
 				5F1C22402DD1F4F5008DAAF9 /* StageSelectView.swift */,
 				5F1C22122DCE9EF6008DAAF9 /* QuizMode.swift */,
+				5F1C22662DD9C394008DAAF9 /* PurchaseManager.swift */,
 				5F1C22152DCE9EF6008DAAF9 /* Shogou.swift */,
 				5F1C22132DCE9EF6008DAAF9 /* RankingEntry.swift */,
 				5F1C22142DCE9EF6008DAAF9 /* RankingManager.swift */,
@@ -339,6 +342,7 @@
 				5F1C22432DD1F6B7008DAAF9 /* StageGameView.swift in Sources */,
 				5F1C221D2DCE9EF6008DAAF9 /* NameEditView.swift in Sources */,
 				5F1C22262DCE9EF6008DAAF9 /* CategorySelectView.swift in Sources */,
+				5F1C22672DD9C394008DAAF9 /* PurchaseManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,6 +473,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FlickDojoGame/Preview Content\"";
@@ -490,6 +495,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ryoichikawa.FlickDojoGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -501,6 +507,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FlickDojoGame/Preview Content\"";
@@ -522,6 +529,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ryoichikawa.FlickDojoGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

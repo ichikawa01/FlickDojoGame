@@ -12,6 +12,8 @@ struct CategorySelectView: View {
     
     @State private var flashNoTicket: Bool = false
     @EnvironmentObject var soundSettings: SoundSettingsManager
+    @ObservedObject var purchaseManager = PurchaseManager.shared
+
     @State private var ticketCount: Int = {
         let defaults = UserDefaults.standard
         if defaults.object(forKey: "ticketCount") == nil {
@@ -43,6 +45,11 @@ struct CategorySelectView: View {
             ticketCount = 5
             UserDefaults.standard.set(ticketCount, forKey: ticketKey)
         }
+    }
+    
+    func giveReward() {
+        ticketCount = 5
+        UserDefaults.standard.set(ticketCount, forKey: ticketKey)
     }
     
     var body: some View {
@@ -97,7 +104,11 @@ struct CategorySelectView: View {
                 if selectedMode == .timeLimit {
                     Button(action: {
                         playSE(fileName: "1tap")
-                        isPaused = true
+                        if !purchaseManager.isAdRemoved {
+                            isPaused = true
+                        } else {
+                            giveReward()
+                        }
                     }) {
                         Text("チケット全回復")
                             .foregroundColor(.white)
@@ -165,8 +176,10 @@ struct CategorySelectView: View {
                 
                 Spacer()
                 
-                CachedBannerView.shared
-                    .frame(width: GADAdSizeLargeBanner.size.width, height: GADAdSizeLargeBanner.size.height)
+                if !purchaseManager.isAdRemoved {
+                    CachedBannerView.shared
+                        .frame(width: GADAdSizeLargeBanner.size.width, height: GADAdSizeLargeBanner.size.height)
+                }
                 
             }
             
@@ -198,9 +211,9 @@ struct CategorySelectView: View {
                                 .cornerRadius(12)
                         }
                         Button(action: {
-                                playSE(fileName: "2tap")
-                            showRewardAd()
+                            playSE(fileName: "2tap")
                             isPaused = false
+                            showRewardAd()
                         }) {
                             Text("動画を見る")
                                 .font(.title3)
@@ -222,6 +235,11 @@ struct CategorySelectView: View {
         .onAppear {
             AdMobManager.shared.loadAd()
             restoreTicketIfNeeded()
+            if soundSettings.isBgmOn {
+                BGMManager.shared.play(fileName: "home")
+            } else {
+                BGMManager.shared.stop()
+            }
         }
     }
     
