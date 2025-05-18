@@ -11,15 +11,16 @@ struct StageSelectView: View {
     let category: QuizCategory
     let onSelectStage: (Stage) -> Void
     let onBack: () -> Void
-
+    
     @State private var clearedStages: Set<Int> = []
     @State private var stages: [Stage] = []
     
+    @EnvironmentObject var soundSettings: SoundSettingsManager
     var latestUnlockedStage: Int {
         (clearedStages.max() ?? 0) + 1
     }
-
-
+    
+    
     var body: some View {
         
         ZStack{
@@ -35,7 +36,7 @@ struct StageSelectView: View {
                 HStack{
                     // 戻るボタン（左上）
                     Button(action: {
-                        playSE(fileName: "1tap")
+                            playSE(fileName: "1tap")
                         onBack()
                     }) {
                         Image(.backIconWhite)
@@ -119,20 +120,23 @@ struct StageSelectView: View {
 
 // StageSelectView 本体の下に追加（ファイルはそのまま）
 private struct StageButton: View {
+    
+    @EnvironmentObject var soundSettings: SoundSettingsManager
+    
     let stage: Stage
     let category: QuizCategory
     let clearedStages: Set<Int>
     let latestUnlockedStage: Int
     let onSelectStage: (Stage) -> Void
-
+    
     var body: some View {
         let isCleared = clearedStages.contains(stage.id)
         let isUnlocked = stage.id <= latestUnlockedStage
         let isLatest = stage.id == latestUnlockedStage && !isCleared
-
+        
         Button(action: {
             if isUnlocked {
-                playSE(fileName: "2tap")
+                    playSE(fileName: "2tap")
                 onSelectStage(stage)
             }
         }) {
@@ -148,7 +152,7 @@ private struct StageButton: View {
         }
         .disabled(!isUnlocked)
     }
-
+    
     func backgroundColor(for isCleared: Bool, _ isLatest: Bool, _ isUnlocked: Bool) -> Color {
         if isCleared {
             switch category {

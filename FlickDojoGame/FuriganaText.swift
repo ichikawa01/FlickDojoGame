@@ -19,6 +19,7 @@ struct FuriganaText: View {
                 .font(.largeTitle)
                 .foregroundColor(.black)
                 .fontWeight(.medium)
+                .multilineTextAlignment(.center)
 
             HStack(spacing: 0) {
                 ForEach(Array(reading.enumerated()), id: \.offset) { index, char in
@@ -26,6 +27,7 @@ struct FuriganaText: View {
                         .foregroundColor(index < correctCount ? .pink : .black)
                         .font(.title2)
                         .fontWeight(.medium)
+
                 }
             }
         }

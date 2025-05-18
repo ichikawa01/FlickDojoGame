@@ -15,12 +15,14 @@ struct ResultView: View {
     @State private var showCharacters = false
     @State private var showButtons = false
     @State private var isSharing = false
+    
+    @EnvironmentObject var soundSettings: SoundSettingsManager
 
     func shareResult() {
         isSharing = true
     }
     
-
+    
     func requestReview() {
         if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
             SKStoreReviewController.requestReview(in: scene)
@@ -31,13 +33,13 @@ struct ResultView: View {
         var playCount = UserDefaults.standard.integer(forKey: "playCount")
         playCount += 1
         UserDefaults.standard.set(playCount, forKey: "playCount")
-
+        
         if playCount == 5 || playCount == 30 {
             requestReview()
         }
     }
-
-
+    
+    
     
     let score: Int
     let characterCount: Int
@@ -45,10 +47,10 @@ struct ResultView: View {
     
     let onNext: () -> Void
     let onRanking: () -> Void
-
-
+    
+    
     var body: some View {
-
+        
         
         ZStack{
             Image(.result)
@@ -86,12 +88,12 @@ struct ResultView: View {
                 }
                 
                 Spacer().frame(height: 40)
-                                
+                
                 VStack (spacing: 30) {
                     
                     if mode == .timeLimit{
                         Button(action: {
-                            playSE(fileName: "1tap")
+                                    playSE(fileName: "1tap")
                             onRanking()
                         }) {
                             Text("ランキングへ")
@@ -106,20 +108,20 @@ struct ResultView: View {
                     }
                     
                     Button(action: {
-                        playSE(fileName: "1tap")
+                            playSE(fileName: "1tap")
                         onNext()
                     }) {
                         Text("退場")
-                        .padding()
-                        .font(.title)
-                        .bold()
-                        .frame(width: 160, height: 60)
-                        .foregroundColor(.white)
-                        .background(Color.startBtn)
-                        .cornerRadius(12)
+                            .padding()
+                            .font(.title)
+                            .bold()
+                            .frame(width: 160, height: 60)
+                            .foregroundColor(.white)
+                            .background(Color.startBtn)
+                            .cornerRadius(12)
                     }
                     Button(action: {
-                        playSE(fileName: "1tap")
+                            playSE(fileName: "1tap")
                         shareResult()
                     }) {
                         Text("結果を共有")
@@ -131,41 +133,56 @@ struct ResultView: View {
                             .background(Color.blue)
                             .cornerRadius(12)
                     }
-
+                    
                 }
                 .opacity(showButtons ? 1 : 0)
                 .animation(.easeInOut, value: showButtons)
                 
                 Spacer()
-
+                
                 CachedBannerView.shared
                     .frame(width: GADAdSizeLargeBanner.size.width, height: GADAdSizeLargeBanner.size.height)
             }
         }
         .onAppear {
-            BGMManager.shared.play(fileName: "ending")
+            if soundSettings.isBgmOn {
+                BGMManager.shared.play(fileName: "ending")
+            } else {
+                BGMManager.shared.stop()
+            }
             trackPlayCountAndMaybeRequestReview()
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                 withAnimation {
-                    playSE(fileName: "1tap")
+                        playSE(fileName: "1tap")
                     showScore = true
                 }
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                 withAnimation {
-                    playSE(fileName: "1tap")
+                        playSE(fileName: "1tap")
                     showCharacters = true
                 }
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                 withAnimation {
-                    playSE(fileName: "2tap")
+                        playSE(fileName: "2tap")
                     showButtons = true
                 }
             }
         }
+        .onChange(of: soundSettings.isBgmOn) {
+            if soundSettings.isBgmOn {
+                BGMManager.shared.play(fileName: "ending")
+            } else {
+                BGMManager.shared.stop()
+            }
+        }
         .onDisappear {
-            BGMManager.shared.play(fileName: "home")
+            if soundSettings.isBgmOn {
+                BGMManager.shared.play(fileName: "home")
+            } else {
+                BGMManager.shared.stop()
+            }
         }
         .sheet(isPresented: $isSharing) {
             let message = "\(score)問クリア！⭐️合計\(characterCount)文字！🔥\nあなたはこの記録超えられる？\nフリックの達人👇\nhttps://apps.apple.com/app/id00000000" // AppStoreURL
@@ -173,17 +190,17 @@ struct ResultView: View {
         }
         
     }
-
+    
 }
 
 struct ShareSheet: UIViewControllerRepresentable {
     let activityItems: [Any]
     let applicationActivities: [UIActivity]? = nil
-
+    
     func makeUIViewController(context: Context) -> UIActivityViewController {
         return UIActivityViewController(activityItems: activityItems, applicationActivities: applicationActivities)
     }
-
+    
     func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}
 }
 

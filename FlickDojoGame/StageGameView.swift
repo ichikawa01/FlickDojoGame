@@ -11,7 +11,10 @@ struct StageGameView: View {
     
     let stage: Stage
     let onFinish: (Int, Int) -> Void
+    
+    @EnvironmentObject var soundSettings: SoundSettingsManager
 
+    
     @State private var currentWordIndex = 0
     @State private var currentCharIndex = 0
     @State private var totalCharNum = 0
@@ -24,11 +27,11 @@ struct StageGameView: View {
     @State private var isAllClear = false
     @State private var timerStarted = false
     @State private var isPaused = false
-
+    
     @FocusState private var isInputFocused: Bool
     
     @State private var timer: Timer? = nil
-
+    
     init(stage: Stage, onFinish: @escaping (Int, Int) -> Void) {
         self.stage = stage
         self.onFinish = onFinish
@@ -37,8 +40,8 @@ struct StageGameView: View {
     var wordList: [WordItem] {
         stage.words
     }
-
-
+    
+    
     var body: some View {
         ZStack {
             Image(.gameback)
@@ -53,7 +56,7 @@ struct StageGameView: View {
                     // 終了ボタン
                     if !isFinished{
                         Button(action: {
-                            playSE(fileName: "1tap")
+                                playSE(fileName: "1tap")
                             isPaused = true
                             timer?.invalidate()
                             isInputFocused = false
@@ -72,10 +75,10 @@ struct StageGameView: View {
                 }
                 Spacer()
             }
-
+            
             VStack(spacing: 20) {
                 Spacer().frame(height: 50)
-
+                
                 if !isFinished {
                     if !timerStarted {
                         Text("文字を入力したらスタート！")
@@ -84,14 +87,14 @@ struct StageGameView: View {
                             .foregroundColor(.white)
                             .frame(height: 1)
                     }
-
+                    
                     // 少数表示
                     Text(String(format: "残り時間: %.1f 秒", timeRemaining))
                         .font(.title2)
                         .bold()
                         .foregroundColor(.white)
                 }
-
+                
                 if isFinished {
                     
                     if isAllClear {
@@ -108,7 +111,7 @@ struct StageGameView: View {
                     ZStack{
                         Image(.makimono)
                             .resizable()
-                            .frame(width: 360, height: 120)
+                            .frame(width: 360, height: 160)
                             .ignoresSafeArea()
                         // 問題の出力
                         FuriganaText(
@@ -120,7 +123,7 @@ struct StageGameView: View {
                     
                     // 入力された文字の出力
                     HStack(spacing: 4) {
-
+                        
                         if !wrongInput.isEmpty {
                             Text(wrongInput)
                                 .foregroundColor(.red)
@@ -131,7 +134,7 @@ struct StageGameView: View {
                             
                         }
                     }
-
+                    
                     TextField("", text: $userInput)
                         .focused($isInputFocused)
                         .onSubmit { isInputFocused = true }
@@ -159,7 +162,7 @@ struct StageGameView: View {
                     
                     HStack(spacing: 20) {
                         Button(action: {
-                            playSE(fileName: "Ticket")
+                                playSE(fileName: "Ticket")
                             isInputFocused = true
                             isPaused = false
                             startTimer()
@@ -179,12 +182,12 @@ struct StageGameView: View {
                             endGame()
                         }) {
                             Text("終了")
-                            .font(.title)
-                            .padding()
-                            .frame(width: 150)
-                            .background(Color.red)
-                            .foregroundColor(.white)
-                            .cornerRadius(12)
+                                .font(.title)
+                                .padding()
+                                .frame(width: 150)
+                                .background(Color.red)
+                                .foregroundColor(.white)
+                                .cornerRadius(12)
                         }
                     }
                     Spacer()
@@ -197,36 +200,36 @@ struct StageGameView: View {
         }
         .onChange(of: isFinished) {
             if isFinished {
-                playSE(fileName: "2tap")
+                    playSE(fileName: "2tap")
             }
         }
         .onAppear(){
             BGMManager.shared.stop()
         }
     }
-
+    
     func checkInput() {
         guard !isFinished, currentWordIndex < stage.words.count else { return }
         
         let currentWord = wordList[currentWordIndex]
         let currentReading = currentWord.reading
         let expectedChar = currentReading[currentReading.index(currentReading.startIndex, offsetBy: currentCharIndex)]
-
+        
         if !timerStarted {
             startTimer()
             timerStarted = true
         }
-
+        
         if userInput.suffix(1) == String(expectedChar) {
             currentCharIndex += 1
             totalCharNum += 1
             userInput = ""
             wrongInput = ""
-
+            
             if currentCharIndex >= currentWord.reading.count {
                 currentWordIndex += 1
                 currentCharIndex = 0
-
+                
                 if currentWordIndex >= wordList.count {
                     isAllClear = true
                     endGame()
@@ -236,7 +239,7 @@ struct StageGameView: View {
             wrongInput = userInput
         }
     }
-
+    
     func startTimer() {
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
@@ -249,26 +252,26 @@ struct StageGameView: View {
             }
         }
     }
-
-
+    
+    
     func endGame() {
         isFinished = true
         isInputFocused = false
         timer?.invalidate()
-
+        
         if isAllClear {
             saveClearState()
         }
-
+        
         let previousTotal = UserDefaults.standard.integer(forKey: "totalCorrect")
         let newTotal = previousTotal + totalCharNum
         UserDefaults.standard.set(newTotal, forKey: "totalCorrect")
-
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             onFinish(currentWordIndex, totalCharNum)
         }
     }
-
+    
     func saveClearState() {
         let key = "clearedStages_\(stage.category.rawValue)"
         var cleared = Set(UserDefaults.standard.array(forKey: key) as? [Int] ?? [])

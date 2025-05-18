@@ -14,6 +14,8 @@ struct RankingView: View {
     @State private var rankings: [RankingEntry] = []
     @State private var isLoading = false
     
+    @EnvironmentObject var soundSettings: SoundSettingsManager
+
     var currentUserId: String? {
         Auth.auth().currentUser?.uid
     }
@@ -35,7 +37,7 @@ struct RankingView: View {
                 HStack{
                     // 戻るボタン（左上）
                     Button(action: {
-                        playSE(fileName: "1tap")
+                            playSE(fileName: "1tap")
                         onBack()
                     }) {
                         Image(.backIconWhite)
@@ -51,7 +53,7 @@ struct RankingView: View {
                         Text("9:00に更新")
                             .padding(.trailing, 15)
                     }
-
+                    
                 }
                 
                 // モード選択
@@ -72,7 +74,7 @@ struct RankingView: View {
                 }
                 .pickerStyle(SegmentedPickerStyle())
                 .padding(.horizontal)
-
+                
                 
                 // ランキング読み込み
                 Button(action: {
@@ -86,11 +88,27 @@ struct RankingView: View {
                 
                 // ランキング一覧
                 if isLoading {
-                    Color.white.opacity(0.6)
-                        .ignoresSafeArea()
-                    ProgressView()
-                        .padding()
-                } else if rankings.isEmpty {
+                    ZStack {
+                        // 背景の暗めオーバーレイ（画面全体）
+                        Color.black.opacity(0.3)
+                            .ignoresSafeArea()
+                        
+                        // 中央の白いボックス
+                        VStack(spacing: 16) {
+                            ProgressView()
+                                .progressViewStyle(CircularProgressViewStyle())
+                                .scaleEffect(1.5)
+                            Text("読み込み中...")
+                                .font(.headline)
+                                .foregroundColor(.black)
+                        }
+                        .padding(30)
+                        .background(Color.white)
+                        .cornerRadius(16)
+                        .shadow(radius: 10)
+                    }
+                }
+                else if rankings.isEmpty {
                     Text("ランキングが見つかりません")
                         .foregroundColor(.gray)
                         .padding()
@@ -98,19 +116,36 @@ struct RankingView: View {
                     List {
                         ForEach(Array(rankings.prefix(100).enumerated()), id: \.element.userId) { index, entry in
                             RankingRowView(index: index, entry: entry, currentUserId: currentUserId)
+                                .listRowInsets(EdgeInsets(top: 4, leading: 5, bottom: 4, trailing: 5))
+                                .frame(minHeight: 20)
                         }
                     }
                     .scrollContentBackground(.hidden) // ← これで背景を消す！
-
+                    
                 }
             }
             .navigationTitle("ランキング")
             .onAppear {
                 loadRankings()
-                BGMManager.shared.play(fileName: "ending")
+                if soundSettings.isBgmOn {
+                    BGMManager.shared.play(fileName: "ending")
+                } else{
+                    BGMManager.shared.stop()
+                }
+            }
+            .onChange(of: soundSettings.isBgmOn) {
+                if soundSettings.isBgmOn {
+                    BGMManager.shared.play(fileName: "ending")
+                } else {
+                    BGMManager.shared.stop()
+                }
             }
             .onDisappear {
-                BGMManager.shared.play(fileName: "home")
+                if soundSettings.isBgmOn {
+                    BGMManager.shared.play(fileName: "home")
+                } else {
+                    BGMManager.shared.stop()
+                }
             }
             .onChange(of: selectedMode) { loadRankings() }
             .onChange(of: selectedPeriod) { loadRankings() }
@@ -118,16 +153,22 @@ struct RankingView: View {
         
         
     }
-        
+    
     func loadRankings() {
-            isLoading = true
-            RankingManager.shared.fetchTopRankings(mode: selectedMode, period: selectedPeriod) { result in
+        isLoading = true
+        let minLoadingDuration: TimeInterval = 0.3
+        let startTime = Date()
+        
+        RankingManager.shared.fetchTopRankings(mode: selectedMode, period: selectedPeriod) { result in
+            let elapsed = Date().timeIntervalSince(startTime)
+            let delay = max(0, minLoadingDuration - elapsed)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
                 rankings = result
                 isLoading = false
             }
         }
-    
-    
+    }
 }
 
 #Preview {

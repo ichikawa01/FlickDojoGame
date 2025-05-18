@@ -12,6 +12,7 @@ struct NameInputView: View {
     @State private var name = ""
     @FocusState private var isInputFocused: Bool
     
+    @EnvironmentObject var soundSettings: SoundSettingsManager
     var userId: String
     
     var onComplete: () -> Void
@@ -29,7 +30,7 @@ struct NameInputView: View {
                 HStack{
                     // 戻るボタン（左上）
                     Button(action: {
-                        playSE(fileName: "1tap")
+                            playSE(fileName: "1tap")
                         isInputFocused = false
                         onBack()
                     }) {
@@ -80,7 +81,7 @@ struct NameInputView: View {
                 }
                 
                 Button(action: {
-                    playSE(fileName: "2tap")
+                        playSE(fileName: "2tap")
                     isInputFocused = false
                     saveUserName(userId: userId, name: name)
                     onComplete()
@@ -97,12 +98,6 @@ struct NameInputView: View {
                 }
             }
             .padding()
-        }
-        .onAppear {
-            BGMManager.shared.play(fileName: "ending")
-        }
-        .onDisappear {
-            BGMManager.shared.play(fileName: "home")
         }
         
     }

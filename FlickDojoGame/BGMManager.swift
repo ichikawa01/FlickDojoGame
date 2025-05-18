@@ -18,7 +18,7 @@ class BGMManager: ObservableObject {
 
     func play(fileName: String) {
         // 同じBGMなら再生し直さない
-        if currentFileName == fileName {
+        if currentFileName == fileName, player?.isPlaying == true {
             return
         }
         stop()
@@ -41,5 +41,10 @@ class BGMManager: ObservableObject {
         player?.stop()
         player = nil
         currentFileName = nil
+    }
+    func resume() {
+        if let currentFileName {
+            play(fileName: currentFileName)
+        }
     }
 }

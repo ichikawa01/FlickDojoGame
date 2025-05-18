@@ -26,6 +26,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct FlickDojoGameApp: App {
         
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    @StateObject private var soundSettings = SoundSettingsManager.shared
+
     
     init() {
         GADMobileAds.sharedInstance().start(completionHandler: nil)
@@ -45,9 +47,7 @@ struct FlickDojoGameApp: App {
     var body: some Scene {
         WindowGroup {
             MainView()
-                .onAppear {
-                    BGMManager.shared.play(fileName: "home") // ←共通BGM
-                }
+                .environmentObject(soundSettings)
         }
     }
 }

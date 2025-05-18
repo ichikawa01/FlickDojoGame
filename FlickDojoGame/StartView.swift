@@ -16,11 +16,13 @@ struct StartView: View {
     @State private var userId: String? = nil
     @AppStorage("hasEnteredName") private var hasEnteredName = false
     
+    @EnvironmentObject var soundSettings: SoundSettingsManager
+    
     @State private var selectedCategory: QuizCategory = .level_1
     @State private var selectedMode: QuizMode = .timeLimit
     
     let onNext: () -> Void
-        
+    
     var body: some View {
         if isEnteringName, let uid = userId {
             NameInputView (
@@ -38,7 +40,7 @@ struct StartView: View {
             mainStartView
         }
     }
-
+    
     
     var mainStartView: some View {
         ZStack {
@@ -47,14 +49,14 @@ struct StartView: View {
             Image(.flickMeijin)
                 .resizable()
                 .ignoresSafeArea()
-
+            
             VStack(spacing: 20) {
                 
                 Spacer().frame(height: 330)
-
+                
                 // 初回は名前の入力、次回以降はonNext()
                 Button(action: {
-                    playSE(fileName: "2tap")
+                        playSE(fileName: "2tap")
                     AuthManager.shared.signInIfNeeded { uid in
                         self.userId = uid
                         if let uid = userId {
@@ -74,18 +76,10 @@ struct StartView: View {
                 }) {
                     Image(.woodStart)
                         .resizable()
-                        .frame(width: 210, height: 100)
-//                    Text("挑戦")
-//                        .font(.largeTitle)
-//                        .foregroundColor(.white)
-//                        .bold()
-//                        .padding()
-//                        .frame(width: 200, height: 60)
-//                        .background(Color.startBtn)
-//                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                        .frame(width: 147, height: 70)
+                    
+                    
                 }
-                
-                
             }
         }
     }
@@ -95,7 +89,7 @@ struct StartView: View {
     func checkIfUserNameExists(userId: String, completion: @escaping (Bool) -> Void) {
         let db = Firestore.firestore()
         let docRef = db.collection("users").document(userId)
-
+        
         docRef.getDocument { document, error in
             if let document = document, document.exists {
                 let name = document.data()?["userName"] as? String
@@ -105,11 +99,4 @@ struct StartView: View {
             }
         }
     }
-
 }
-
-#Preview {
-    StartView(
-        onNext: {})
-}
-

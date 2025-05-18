@@ -10,16 +10,17 @@ import GoogleMobileAds
 
 
 struct ModeSelectView: View {
-    @AppStorage("totalCorrect") var totalCorrect: Int = 200
+    @AppStorage("totalCorrect") var totalCorrect: Int = 0
+    @EnvironmentObject var soundSettings: SoundSettingsManager
     
     let onNext: (QuizMode) -> Void
     let onBack: () -> Void
     let onStatus: () -> Void
-
+    
     
     var body: some View {
         ZStack{
-
+            
             //背景
             Image(.flickMeijin)
                 .resizable()
@@ -126,6 +127,7 @@ struct ModeSelectView: View {
                 ForEach(QuizMode.allCases, id: \.self) { mode in
                     Button(action: {
                         playSE(fileName: "1tap")
+                        
                         onNext(mode)
                     }) {
                         switch mode {
@@ -140,7 +142,7 @@ struct ModeSelectView: View {
                                 .frame(width: 150, height: 70)
                         }
                     }
-
+                    
                 }
                 
                 Spacer()

@@ -55,6 +55,7 @@
 		5F1C225F2DD5C838008DAAF9 /* SEManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C225E2DD5C838008DAAF9 /* SEManager.swift */; };
 		5F1C22612DD5CB4E008DAAF9 /* Ticket.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C22602DD5CB4E008DAAF9 /* Ticket.mp3 */; };
 		5F1C22632DD5D275008DAAF9 /* loading.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C22622DD5D275008DAAF9 /* loading.mp3 */; };
+		5F1C22652DD99D18008DAAF9 /* SoundSettings Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C22642DD99D18008DAAF9 /* SoundSettings Manager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,6 +105,7 @@
 		5F1C225E2DD5C838008DAAF9 /* SEManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEManager.swift; sourceTree = "<group>"; };
 		5F1C22602DD5CB4E008DAAF9 /* Ticket.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Ticket.mp3; sourceTree = "<group>"; };
 		5F1C22622DD5D275008DAAF9 /* loading.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = loading.mp3; sourceTree = "<group>"; };
+		5F1C22642DD99D18008DAAF9 /* SoundSettings Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SoundSettings Manager.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +171,7 @@
 				5F1C220D2DCE9EF6008DAAF9 /* ResultView.swift */,
 				5F1C22092DCE9EF5008DAAF9 /* ScoreManager.swift */,
 				5F1C22052DCE9EF5008DAAF9 /* StatusView.swift */,
+				5F1C22642DD99D18008DAAF9 /* SoundSettings Manager.swift */,
 				5F1C22072DCE9EF5008DAAF9 /* UserManager.swift */,
 				5F1C22162DCE9EF6008DAAF9 /* WordLoader.swift */,
 				5F1C21EC2DCE9C46008DAAF9 /* Assets.xcassets */,
@@ -306,6 +309,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F1C22652DD99D18008DAAF9 /* SoundSettings Manager.swift in Sources */,
 				5F1C22202DCE9EF6008DAAF9 /* NameInputView.swift in Sources */,
 				5F1C22252DCE9EF6008DAAF9 /* RankingView.swift in Sources */,
 				5F1C225F2DD5C838008DAAF9 /* SEManager.swift in Sources */,

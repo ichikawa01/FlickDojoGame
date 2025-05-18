@@ -13,11 +13,12 @@ import FirebaseAuth
 
 struct GameView: View {
     
+    @EnvironmentObject var soundSettings: SoundSettingsManager
     @State private var currentWordIndex = 0
     @State private var currentCharIndex = 0
     @State private var totalCharNum = 0
     @State private var timeRemaining = 20.0
-
+    
     @State private var userInput = ""
     @State private var wrongInput = ""
     
@@ -26,7 +27,7 @@ struct GameView: View {
     @State private var isAllClear = false
     @State private var timerStarted = false
     @State private var isPaused = false
-
+    
     @FocusState private var isInputFocused: Bool
     
     @State private var timer: Timer? = nil
@@ -79,7 +80,7 @@ struct GameView: View {
                 }
                 Spacer()
             }
-
+            
             VStack(spacing: 20) {
                 
                 Spacer().frame(height: 50)
@@ -120,7 +121,7 @@ struct GameView: View {
                     ZStack{
                         Image(.makimono)
                             .resizable()
-                            .frame(width: 360, height: 120)
+                            .frame(width: 360, height: 160)
                             .ignoresSafeArea()
                         // 問題の出力
                         FuriganaText(
@@ -129,10 +130,10 @@ struct GameView: View {
                             correctCount: currentCharIndex
                         )
                     }
-
+                    
                     // 入力された文字の出力
                     HStack(spacing: 4) {
-
+                        
                         if !wrongInput.isEmpty {
                             Text(wrongInput)
                                 .foregroundColor(.red)
@@ -143,7 +144,7 @@ struct GameView: View {
                             
                         }
                     }
-
+                    
                     // キーボード関連
                     TextField("", text: $userInput)
                         .focused($isInputFocused)
@@ -160,7 +161,7 @@ struct GameView: View {
                                 isInputFocused = true
                             }
                         }
-
+                    
                 }
             }
             .padding()
@@ -216,12 +217,12 @@ struct GameView: View {
             BGMManager.shared.stop()
         }
     }
-
+    
     //
     var correctPart: String {
         String(wordList[currentWordIndex].reading.prefix(currentCharIndex))
     }
-
+    
     // 入力された文字が正しいか判定
     func checkInput() {
         guard !isFinished, currentWordIndex < wordList.count else { return }
@@ -240,7 +241,7 @@ struct GameView: View {
             totalCharNum += 1
             userInput = ""
             wrongInput = ""
-
+            
             if currentCharIndex >= currentReading.count {
                 currentWordIndex += 1
                 currentCharIndex = 0
@@ -268,15 +269,15 @@ struct GameView: View {
             }
         }
     }
-
-
+    
+    
     
     // ゲーム終了（全問正解、時間切れ）
     func endGame() {
         isFinished = true
         isInputFocused = false
         timer?.invalidate()
-                
+        
         // 累計正解数の保存
         let previousTotal = UserDefaults.standard.integer(forKey: "totalCorrect")
         let newTotal = previousTotal + totalCharNum
@@ -293,7 +294,7 @@ struct GameView: View {
                     case .level_3: return .level_3
                     }
                 }()
-
+                
                 RankingManager.shared.submitScore(
                     userId: userId,
                     userName: name,
@@ -302,13 +303,13 @@ struct GameView: View {
                 )
             }
         }
-
-
+        
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             onFinish(currentWordIndex, totalCharNum)
-
+            
         }
-
+        
     }
     
 }

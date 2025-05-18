@@ -14,10 +14,11 @@ struct NameEditView: View {
     @State private var name = ""
     @State private var loading = true
     @FocusState private var isInputFocused: Bool
-
+    
+    @EnvironmentObject var soundSettings: SoundSettingsManager
     var skipLoad: Bool = false // ← プレビュー用フラグ
-
-
+    
+    
     var body: some View {
         
         ZStack{
@@ -31,7 +32,7 @@ struct NameEditView: View {
                 HStack{
                     // 戻るボタン（左上）
                     Button(action: {
-                        playSE(fileName: "1tap")
+                            playSE(fileName: "1tap")
                         isInputFocused = false
                         onClose()
                     }) {
@@ -53,7 +54,7 @@ struct NameEditView: View {
                         .font(.largeTitle)
                         .bold()
                         .foregroundStyle(Color.black)
-            
+                    
                     ZStack{
                         Image(.makimono)
                             .resizable()
@@ -82,7 +83,7 @@ struct NameEditView: View {
                     }
                     HStack{
                         Button(action: {
-                            playSE(fileName: "Ticket")
+                                playSE(fileName: "Ticket")
                             isInputFocused = false
                             onClose()
                         }) {
@@ -97,7 +98,7 @@ struct NameEditView: View {
                         }
                         
                         Button(action: {
-                            playSE(fileName: "2tap")
+                                playSE(fileName: "2tap")
                             isInputFocused = false
                             save()
                             onClose()
@@ -127,11 +128,22 @@ struct NameEditView: View {
             
         }
         .onAppear {
-            BGMManager.shared.play(fileName: "ending")
+            if soundSettings.isBgmOn {
+                BGMManager.shared.play(fileName: "ending")
+            } else {
+                BGMManager.shared.stop()
+            }
+        }
+        .onChange(of: soundSettings.isBgmOn) {
+            if soundSettings.isBgmOn {
+                BGMManager.shared.play(fileName: "ending")
+            } else {
+                BGMManager.shared.stop()
+            }
         }
         
     }
-
+    
     func load() {
         let db = Firestore.firestore()
         db.collection("users").document(userId).getDocument { doc, _ in
@@ -141,7 +153,7 @@ struct NameEditView: View {
             loading = false
         }
     }
-
+    
     func save() {
         let db = Firestore.firestore()
         let now = Date()
@@ -185,7 +197,7 @@ struct NameEditView: View {
         dateFormatter.dateFormat = format
         return dateFormatter.string(from: date)
     }
-
+    
 }
 
 #Preview {
@@ -193,6 +205,6 @@ struct NameEditView: View {
         userId: "",
         onClose: {},
         skipLoad: true // ← プレビューではロードしない
-
+        
     )
 }

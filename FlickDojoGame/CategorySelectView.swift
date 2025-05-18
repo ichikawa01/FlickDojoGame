@@ -11,6 +11,7 @@ import GoogleMobileAds
 struct CategorySelectView: View {
     
     @State private var flashNoTicket: Bool = false
+    @EnvironmentObject var soundSettings: SoundSettingsManager
     @State private var ticketCount: Int = {
         let defaults = UserDefaults.standard
         if defaults.object(forKey: "ticketCount") == nil {
@@ -19,11 +20,11 @@ struct CategorySelectView: View {
             return defaults.integer(forKey: "ticketCount")
         }
     }()
-
-
+    
+    
     
     @State private var isPaused = false
-
+    
     let selectedMode: QuizMode
     
     let onNext: (QuizCategory) -> Void
@@ -32,7 +33,7 @@ struct CategorySelectView: View {
     
     let ticketKey = "ticketCount"
     let lastResetKey = "lastResetDate"
-
+    
     func showRewardAd() {
         guard let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
               let rootVC = scene.windows.first?.rootViewController else {
@@ -124,14 +125,14 @@ struct CategorySelectView: View {
                     Button(action: {
                         
                         if selectedMode == .timeLimit && ticketCount > 0 {
-                            playSE(fileName: "1tap")
+                                playSE(fileName: "1tap")
                             ticketCount -= 1
                             UserDefaults.standard.set(ticketCount, forKey: ticketKey)
                             onNext(category)
                             
                         } else if selectedMode == .timeLimit {
                             withAnimation {
-                                playSE(fileName: "Ticket")
+                                    playSE(fileName: "Ticket")
                                 flashNoTicket = true
                             }
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
@@ -140,7 +141,7 @@ struct CategorySelectView: View {
                                 }
                             }
                         } else {
-                            playSE(fileName: "1tap")
+                                playSE(fileName: "1tap")
                             onNext(category)
                         }
                         
@@ -185,7 +186,7 @@ struct CategorySelectView: View {
                     
                     HStack(spacing: 20) {
                         Button(action: {
-                            playSE(fileName: "Ticket")
+                                playSE(fileName: "Ticket")
                             isPaused = false
                         }) {
                             Text("キャンセル")
@@ -197,7 +198,7 @@ struct CategorySelectView: View {
                                 .cornerRadius(12)
                         }
                         Button(action: {
-                            playSE(fileName: "2tap")
+                                playSE(fileName: "2tap")
                             showRewardAd()
                             isPaused = false
                         }) {

@@ -13,6 +13,11 @@ struct StatusView: View {
     let onEditName: () -> Void
     let onRanking:() -> Void
     
+    @EnvironmentObject var soundSettings: SoundSettingsManager
+    
+    @AppStorage("isBgmOn") private var isBgmOn: Bool = true
+    @AppStorage("isSeOn") private var isSeOn: Bool = true
+    
     var body: some View {
         ZStack {
             // 背景
@@ -24,8 +29,12 @@ struct StatusView: View {
                 HStack{
                     // 戻るボタン（左上）
                     Button(action: {
-                        playSE(fileName: "1tap")
-                        BGMManager.shared.play(fileName: "home")
+                            playSE(fileName: "1tap")
+                        if soundSettings.isBgmOn {
+                            BGMManager.shared.play(fileName: "home")
+                        } else {
+                            BGMManager.shared.stop()
+                        }
                         onBack()
                     }) {
                         Image(.backIconWhite)
@@ -38,7 +47,7 @@ struct StatusView: View {
                 Spacer()
             }
             
-
+            
             VStack(spacing: 30) {
                 
                 Spacer().frame(height: 120)
@@ -58,8 +67,26 @@ struct StatusView: View {
                 
                 Spacer().frame(height: 10)
                 
+                // ⚙️ ここにBGM・SEスイッチを横並びで追加
+                HStack(spacing: 40) {
+                    Toggle("BGM", isOn: $soundSettings.isBgmOn)
+                        .toggleStyle(SwitchToggleStyle(tint: .blue))
+                        .onChange(of: isBgmOn) {
+                            if isBgmOn {
+                                BGMManager.shared.play(fileName: "ending")
+                            } else {
+                                BGMManager.shared.stop()
+                            }
+                        }
+                    
+                    Toggle("効果音", isOn: $soundSettings.isSeOn)
+                        .toggleStyle(SwitchToggleStyle(tint: .blue))
+                }
+                .padding(.horizontal)
+                .frame(maxWidth: 300)
+                
                 Button(action: {
-                    playSE(fileName: "1tap")
+                        playSE(fileName: "1tap")
                     onEditName()
                 }) {
                     Text("名前を変更")
@@ -72,7 +99,7 @@ struct StatusView: View {
                 }
                 
                 Button(action: {
-                    playSE(fileName: "1tap")
+                        playSE(fileName: "1tap")
                     onRanking()
                 }) {
                     Text("ランキング")
@@ -83,16 +110,27 @@ struct StatusView: View {
                         .background(Color.startBtn)
                         .clipShape(RoundedRectangle(cornerRadius: 12))
                 }
-
+                
                 Spacer()
                 
                 CachedBannerView.shared
                     .frame(width: GADAdSizeLargeBanner.size.width, height: GADAdSizeLargeBanner.size.height)
-
+                
             }
         }
         .onAppear {
-            BGMManager.shared.play(fileName: "ending")
+            if soundSettings.isBgmOn {
+                BGMManager.shared.play(fileName: "ending")
+            } else {
+                BGMManager.shared.stop()
+            }
+        }
+        .onChange(of: soundSettings.isBgmOn) {
+            if soundSettings.isBgmOn {
+                BGMManager.shared.play(fileName: "ending")
+            } else {
+                BGMManager.shared.stop()
+            }
         }
     }
 }
