@@ -34,6 +34,8 @@ class PurchaseManager: ObservableObject {
             
             let result = try await product.purchase()
             
+            _ = Transaction.updates.makeAsyncIterator()
+            
             switch result {
             case .success(let verification):
                 switch verification {
@@ -53,6 +55,25 @@ class PurchaseManager: ObservableObject {
             print("❌ 購入エラー: \(error)")
         }
     }
+    
+    func observeTransactionUpdates() {
+        Task.detached {
+            for await result in Transaction.updates {
+                switch result {
+                case .verified(let transaction):
+                    if transaction.productID == "remove_ads" {
+                        await MainActor.run {
+                            PurchaseManager.shared.markAdAsRemoved()
+                        }
+                        await transaction.finish()
+                    }
+                case .unverified:
+                    break
+                }
+            }
+        }
+    }
+
 
 
     func restorePurchases() async {

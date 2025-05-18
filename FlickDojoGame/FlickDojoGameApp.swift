@@ -32,6 +32,7 @@ struct FlickDojoGameApp: App {
     init() {
         GADMobileAds.sharedInstance().start(completionHandler: nil)
         requestTrackingPermission()
+        PurchaseManager.shared.observeTransactionUpdates()
         }
     
     private func requestTrackingPermission() {
