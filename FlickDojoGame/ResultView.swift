@@ -16,6 +16,10 @@ struct ResultView: View {
     @State private var showButtons = false
     @State private var isSharing = false
     
+    @State private var sessionPlayCount = 0
+    private let interstitialAd = InterstitialAd(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+
+    
     @EnvironmentObject var soundSettings: SoundSettingsManager
     @ObservedObject var purchaseManager = PurchaseManager.shared
 
@@ -36,7 +40,7 @@ struct ResultView: View {
         playCount += 1
         UserDefaults.standard.set(playCount, forKey: "playCount")
         
-        if playCount == 5 || playCount == 30 {
+        if playCount == 4 || playCount == 19 {
             requestReview()
         }
     }
@@ -173,6 +177,19 @@ struct ResultView: View {
                         playSE(fileName: "2tap")
                     showButtons = true
                 }
+            }
+                        
+            sessionPlayCount += 1
+            print(sessionPlayCount)
+            
+            if sessionPlayCount == 2 && !purchaseManager.isAdRemoved {
+                if let rootVC = UIApplication.shared.connectedScenes
+                    .compactMap({ $0 as? UIWindowScene })
+                    .first?.windows
+                    .first(where: { $0.isKeyWindow })?.rootViewController {
+                    interstitialAd.showAd(from: rootVC)
+                }
+                sessionPlayCount = 0
             }
         }
         .onChange(of: soundSettings.isBgmOn) {

@@ -57,6 +57,7 @@
 		5F1C22632DD5D275008DAAF9 /* loading.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5F1C22622DD5D275008DAAF9 /* loading.mp3 */; };
 		5F1C22652DD99D18008DAAF9 /* SoundSettings Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C22642DD99D18008DAAF9 /* SoundSettings Manager.swift */; };
 		5F1C22672DD9C394008DAAF9 /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C22662DD9C394008DAAF9 /* PurchaseManager.swift */; };
+		5FC2CDE02DDB2A48003C1C75 /* InterstitialAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC2CDDF2DDB2A45003C1C75 /* InterstitialAd.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -108,6 +109,7 @@
 		5F1C22622DD5D275008DAAF9 /* loading.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = loading.mp3; sourceTree = "<group>"; };
 		5F1C22642DD99D18008DAAF9 /* SoundSettings Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SoundSettings Manager.swift"; sourceTree = "<group>"; };
 		5F1C22662DD9C394008DAAF9 /* PurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseManager.swift; sourceTree = "<group>"; };
+		5FC2CDDF2DDB2A45003C1C75 /* InterstitialAd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterstitialAd.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +173,7 @@
 				5F1C22142DCE9EF6008DAAF9 /* RankingManager.swift */,
 				5F1C22102DCE9EF6008DAAF9 /* RankingView.swift */,
 				5F1C223C2DCFF245008DAAF9 /* RankingRowView.swift */,
+				5FC2CDDF2DDB2A45003C1C75 /* InterstitialAd.swift */,
 				5F1C220D2DCE9EF6008DAAF9 /* ResultView.swift */,
 				5F1C22092DCE9EF5008DAAF9 /* ScoreManager.swift */,
 				5F1C22052DCE9EF5008DAAF9 /* StatusView.swift */,
@@ -330,6 +333,7 @@
 				5F1C223D2DCFF245008DAAF9 /* RankingRowView.swift in Sources */,
 				5F1C222A2DCE9EF6008DAAF9 /* Shogou.swift in Sources */,
 				5F1C22412DD1F4F5008DAAF9 /* StageSelectView.swift in Sources */,
+				5FC2CDE02DDB2A48003C1C75 /* InterstitialAd.swift in Sources */,
 				5F1C22222DCE9EF6008DAAF9 /* ResultView.swift in Sources */,
 				5F1C221B2DCE9EF6008DAAF9 /* StartView.swift in Sources */,
 				5F1C22192DCE9EF6008DAAF9 /* FuriganaText.swift in Sources */,
