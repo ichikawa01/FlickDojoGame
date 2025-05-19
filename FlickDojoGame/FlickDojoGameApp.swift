@@ -30,7 +30,7 @@ struct FlickDojoGameApp: App {
 
     
     init() {
-        GADMobileAds.sharedInstance().start(completionHandler: nil)
+        MobileAds.shared.start(completionHandler: nil)
         requestTrackingPermission()
         PurchaseManager.shared.observeTransactionUpdates()
         }

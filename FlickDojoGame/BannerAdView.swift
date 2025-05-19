@@ -8,20 +8,20 @@
 import SwiftUI
 import GoogleMobileAds
 
-// キャッシュされた GADBannerView をラップする SwiftUI View
+// キャッシュされた BannerView をラップする SwiftUI View
 struct CachedBannerView: UIViewRepresentable {
     static let shared = CachedBannerView()  // ← シングルトンとして保持OK
 
-    private static var cachedBanner: GADBannerView?
+    private static var cachedBanner: BannerView?
     private static var refreshTimer: Timer?
 
-    func makeUIView(context: Context) -> GADBannerView {
+    func makeUIView(context: Context) -> BannerView {
         if let existingBanner = CachedBannerView.cachedBanner {
             return existingBanner
         }
 
-        let adSize = GADAdSizeLargeBanner
-        let banner = GADBannerView(adSize: adSize)
+        let adSize = AdSizeLargeBanner
+        let banner = BannerView(adSize: adSize)
         banner.adUnitID = "ca-app-pub-3940256099942544/2435281174"
 
         if let rootVC = UIApplication.shared.connectedScenes
@@ -30,14 +30,14 @@ struct CachedBannerView: UIViewRepresentable {
             .first(where: { $0.isKeyWindow })?.rootViewController {
 
             banner.rootViewController = rootVC
-            banner.load(GADRequest())
+            banner.load(Request())
 
             // バナーをキャッシュ
             CachedBannerView.cachedBanner = banner
 
             // 1分ごとに再読み込み
             CachedBannerView.refreshTimer = Timer.scheduledTimer(withTimeInterval: 30, repeats: true) { _ in
-                banner.load(GADRequest())
+                banner.load(Request())
             }
 
             return banner
@@ -46,5 +46,5 @@ struct CachedBannerView: UIViewRepresentable {
         }
     }
 
-    func updateUIView(_ uiView: GADBannerView, context: Context) {}
+    func updateUIView(_ uiView: BannerView, context: Context) {}
 }

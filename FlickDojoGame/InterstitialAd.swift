@@ -8,9 +8,12 @@
 import GoogleMobileAds
 import UIKit
 
-class InterstitialAd: NSObject, GADFullScreenContentDelegate {
-    private var interstitial: GADInterstitialAd?
+class InterstitialAd: NSObject, FullScreenContentDelegate {
+    private var interstitial: GoogleMobileAds.InterstitialAd?
     var adUnitID: String
+    
+    var onAdLoaded: (() -> Void)?
+
 
     init(adUnitID: String) {
         self.adUnitID = adUnitID
@@ -19,27 +22,42 @@ class InterstitialAd: NSObject, GADFullScreenContentDelegate {
     }
 
     func loadAd() {
-        let request = GADRequest()
-        GADInterstitialAd.load(withAdUnitID: adUnitID, request: request) { [weak self] ad, error in
+        let request = GoogleMobileAds.Request()
+        GoogleMobileAds.InterstitialAd.load(
+            with: adUnitID,
+            request: request
+        ) { [weak self] ad, error in
             if let error = error {
-                print("Interstitial failed to load: \(error.localizedDescription)")
+                print("❌ Interstitial failed to load: \(error.localizedDescription)")
                 return
             }
+
             self?.interstitial = ad
             self?.interstitial?.fullScreenContentDelegate = self
+            print("✅ Interstitial loaded")
+            
+            self?.onAdLoaded?()
+
         }
     }
 
     func showAd(from root: UIViewController) {
         if let ad = interstitial {
-            ad.present(fromRootViewController: root)
+            ad.present(from: root)
         } else {
             print("Ad not ready")
             loadAd() // 再読み込み
         }
     }
 
-    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        loadAd() // 閉じられたら再読み込み
+    // MARK: - FullScreenContentDelegate
+    func adDidDismissFullScreenContent(_ ad: FullScreenPresentingAd) {
+        print("Interstitial dismissed. Reloading...")
+        loadAd()
+    }
+
+    func ad(_ ad: FullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+        print("❌ Failed to present interstitial: \(error.localizedDescription)")
+        loadAd()
     }
 }

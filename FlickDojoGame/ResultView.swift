@@ -16,7 +16,6 @@ struct ResultView: View {
     @State private var showButtons = false
     @State private var isSharing = false
     
-    @State private var sessionPlayCount = 0
     private let interstitialAd = InterstitialAd(adUnitID: "ca-app-pub-3940256099942544/4411468910")
 
     
@@ -149,7 +148,7 @@ struct ResultView: View {
                 
                 if !purchaseManager.isAdRemoved {
                     CachedBannerView.shared
-                        .frame(width: GADAdSizeLargeBanner.size.width, height: GADAdSizeLargeBanner.size.height)
+                        .frame(width: AdSizeLargeBanner.size.width, height: AdSizeLargeBanner.size.height)
                 }
             }
         }
@@ -162,34 +161,39 @@ struct ResultView: View {
             trackPlayCountAndMaybeRequestReview()
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                 withAnimation {
-                        playSE(fileName: "1tap")
+                    playSE(fileName: "1tap")
                     showScore = true
                 }
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                 withAnimation {
-                        playSE(fileName: "1tap")
+                    playSE(fileName: "1tap")
                     showCharacters = true
                 }
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                 withAnimation {
-                        playSE(fileName: "2tap")
+                    playSE(fileName: "2tap")
                     showButtons = true
                 }
             }
-                        
-            sessionPlayCount += 1
-            print(sessionPlayCount)
             
-            if sessionPlayCount == 2 && !purchaseManager.isAdRemoved {
-                if let rootVC = UIApplication.shared.connectedScenes
-                    .compactMap({ $0 as? UIWindowScene })
-                    .first?.windows
-                    .first(where: { $0.isKeyWindow })?.rootViewController {
-                    interstitialAd.showAd(from: rootVC)
+            var sessionCount = UserDefaults.standard.integer(forKey: "sessionPlayCount")
+            sessionCount += 1
+            UserDefaults.standard.set(sessionCount, forKey: "sessionPlayCount")
+            print("Session play count: \(sessionCount)")
+            
+            
+            interstitialAd.onAdLoaded = {
+                if sessionCount >= 6 && !purchaseManager.isAdRemoved {
+                    if let rootVC = UIApplication.shared.connectedScenes
+                        .compactMap({ $0 as? UIWindowScene })
+                        .first?.windows
+                        .first(where: { $0.isKeyWindow })?.rootViewController {
+                        interstitialAd.showAd(from: rootVC)
+                    }
+                    UserDefaults.standard.set(0, forKey: "sessionPlayCount")
                 }
-                sessionPlayCount = 0
             }
         }
         .onChange(of: soundSettings.isBgmOn) {

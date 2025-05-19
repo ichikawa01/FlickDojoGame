@@ -178,7 +178,7 @@ struct CategorySelectView: View {
                 
                 if !purchaseManager.isAdRemoved {
                     CachedBannerView.shared
-                        .frame(width: GADAdSizeLargeBanner.size.width, height: GADAdSizeLargeBanner.size.height)
+                        .frame(width: AdSizeLargeBanner.size.width, height: AdSizeLargeBanner.size.height)
                 }
                 
             }

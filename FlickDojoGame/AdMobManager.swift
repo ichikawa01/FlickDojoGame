@@ -8,15 +8,15 @@
 import GoogleMobileAds
 import UIKit
 
-class AdMobManager: NSObject, GADFullScreenContentDelegate, ObservableObject {
+class AdMobManager: NSObject, FullScreenContentDelegate, ObservableObject {
     static let shared = AdMobManager()
     
-    private var rewardAd: GADRewardedAd?
+    private var rewardAd: RewardedAd?
     private var onReward: (() -> Void)?
     
     func loadAd() {
-        let request = GADRequest()
-        GADRewardedAd.load(withAdUnitID: "ca-app-pub-3940256099942544/5224354917", request: request) { ad, error in
+        let request = GoogleMobileAds.Request()
+        RewardedAd.load(with: "ca-app-pub-3940256099942544/5224354917", request: request) { ad, error in
             if let ad = ad {
                 self.rewardAd = ad
                 self.rewardAd?.fullScreenContentDelegate = self
@@ -29,7 +29,7 @@ class AdMobManager: NSObject, GADFullScreenContentDelegate, ObservableObject {
             return
         }
         self.onReward = onReward
-        ad.present(fromRootViewController: rootViewController) {
+        ad.present(from: rootViewController) {
             onReward()
             self.loadAd()
         }
