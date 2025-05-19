@@ -68,6 +68,7 @@ struct StatusView: View {
                                 
                 // 課金ボタン
                 HStack {
+                    
                     Button(action: {
                         Task {
                             await PurchaseManager.shared.purchaseRemoveAds()
@@ -140,8 +141,13 @@ struct StatusView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 12))
                 }
                 
-                Spacer()
+                // プライバシーポリシーリンク
+                Link("プライバシーポリシー", destination: URL(string: "https://github.com/ichikawa01/privacy-policy")!)
+                    .font(.headline)
+                    .foregroundColor(.black)
+                    .padding(.bottom, 8)
                 
+                Spacer()
                 
                 if !purchaseManager.isAdRemoved {
                     CachedBannerView.shared
