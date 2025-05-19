@@ -16,7 +16,7 @@ class AdMobManager: NSObject, FullScreenContentDelegate, ObservableObject {
     
     func loadAd() {
         let request = GoogleMobileAds.Request()
-        RewardedAd.load(with: "ca-app-pub-3940256099942544/5224354917", request: request) { ad, error in
+        RewardedAd.load(with: "ca-app-pub-7316649907762779/3387386096", request: request) { ad, error in
             if let ad = ad {
                 self.rewardAd = ad
                 self.rewardAd?.fullScreenContentDelegate = self

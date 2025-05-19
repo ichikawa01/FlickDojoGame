@@ -16,7 +16,7 @@ struct ResultView: View {
     @State private var showButtons = false
     @State private var isSharing = false
     
-    private let interstitialAd = InterstitialAd(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+    private let interstitialAd = InterstitialAd(adUnitID: "ca-app-pub-7316649907762779/3517256335")
 
     
     @EnvironmentObject var soundSettings: SoundSettingsManager

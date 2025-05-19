@@ -22,7 +22,7 @@ struct CachedBannerView: UIViewRepresentable {
 
         let adSize = AdSizeLargeBanner
         let banner = BannerView(adSize: adSize)
-        banner.adUnitID = "ca-app-pub-3940256099942544/2435281174"
+        banner.adUnitID = "ca-app-pub-7316649907762779/1687824442"
 
         if let rootVC = UIApplication.shared.connectedScenes
             .compactMap({ $0 as? UIWindowScene })
